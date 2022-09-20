@@ -1,4 +1,4 @@
-import { _decorator, Component, Node, RigidBody2D, Animation, Vec2 } from 'cc'
+import { _decorator, Component, RigidBody2D, Animation, Vec2 } from 'cc'
 import Direction from './enums/Direction'
 
 const { ccclass, property } = _decorator
@@ -101,5 +101,67 @@ export class PlayerManager extends Component {
     // this._animation.play('idleLeftUp')
   }
 
-  update(deltaTime: number) {}
+  move() {
+    // console.log(this.lastMovementCommand)
+    // console.log(this.movementCommands)
+    if (
+      this.movementCommands.includes(Direction.UP) &&
+      this.movementCommands.includes(Direction.RIGHT) &&
+      !this.movementCommands.includes(Direction.DOWN) &&
+      !this.movementCommands.includes(Direction.LEFT)
+    ) {
+      this.walkUpRight()
+    } else if (
+      !this.movementCommands.includes(Direction.UP) &&
+      this.movementCommands.includes(Direction.RIGHT) &&
+      this.movementCommands.includes(Direction.DOWN) &&
+      !this.movementCommands.includes(Direction.LEFT)
+    ) {
+      this.walkRightDown()
+    } else if (
+      !this.movementCommands.includes(Direction.UP) &&
+      !this.movementCommands.includes(Direction.RIGHT) &&
+      this.movementCommands.includes(Direction.DOWN) &&
+      this.movementCommands.includes(Direction.LEFT)
+    ) {
+      this.walkDownLeft()
+    } else if (
+      this.movementCommands.includes(Direction.UP) &&
+      !this.movementCommands.includes(Direction.RIGHT) &&
+      !this.movementCommands.includes(Direction.DOWN) &&
+      this.movementCommands.includes(Direction.LEFT)
+    ) {
+      this.walkLeftUp()
+    } else if (
+      this.movementCommands.includes(Direction.UP) &&
+      !this.movementCommands.includes(Direction.RIGHT) &&
+      !this.movementCommands.includes(Direction.DOWN) &&
+      !this.movementCommands.includes(Direction.LEFT)
+    ) {
+      this.walkUp()
+    } else if (
+      !this.movementCommands.includes(Direction.UP) &&
+      this.movementCommands.includes(Direction.RIGHT) &&
+      !this.movementCommands.includes(Direction.DOWN) &&
+      !this.movementCommands.includes(Direction.LEFT)
+    ) {
+      this.walkRight()
+    } else if (
+      !this.movementCommands.includes(Direction.UP) &&
+      !this.movementCommands.includes(Direction.RIGHT) &&
+      this.movementCommands.includes(Direction.DOWN) &&
+      !this.movementCommands.includes(Direction.LEFT)
+    ) {
+      this.walkDown()
+    } else if (
+      !this.movementCommands.includes(Direction.UP) &&
+      !this.movementCommands.includes(Direction.RIGHT) &&
+      !this.movementCommands.includes(Direction.DOWN) &&
+      this.movementCommands.includes(Direction.LEFT)
+    ) {
+      this.walkLeft()
+    }
+  }
+
+  // update(deltaTime: number) {}
 }

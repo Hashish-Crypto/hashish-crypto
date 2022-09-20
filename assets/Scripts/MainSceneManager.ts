@@ -26,44 +26,26 @@ export class MainSceneManager extends Component {
     if (event.keyCode === KeyCode.KEY_W) {
       this._player.lastMovementCommand = Direction.UP
       this._player.movementCommands.push(Direction.UP)
-      if (
-        !this._player.movementCommands.includes(Direction.RIGHT) ||
-        !this._player.movementCommands.includes(Direction.LEFT)
-      ) {
-        this._player.walkUp()
-      }
+      this._player.move()
     } else if (event.keyCode === KeyCode.KEY_D) {
       this._player.lastMovementCommand = Direction.RIGHT
       this._player.movementCommands.push(Direction.RIGHT)
-      if (
-        !this._player.movementCommands.includes(Direction.UP) ||
-        !this._player.movementCommands.includes(Direction.DOWN)
-      ) {
-        this._player.walkRight()
-      }
+      this._player.move()
     } else if (event.keyCode === KeyCode.KEY_S) {
       this._player.lastMovementCommand = Direction.DOWN
       this._player.movementCommands.push(Direction.DOWN)
-      if (
-        !this._player.movementCommands.includes(Direction.RIGHT) ||
-        !this._player.movementCommands.includes(Direction.LEFT)
-      ) {
-        this._player.walkDown()
-      }
+      this._player.move()
     } else if (event.keyCode === KeyCode.KEY_A) {
       this._player.lastMovementCommand = Direction.LEFT
       this._player.movementCommands.push(Direction.LEFT)
-      if (
-        !this._player.movementCommands.includes(Direction.UP) ||
-        !this._player.movementCommands.includes(Direction.DOWN)
-      ) {
-        this._player.walkLeft()
-      }
+      this._player.move()
     }
   }
 
   private _onKeyUp(event: EventKeyboard) {
     if (!this._player.controllerEnabled) return
+
+    console.log(event.keyCode)
 
     if (event.keyCode === KeyCode.KEY_W) {
       this._player.movementCommands = this._player.movementCommands.filter((direction) => direction !== Direction.UP)
@@ -88,9 +70,9 @@ export class MainSceneManager extends Component {
     }
 
     // If there is still a key pressed, it triggers the player movement.
-    // if (this._player.lastMovementCommand !== this._player.movementCommands[this._player.movementCommands.length - 1]) {
-    //   this._player.move()
-    // }
+    if (this._player.movementCommands.length > 0) {
+      this._player.move()
+    }
   }
 
   // update(deltaTime: number) {}
