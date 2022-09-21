@@ -1,6 +1,6 @@
 # Hashish Crypto
 
-Hashish Crypto game made with [Cocos Creator 3.6.0](https://www.cocos.com/en/creator).
+Hashish Crypto game made with [Cocos Creator 3.5.2](https://www.cocos.com/en/creator).
 
 Live demo: [acquati.itch.io/hashish-crypto](https://acquati.itch.io/hashish-crypto)
 

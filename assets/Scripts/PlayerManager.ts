@@ -1,11 +1,11 @@
-import { _decorator, Component, RigidBody2D, Animation, Vec2 } from 'cc'
+import { _decorator, Component, RigidBody2D, Animation, Vec2, CCFloat } from 'cc'
 import Direction from './enums/Direction'
 
 const { ccclass, property } = _decorator
 
 @ccclass('PlayerManager')
 export class PlayerManager extends Component {
-  @property({ type: Number })
+  @property({ type: CCFloat })
   private velocity: number = 4
 
   public controllerEnabled: boolean = false
@@ -102,8 +102,6 @@ export class PlayerManager extends Component {
   }
 
   move() {
-    // console.log(this.lastMovementCommand)
-    // console.log(this.movementCommands)
     if (
       this.movementCommands.includes(Direction.UP) &&
       this.movementCommands.includes(Direction.RIGHT) &&

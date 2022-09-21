@@ -45,8 +45,6 @@ export class MainSceneManager extends Component {
   private _onKeyUp(event: EventKeyboard) {
     if (!this._player.controllerEnabled) return
 
-    console.log(event.keyCode)
-
     if (event.keyCode === KeyCode.KEY_W) {
       this._player.movementCommands = this._player.movementCommands.filter((direction) => direction !== Direction.UP)
       if (this._player.movementCommands.length === 0) {

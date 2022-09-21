@@ -1,10 +1,10 @@
-import { _decorator, Component, director } from 'cc'
+import { _decorator, Component, game } from 'cc'
 
 const { ccclass } = _decorator
 
 @ccclass('PersistentNode')
 export class PersistentNode extends Component {
   onLoad() {
-    director.addPersistRootNode(this.node)
+    game.addPersistRootNode(this.node)
   }
 }

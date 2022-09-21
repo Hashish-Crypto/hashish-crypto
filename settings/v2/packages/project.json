@@ -1,10 +1,12 @@
 {
-  "general": {
-    "designResolution": {
-      "fitHeight": true
-    }
-  },
+  "__version__": "1.0.2",
   "physics": {
+    "collisionMatrix": {
+      "0": 0,
+      "1": 12,
+      "2": 2,
+      "3": 2
+    },
     "collisionGroups": [
       {
         "index": 1,
@@ -18,12 +20,11 @@
         "index": 3,
         "name": "SENSOR"
       }
-    ],
-    "collisionMatrix": {
-      "0": 0,
-      "1": 12,
-      "2": 2,
-      "3": 2
+    ]
+  },
+  "general": {
+    "designResolution": {
+      "fitHeight": true
     }
   }
 }

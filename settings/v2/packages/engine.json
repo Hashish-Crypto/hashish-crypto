@@ -87,6 +87,15 @@
       },
       "dragon-bones": {
         "_value": true
+      },
+      "animation": {
+        "_value": true
+      },
+      "skeletal-animation": {
+        "_value": true
+      },
+      "marionette": {
+        "_value": true
       }
     },
     "includeModules": [
