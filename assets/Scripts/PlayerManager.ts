@@ -18,87 +18,87 @@ export class PlayerManager extends Component {
 
   onLoad() {
     this._body = this.node.getComponent(RigidBody2D)
-    // this._animation = this.node.getComponent(Animation)
+    this._animation = this.node.getComponent(Animation)
   }
 
   walkUp() {
     this._body.linearVelocity = new Vec2(0, this.velocity)
-    // this._animation.play('walkUp')
+    this._animation.play('walkUp')
   }
 
   walkUpRight() {
     this._body.linearVelocity = new Vec2(this.velocity * this._cos, this.velocity * this._sin)
-    // this._animation.play('walkUpRight')
+    this._animation.play('walkUpRight')
   }
 
   walkRight() {
     this._body.linearVelocity = new Vec2(this.velocity, 0)
-    // this._animation.play('walkRight')
+    this._animation.play('walkRight')
   }
 
   walkRightDown() {
     this._body.linearVelocity = new Vec2(this.velocity * this._cos, this.velocity * -this._sin)
-    // this._animation.play('walkRightDown')
+    this._animation.play('walkRightDown')
   }
 
   walkDown() {
     this._body.linearVelocity = new Vec2(0, -this.velocity)
-    // this._animation.play('walkDown')
+    this._animation.play('walkDown')
   }
 
   walkDownLeft() {
     this._body.linearVelocity = new Vec2(this.velocity * -this._cos, this.velocity * -this._sin)
-    // this._animation.play('walkDownLeft')
+    this._animation.play('walkDownLeft')
   }
 
   walkLeft() {
     this._body.linearVelocity = new Vec2(-this.velocity, 0)
-    // this._animation.play('walkLeft')
+    this._animation.play('walkLeft')
   }
 
   walkLeftUp() {
     this._body.linearVelocity = new Vec2(this.velocity * -this._cos, this.velocity * this._sin)
-    // this._animation.play('walkLeftUp')
+    this._animation.play('walkLeftUp')
   }
 
   idleUp() {
     this._body.linearVelocity = new Vec2(0, 0)
-    // this._animation.play('idleUp')
+    this._animation.play('idleUp')
   }
 
   idleUpRight() {
     this._body.linearVelocity = new Vec2(0, 0)
-    // this._animation.play('idleUpRight')
+    this._animation.play('idleUpRight')
   }
 
   idleRight() {
     this._body.linearVelocity = new Vec2(0, 0)
-    // this._animation.play('idleRight')
+    this._animation.play('idleRight')
   }
 
   idleRightDown() {
     this._body.linearVelocity = new Vec2(0, 0)
-    // this._animation.play('idleRightDown')
+    this._animation.play('idleRightDown')
   }
 
   idleDown() {
     this._body.linearVelocity = new Vec2(0, 0)
-    // this._animation.play('idleDown')
+    this._animation.play('idleDown')
   }
 
   idleDownLeft() {
     this._body.linearVelocity = new Vec2(0, 0)
-    // this._animation.play('idleDownLeft')
+    this._animation.play('idleDownLeft')
   }
 
   idleLeft() {
     this._body.linearVelocity = new Vec2(0, 0)
-    // this._animation.play('idleLeft')
+    this._animation.play('idleLeft')
   }
 
   idleLeftUp() {
     this._body.linearVelocity = new Vec2(0, 0)
-    // this._animation.play('idleLeftUp')
+    this._animation.play('idleLeftUp')
   }
 
   move() {
