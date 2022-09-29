@@ -21,7 +21,7 @@
         "isUuid": true,
         "minfilter": "nearest",
         "magfilter": "nearest",
-        "mipfilter": "nearest",
+        "mipfilter": "none",
         "anisotropy": 0
       },
       "ver": "1.0.21",

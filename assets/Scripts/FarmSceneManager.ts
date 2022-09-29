@@ -4,8 +4,8 @@ import playerMovement from './lib/playerMovement'
 
 const { ccclass, property } = _decorator
 
-@ccclass('MainSceneManager')
-export class MainSceneManager extends Component {
+@ccclass('FarmSceneManager')
+export class FarmSceneManager extends Component {
   @property({ type: Node })
   private playerNode: Node | null = null
 
