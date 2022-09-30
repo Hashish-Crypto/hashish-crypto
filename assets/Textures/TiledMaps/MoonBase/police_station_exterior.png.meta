@@ -2,7 +2,7 @@
   "ver": "1.0.23",
   "importer": "image",
   "imported": true,
-  "uuid": "7d0d0631-0be6-4de2-9043-78a273b197c3",
+  "uuid": "e9bd9937-e522-4f60-bbe0-b1fe8b365634",
   "files": [
     ".json",
     ".png"
@@ -10,14 +10,14 @@
   "subMetas": {
     "6c48a": {
       "importer": "texture",
-      "uuid": "7d0d0631-0be6-4de2-9043-78a273b197c3@6c48a",
+      "uuid": "e9bd9937-e522-4f60-bbe0-b1fe8b365634@6c48a",
       "displayName": "police_station_exterior",
       "id": "6c48a",
       "name": "texture",
       "userData": {
         "wrapModeS": "clamp-to-edge",
         "wrapModeT": "clamp-to-edge",
-        "imageUuidOrDatabaseUri": "7d0d0631-0be6-4de2-9043-78a273b197c3",
+        "imageUuidOrDatabaseUri": "e9bd9937-e522-4f60-bbe0-b1fe8b365634",
         "isUuid": true,
         "minfilter": "nearest",
         "magfilter": "nearest",
@@ -33,7 +33,7 @@
     },
     "f9941": {
       "importer": "sprite-frame",
-      "uuid": "7d0d0631-0be6-4de2-9043-78a273b197c3@f9941",
+      "uuid": "e9bd9937-e522-4f60-bbe0-b1fe8b365634@f9941",
       "displayName": "police_station_exterior",
       "id": "f9941",
       "name": "spriteFrame",
@@ -55,7 +55,7 @@
         "borderRight": 0,
         "packable": true,
         "isUuid": true,
-        "imageUuidOrDatabaseUri": "7d0d0631-0be6-4de2-9043-78a273b197c3@6c48a",
+        "imageUuidOrDatabaseUri": "e9bd9937-e522-4f60-bbe0-b1fe8b365634@6c48a",
         "atlasUuid": ""
       },
       "ver": "1.0.9",
@@ -70,6 +70,6 @@
     "type": "sprite-frame",
     "fixAlphaTransparencyArtifacts": true,
     "hasAlpha": true,
-    "redirect": "7d0d0631-0be6-4de2-9043-78a273b197c3@f9941"
+    "redirect": "e9bd9937-e522-4f60-bbe0-b1fe8b365634@f9941"
   }
 }

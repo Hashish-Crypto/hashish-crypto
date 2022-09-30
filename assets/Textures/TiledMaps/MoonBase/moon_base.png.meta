@@ -2,7 +2,7 @@
   "ver": "1.0.23",
   "importer": "image",
   "imported": true,
-  "uuid": "1fae6668-1425-4b90-bddd-baff0fe0f5b2",
+  "uuid": "941496f0-a389-49df-8f61-0fd7816f86ac",
   "files": [
     ".json",
     ".png"
@@ -10,14 +10,14 @@
   "subMetas": {
     "6c48a": {
       "importer": "texture",
-      "uuid": "1fae6668-1425-4b90-bddd-baff0fe0f5b2@6c48a",
+      "uuid": "941496f0-a389-49df-8f61-0fd7816f86ac@6c48a",
       "displayName": "moon_base",
       "id": "6c48a",
       "name": "texture",
       "userData": {
         "wrapModeS": "clamp-to-edge",
         "wrapModeT": "clamp-to-edge",
-        "imageUuidOrDatabaseUri": "1fae6668-1425-4b90-bddd-baff0fe0f5b2",
+        "imageUuidOrDatabaseUri": "941496f0-a389-49df-8f61-0fd7816f86ac",
         "isUuid": true,
         "minfilter": "nearest",
         "magfilter": "nearest",
@@ -33,7 +33,7 @@
     },
     "f9941": {
       "importer": "sprite-frame",
-      "uuid": "1fae6668-1425-4b90-bddd-baff0fe0f5b2@f9941",
+      "uuid": "941496f0-a389-49df-8f61-0fd7816f86ac@f9941",
       "displayName": "moon_base",
       "id": "f9941",
       "name": "spriteFrame",
@@ -55,7 +55,7 @@
         "borderRight": 0,
         "packable": true,
         "isUuid": true,
-        "imageUuidOrDatabaseUri": "1fae6668-1425-4b90-bddd-baff0fe0f5b2@6c48a",
+        "imageUuidOrDatabaseUri": "941496f0-a389-49df-8f61-0fd7816f86ac@6c48a",
         "atlasUuid": ""
       },
       "ver": "1.0.9",
@@ -70,6 +70,6 @@
     "type": "sprite-frame",
     "fixAlphaTransparencyArtifacts": true,
     "hasAlpha": true,
-    "redirect": "1fae6668-1425-4b90-bddd-baff0fe0f5b2@f9941"
+    "redirect": "941496f0-a389-49df-8f61-0fd7816f86ac@f9941"
   }
 }

@@ -2,7 +2,7 @@
   "ver": "1.0.23",
   "importer": "image",
   "imported": true,
-  "uuid": "70300945-aeb5-4faa-a7d9-bdb3f1c719ad",
+  "uuid": "7f38faef-174d-416c-88c4-fcc6d23d8660",
   "files": [
     ".json",
     ".png"
@@ -10,14 +10,14 @@
   "subMetas": {
     "6c48a": {
       "importer": "texture",
-      "uuid": "70300945-aeb5-4faa-a7d9-bdb3f1c719ad@6c48a",
+      "uuid": "7f38faef-174d-416c-88c4-fcc6d23d8660@6c48a",
       "displayName": "house_exterior",
       "id": "6c48a",
       "name": "texture",
       "userData": {
         "wrapModeS": "clamp-to-edge",
         "wrapModeT": "clamp-to-edge",
-        "imageUuidOrDatabaseUri": "70300945-aeb5-4faa-a7d9-bdb3f1c719ad",
+        "imageUuidOrDatabaseUri": "7f38faef-174d-416c-88c4-fcc6d23d8660",
         "isUuid": true,
         "minfilter": "nearest",
         "magfilter": "nearest",
@@ -33,7 +33,7 @@
     },
     "f9941": {
       "importer": "sprite-frame",
-      "uuid": "70300945-aeb5-4faa-a7d9-bdb3f1c719ad@f9941",
+      "uuid": "7f38faef-174d-416c-88c4-fcc6d23d8660@f9941",
       "displayName": "house_exterior",
       "id": "f9941",
       "name": "spriteFrame",
@@ -55,7 +55,7 @@
         "borderRight": 0,
         "packable": true,
         "isUuid": true,
-        "imageUuidOrDatabaseUri": "70300945-aeb5-4faa-a7d9-bdb3f1c719ad@6c48a",
+        "imageUuidOrDatabaseUri": "7f38faef-174d-416c-88c4-fcc6d23d8660@6c48a",
         "atlasUuid": ""
       },
       "ver": "1.0.9",
@@ -70,6 +70,6 @@
     "type": "sprite-frame",
     "fixAlphaTransparencyArtifacts": true,
     "hasAlpha": true,
-    "redirect": "70300945-aeb5-4faa-a7d9-bdb3f1c719ad@f9941"
+    "redirect": "7f38faef-174d-416c-88c4-fcc6d23d8660@f9941"
   }
 }
