@@ -1,4 +1,15 @@
-import { _decorator, Component, Node, input, Input, EventKeyboard } from 'cc'
+import {
+  _decorator,
+  Component,
+  Node,
+  input,
+  Input,
+  EventKeyboard,
+  PhysicsSystem2D,
+  Contact2DType,
+  Collider2D,
+  Animation,
+} from 'cc'
 import { PlayerManager } from './PlayerManager'
 import playerMovement from '../lib/playerMovement'
 
@@ -9,6 +20,21 @@ export class MainSceneManager extends Component {
   @property({ type: Node })
   private playerNode: Node | null = null
 
+  @property({ type: Node })
+  private bankDoor: Node | null = null
+
+  @property({ type: Node })
+  private barDoor: Node | null = null
+
+  @property({ type: Node })
+  private houseDoor: Node | null = null
+
+  @property({ type: Node })
+  private policeDoor: Node | null = null
+
+  @property({ type: Node })
+  private shopDoor: Node | null = null
+
   private _player: PlayerManager | null = null
 
   onLoad() {
@@ -16,6 +42,9 @@ export class MainSceneManager extends Component {
 
     input.on(Input.EventType.KEY_DOWN, this._onKeyDown, this)
     input.on(Input.EventType.KEY_UP, this._onKeyUp, this)
+
+    PhysicsSystem2D.instance.on(Contact2DType.BEGIN_CONTACT, this._onBeginContact, this)
+    PhysicsSystem2D.instance.on(Contact2DType.END_CONTACT, this._onEndContact, this)
 
     this._player.controllerEnabled = true
   }
@@ -26,6 +55,38 @@ export class MainSceneManager extends Component {
 
   private _onKeyUp(event: EventKeyboard) {
     playerMovement.onKeyUp(this._player, event)
+  }
+
+  private _onBeginContact(a: Collider2D, b: Collider2D) {
+    if (b.node.name === 'Player') {
+      if (a.node.name === 'BankDoorTrigger') {
+        this.bankDoor.getComponent(Animation).play('BankDoorOpen')
+      } else if (a.node.name === 'BarDoorTrigger') {
+        this.barDoor.getComponent(Animation).play('BarDoorOpen')
+      } else if (a.node.name === 'HouseDoorTrigger') {
+        this.houseDoor.getComponent(Animation).play('HouseDoorOpen')
+      } else if (a.node.name === 'PoliceDoorTrigger') {
+        this.policeDoor.getComponent(Animation).play('PoliceDoorOpen')
+      } else if (a.node.name === 'ShopDoorTrigger') {
+        this.shopDoor.getComponent(Animation).play('ShopDoorOpen')
+      }
+    }
+  }
+
+  private _onEndContact(a: Collider2D, b: Collider2D) {
+    if (b.node.name === 'Player') {
+      if (a.node.name === 'BankDoorTrigger') {
+        this.bankDoor.getComponent(Animation).play('BankDoorClose')
+      } else if (a.node.name === 'BarDoorTrigger') {
+        this.barDoor.getComponent(Animation).play('BarDoorClose')
+      } else if (a.node.name === 'HouseDoorTrigger') {
+        this.houseDoor.getComponent(Animation).play('HouseDoorClose')
+      } else if (a.node.name === 'PoliceDoorTrigger') {
+        this.policeDoor.getComponent(Animation).play('PoliceDoorClose')
+      } else if (a.node.name === 'ShopDoorTrigger') {
+        this.shopDoor.getComponent(Animation).play('ShopDoorClose')
+      }
+    }
   }
 
   // update(deltaTime: number) {}

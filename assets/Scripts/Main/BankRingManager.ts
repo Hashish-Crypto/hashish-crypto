@@ -1,6 +1,6 @@
-import { _decorator, Component, Node, Vec3, RigidBody2D } from 'cc'
+import { _decorator, Component, RigidBody2D } from 'cc'
 
-const { ccclass, property } = _decorator
+const { ccclass } = _decorator
 
 @ccclass('BankRingManager')
 export class BankRingManager extends Component {
