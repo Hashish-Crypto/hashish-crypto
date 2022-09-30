@@ -58,32 +58,32 @@ export class MainSceneManager extends Component {
   }
 
   private _onBeginContact(a: Collider2D, b: Collider2D) {
-    if (b.node.name === 'Player') {
-      if (a.node.name === 'BankDoorTrigger') {
+    if (a.node.name === 'Player') {
+      if (b.node.name === 'BankDoorTrigger') {
         this.bankDoor.getComponent(Animation).play('BankDoorOpen')
-      } else if (a.node.name === 'BarDoorTrigger') {
+      } else if (b.node.name === 'BarDoorTrigger') {
         this.barDoor.getComponent(Animation).play('BarDoorOpen')
-      } else if (a.node.name === 'HouseDoorTrigger') {
+      } else if (b.node.name === 'HouseDoorTrigger') {
         this.houseDoor.getComponent(Animation).play('HouseDoorOpen')
-      } else if (a.node.name === 'PoliceDoorTrigger') {
+      } else if (b.node.name === 'PoliceDoorTrigger') {
         this.policeDoor.getComponent(Animation).play('PoliceDoorOpen')
-      } else if (a.node.name === 'ShopDoorTrigger') {
+      } else if (b.node.name === 'ShopDoorTrigger') {
         this.shopDoor.getComponent(Animation).play('ShopDoorOpen')
       }
     }
   }
 
   private _onEndContact(a: Collider2D, b: Collider2D) {
-    if (b.node.name === 'Player') {
-      if (a.node.name === 'BankDoorTrigger') {
+    if (a.node.name === 'Player') {
+      if (b.node.name === 'BankDoorTrigger') {
         this.bankDoor.getComponent(Animation).play('BankDoorClose')
-      } else if (a.node.name === 'BarDoorTrigger') {
+      } else if (b.node.name === 'BarDoorTrigger') {
         this.barDoor.getComponent(Animation).play('BarDoorClose')
-      } else if (a.node.name === 'HouseDoorTrigger') {
+      } else if (b.node.name === 'HouseDoorTrigger') {
         this.houseDoor.getComponent(Animation).play('HouseDoorClose')
-      } else if (a.node.name === 'PoliceDoorTrigger') {
+      } else if (b.node.name === 'PoliceDoorTrigger') {
         this.policeDoor.getComponent(Animation).play('PoliceDoorClose')
-      } else if (a.node.name === 'ShopDoorTrigger') {
+      } else if (b.node.name === 'ShopDoorTrigger') {
         this.shopDoor.getComponent(Animation).play('ShopDoorClose')
       }
     }

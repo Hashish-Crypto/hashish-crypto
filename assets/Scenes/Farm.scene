@@ -734,7 +734,7 @@
     "_id": "33fZ911V1AKJHcHMWcTzpU"
   },
   {
-    "__type__": "cc.CircleCollider2D",
+    "__type__": "cc.BoxCollider2D",
     "_name": "",
     "_objFlags": 0,
     "node": {
@@ -743,18 +743,22 @@
     "_enabled": true,
     "__prefab": null,
     "tag": 0,
-    "_group": 2,
+    "_group": 1,
     "_density": 1,
     "_sensor": false,
-    "_friction": 0.2,
+    "_friction": 0,
     "_restitution": 0,
     "_offset": {
       "__type__": "cc.Vec2",
-      "x": 0,
-      "y": -6
+      "x": 0.5,
+      "y": -7.5
     },
-    "_radius": 12,
-    "_id": "b2GEjXbLdAEpnw+kv2hszS"
+    "_size": {
+      "__type__": "cc.Size",
+      "width": 19,
+      "height": 19
+    },
+    "_id": "1aziwof6hGyqTui+nCaqQU"
   },
   {
     "__type__": "cc.Animation",
@@ -908,7 +912,7 @@
     "_group": 4,
     "_density": 1,
     "_sensor": false,
-    "_friction": 0.2,
+    "_friction": 0,
     "_restitution": 0,
     "_offset": {
       "__type__": "cc.Vec2",
@@ -1008,7 +1012,7 @@
     "_group": 4,
     "_density": 1,
     "_sensor": false,
-    "_friction": 0.2,
+    "_friction": 0,
     "_restitution": 0,
     "_offset": {
       "__type__": "cc.Vec2",
@@ -1108,7 +1112,7 @@
     "_group": 4,
     "_density": 1,
     "_sensor": false,
-    "_friction": 0.2,
+    "_friction": 0,
     "_restitution": 0,
     "_offset": {
       "__type__": "cc.Vec2",
@@ -1208,7 +1212,7 @@
     "_group": 4,
     "_density": 1,
     "_sensor": false,
-    "_friction": 0.2,
+    "_friction": 0,
     "_restitution": 0,
     "_offset": {
       "__type__": "cc.Vec2",
