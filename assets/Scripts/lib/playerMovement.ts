@@ -1,5 +1,5 @@
 import { EventKeyboard, KeyCode } from 'cc'
-import { PlayerManager } from '../PlayerManager'
+import { PlayerManager } from '../Main/PlayerManager'
 
 import Direction from '../enums/Direction'
 

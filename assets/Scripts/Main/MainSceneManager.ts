@@ -1,11 +1,11 @@
 import { _decorator, Component, Node, input, Input, EventKeyboard } from 'cc'
 import { PlayerManager } from './PlayerManager'
-import playerMovement from './lib/playerMovement'
+import playerMovement from '../lib/playerMovement'
 
 const { ccclass, property } = _decorator
 
-@ccclass('FarmSceneManager')
-export class FarmSceneManager extends Component {
+@ccclass('MainSceneManager')
+export class MainSceneManager extends Component {
   @property({ type: Node })
   private playerNode: Node | null = null
 

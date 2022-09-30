@@ -1,5 +1,5 @@
 import { _decorator, Component, RigidBody2D, Animation, Vec2, CCFloat } from 'cc'
-import Direction from './enums/Direction'
+import Direction from '../enums/Direction'
 
 const { ccclass, property } = _decorator
 
