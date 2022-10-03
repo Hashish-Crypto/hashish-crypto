@@ -30,7 +30,7 @@ export class MainSceneManager extends Component {
   private houseDoor: Node | null = null
 
   @property({ type: Node })
-  private policeDoor: Node | null = null
+  private policeStationDoor: Node | null = null
 
   @property({ type: Node })
   private shopDoor: Node | null = null
@@ -65,8 +65,8 @@ export class MainSceneManager extends Component {
         this.barDoor.getComponent(Animation).play('BarDoorOpen')
       } else if (b.node.name === 'HouseDoorTrigger') {
         this.houseDoor.getComponent(Animation).play('HouseDoorOpen')
-      } else if (b.node.name === 'PoliceDoorTrigger') {
-        this.policeDoor.getComponent(Animation).play('PoliceDoorOpen')
+      } else if (b.node.name === 'PoliceStationDoorTrigger') {
+        this.policeStationDoor.getComponent(Animation).play('PoliceStationDoorOpen')
       } else if (b.node.name === 'ShopDoorTrigger') {
         this.shopDoor.getComponent(Animation).play('ShopDoorOpen')
       }
@@ -81,8 +81,8 @@ export class MainSceneManager extends Component {
         this.barDoor.getComponent(Animation).play('BarDoorClose')
       } else if (b.node.name === 'HouseDoorTrigger') {
         this.houseDoor.getComponent(Animation).play('HouseDoorClose')
-      } else if (b.node.name === 'PoliceDoorTrigger') {
-        this.policeDoor.getComponent(Animation).play('PoliceDoorClose')
+      } else if (b.node.name === 'PoliceStationDoorTrigger') {
+        this.policeStationDoor.getComponent(Animation).play('PoliceStationDoorClose')
       } else if (b.node.name === 'ShopDoorTrigger') {
         this.shopDoor.getComponent(Animation).play('ShopDoorClose')
       }

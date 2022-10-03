@@ -94,7 +94,7 @@
     "houseDoor": {
       "__id__": 49
     },
-    "policeDoor": {
+    "policeStationDoor": {
       "__id__": 53
     },
     "shopDoor": {
@@ -1744,7 +1744,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "PoliceDoor",
+    "_name": "PoliceStationDoor",
     "_objFlags": 0,
     "_parent": {
       "__id__": 5
@@ -2380,7 +2380,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "PoliceDoorTrigger",
+    "_name": "PoliceStationDoorTrigger",
     "_objFlags": 0,
     "_parent": {
       "__id__": 5
@@ -3632,7 +3632,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "PoliceBlock",
+    "_name": "PoliceStationBlock",
     "_objFlags": 0,
     "_parent": {
       "__id__": 5
