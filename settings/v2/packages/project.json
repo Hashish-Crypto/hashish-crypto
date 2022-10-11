@@ -5,7 +5,10 @@
       "0": 0,
       "1": 12,
       "2": 2,
-      "3": 2
+      "3": 2,
+      "4": 96,
+      "5": 16,
+      "6": 16
     },
     "collisionGroups": [
       {
@@ -19,6 +22,18 @@
       {
         "index": 3,
         "name": "SENSOR"
+      },
+      {
+        "index": 4,
+        "name": "CATCH_BLOCK"
+      },
+      {
+        "index": 5,
+        "name": "CATCH"
+      },
+      {
+        "index": 6,
+        "name": "FISH"
       }
     ]
   },
