@@ -10,6 +10,7 @@ import {
   Collider2D,
   Animation,
   Button,
+  UITransform,
 } from 'cc'
 import { PlayerManager } from './PlayerManager'
 import playerMovement from '../lib/playerMovement'
@@ -37,12 +38,22 @@ export class MainSceneManager extends Component {
   private shopDoor: Node | null = null
 
   @property({ type: Node })
-  private startFishingUI: Node | null = null
+  private gameUI: Node | null = null
 
   private _player: PlayerManager | null = null
+  private _startFishingUI: Node | null = null
+  private _startFishingTimerActive: boolean = false
+  private _startFishingTimer: number = 0
+  private _fishingUI: Node | null = null
+  private _touchScreenStart: boolean = false
+  private _fishingProgressTimer: number = 0
+  private _timer: number = 0
+  private _counter: number = 0
 
   onLoad() {
     this._player = this.playerNode.getComponent(PlayerManager)
+    this._startFishingUI = this.gameUI.getChildByName('StartFishingUI')
+    this._fishingUI = this.gameUI.getChildByName('FishingUI')
 
     input.on(Input.EventType.KEY_DOWN, this._onKeyDown, this)
     input.on(Input.EventType.KEY_UP, this._onKeyUp, this)
@@ -50,13 +61,33 @@ export class MainSceneManager extends Component {
     PhysicsSystem2D.instance.on(Contact2DType.BEGIN_CONTACT, this._onBeginContact, this)
     PhysicsSystem2D.instance.on(Contact2DType.END_CONTACT, this._onEndContact, this)
 
-    this.startFishingUI.getChildByName('StartFishingYesButton').on(Button.EventType.CLICK, this._startFishingYes, this)
-    this.startFishingUI.getChildByName('StartFishingNoButton').on(Button.EventType.CLICK, this._startFishingNo, this)
+    this._startFishingUI.getChildByName('StartFishingYesButton').on(Button.EventType.CLICK, this._startFishingYes, this)
+    this._startFishingUI.getChildByName('StartFishingNoButton').on(Button.EventType.CLICK, this._startFishingNo, this)
+    this.gameUI.on(Node.EventType.TOUCH_START, this._onTouchScreenStart, this)
+    this.gameUI.on(Node.EventType.TOUCH_END, this._onTouchScreenEnd, this)
 
     this._player.controllerEnabled = true
   }
 
-  // update(deltaTime: number) {}
+  update(deltaTime: number) {
+    if (this._startFishingTimerActive && Date.now() - this._startFishingTimer >= 2000) {
+      this._player.controllerEnabled = false
+      this._player.resetMovement()
+      this._startFishingTimerActive = false
+      this._startFishingTimer = 0
+      this._startFishingUI.active = true
+    }
+
+    if (this._touchScreenStart && Date.now() - this._fishingProgressTimer < 3000) {
+      const elapsedTime = Date.now() - this._fishingProgressTimer
+      const progressBarMaxHeight = this._fishingUI
+        .getChildByName('ProgressBar')
+        .getChildByName('Background')
+        .getComponent(UITransform).height
+      this._fishingUI.getChildByName('ProgressBar').getChildByName('Progress').getComponent(UITransform).height =
+        Math.floor(progressBarMaxHeight * (elapsedTime / 3000))
+    }
+  }
 
   private _onKeyDown(event: EventKeyboard) {
     playerMovement.onKeyDown(this._player, event)
@@ -79,10 +110,8 @@ export class MainSceneManager extends Component {
       } else if (b.node.name === 'ShopDoorTrigger') {
         this.shopDoor.getComponent(Animation).play('ShopDoorOpen')
       } else if (b.node.name === 'FishingTrigger') {
-        this._player.controllerEnabled = false
-        this._player.resetMovement()
-        this.startFishingUI.active = true
-        console.log('FishingTrigger In')
+        this._startFishingTimer = Date.now()
+        this._startFishingTimerActive = true
       }
     }
   }
@@ -100,18 +129,29 @@ export class MainSceneManager extends Component {
       } else if (b.node.name === 'ShopDoorTrigger') {
         this.shopDoor.getComponent(Animation).play('ShopDoorClose')
       } else if (b.node.name === 'FishingTrigger') {
-        console.log('FishingTrigger Out')
+        this._startFishingTimerActive = false
+        this._startFishingTimer = 0
       }
     }
   }
 
   private _startFishingYes() {
     this._player.controllerEnabled = true
-    this.startFishingUI.active = false
+    this._startFishingUI.active = false
   }
 
   private _startFishingNo() {
     this._player.controllerEnabled = true
-    this.startFishingUI.active = false
+    this._startFishingUI.active = false
+  }
+
+  private _onTouchScreenStart() {
+    this._fishingProgressTimer = Date.now()
+    this._touchScreenStart = true
+  }
+
+  private _onTouchScreenEnd() {
+    this._fishingProgressTimer = 0
+    this._touchScreenStart = false
   }
 }
