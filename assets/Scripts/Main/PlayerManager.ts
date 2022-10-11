@@ -21,6 +21,14 @@ export class PlayerManager extends Component {
     this._animation = this.node.getComponent(Animation)
   }
 
+  // update(deltaTime: number) {}
+
+  resetMovement() {
+    this.idleDown()
+    this.movementCommands = []
+    this.lastMovementCommand = Direction.NULL
+  }
+
   walkUp() {
     this._body.linearVelocity = new Vec2(0, this.velocity)
     this._animation.play('walkUp')
@@ -160,6 +168,4 @@ export class PlayerManager extends Component {
       this.walkLeft()
     }
   }
-
-  // update(deltaTime: number) {}
 }

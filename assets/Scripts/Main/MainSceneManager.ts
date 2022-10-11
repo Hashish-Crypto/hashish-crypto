@@ -9,6 +9,7 @@ import {
   Contact2DType,
   Collider2D,
   Animation,
+  Button,
 } from 'cc'
 import { PlayerManager } from './PlayerManager'
 import playerMovement from '../lib/playerMovement'
@@ -35,6 +36,9 @@ export class MainSceneManager extends Component {
   @property({ type: Node })
   private shopDoor: Node | null = null
 
+  @property({ type: Node })
+  private startFishingUI: Node | null = null
+
   private _player: PlayerManager | null = null
 
   onLoad() {
@@ -46,8 +50,13 @@ export class MainSceneManager extends Component {
     PhysicsSystem2D.instance.on(Contact2DType.BEGIN_CONTACT, this._onBeginContact, this)
     PhysicsSystem2D.instance.on(Contact2DType.END_CONTACT, this._onEndContact, this)
 
+    this.startFishingUI.getChildByName('StartFishingYesButton').on(Button.EventType.CLICK, this._startFishingYes, this)
+    this.startFishingUI.getChildByName('StartFishingNoButton').on(Button.EventType.CLICK, this._startFishingNo, this)
+
     this._player.controllerEnabled = true
   }
+
+  // update(deltaTime: number) {}
 
   private _onKeyDown(event: EventKeyboard) {
     playerMovement.onKeyDown(this._player, event)
@@ -69,6 +78,11 @@ export class MainSceneManager extends Component {
         this.policeStationDoor.getComponent(Animation).play('PoliceStationDoorOpen')
       } else if (b.node.name === 'ShopDoorTrigger') {
         this.shopDoor.getComponent(Animation).play('ShopDoorOpen')
+      } else if (b.node.name === 'FishingTrigger') {
+        this._player.controllerEnabled = false
+        this._player.resetMovement()
+        this.startFishingUI.active = true
+        console.log('FishingTrigger In')
       }
     }
   }
@@ -85,9 +99,19 @@ export class MainSceneManager extends Component {
         this.policeStationDoor.getComponent(Animation).play('PoliceStationDoorClose')
       } else if (b.node.name === 'ShopDoorTrigger') {
         this.shopDoor.getComponent(Animation).play('ShopDoorClose')
+      } else if (b.node.name === 'FishingTrigger') {
+        console.log('FishingTrigger Out')
       }
     }
   }
 
-  // update(deltaTime: number) {}
+  private _startFishingYes() {
+    this._player.controllerEnabled = true
+    this.startFishingUI.active = false
+  }
+
+  private _startFishingNo() {
+    this._player.controllerEnabled = true
+    this.startFishingUI.active = false
+  }
 }
