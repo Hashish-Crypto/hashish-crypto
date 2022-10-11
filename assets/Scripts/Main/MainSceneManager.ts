@@ -41,18 +41,16 @@ export class MainSceneManager extends Component {
   private gameUI: Node | null = null
 
   private _player: PlayerManager | null = null
-  private _startFishingUI: Node | null = null
-  private _startFishingTimerActive: boolean = false
-  private _startFishingTimer: number = 0
+  private _fountainFishingUI: Node | null = null
+  private _fountainFishingTimerActive: boolean = false
+  private _fountainFishingTimer: number = 0
   private _fishingUI: Node | null = null
-  private _touchScreenStart: boolean = false
-  private _fishingProgressTimer: number = 0
-  private _timer: number = 0
-  private _counter: number = 0
+  private _pullingFishingRod: boolean = false
+  private _catchingFishProgressTimer: number = 0
 
   onLoad() {
     this._player = this.playerNode.getComponent(PlayerManager)
-    this._startFishingUI = this.gameUI.getChildByName('StartFishingUI')
+    this._fountainFishingUI = this.gameUI.getChildByName('FountainFishingUI')
     this._fishingUI = this.gameUI.getChildByName('FishingUI')
 
     input.on(Input.EventType.KEY_DOWN, this._onKeyDown, this)
@@ -61,8 +59,12 @@ export class MainSceneManager extends Component {
     PhysicsSystem2D.instance.on(Contact2DType.BEGIN_CONTACT, this._onBeginContact, this)
     PhysicsSystem2D.instance.on(Contact2DType.END_CONTACT, this._onEndContact, this)
 
-    this._startFishingUI.getChildByName('StartFishingYesButton').on(Button.EventType.CLICK, this._startFishingYes, this)
-    this._startFishingUI.getChildByName('StartFishingNoButton').on(Button.EventType.CLICK, this._startFishingNo, this)
+    this._fountainFishingUI
+      .getChildByName('FountainFishingYesButton')
+      .on(Button.EventType.CLICK, this._fountainFishingYes, this)
+    this._fountainFishingUI
+      .getChildByName('FountainFishingNoButton')
+      .on(Button.EventType.CLICK, this._fountainFishingNo, this)
     this.gameUI.on(Node.EventType.TOUCH_START, this._onTouchScreenStart, this)
     this.gameUI.on(Node.EventType.TOUCH_END, this._onTouchScreenEnd, this)
 
@@ -70,22 +72,31 @@ export class MainSceneManager extends Component {
   }
 
   update(deltaTime: number) {
-    if (this._startFishingTimerActive && Date.now() - this._startFishingTimer >= 2000) {
+    if (this._fountainFishingTimerActive && Date.now() - this._fountainFishingTimer >= 1500) {
       this._player.controllerEnabled = false
       this._player.resetMovement()
-      this._startFishingTimerActive = false
-      this._startFishingTimer = 0
-      this._startFishingUI.active = true
+      this._fountainFishingTimerActive = false
+      this._fountainFishingTimer = 0
+      this._fountainFishingUI.active = true
     }
 
-    if (this._touchScreenStart && Date.now() - this._fishingProgressTimer < 3000) {
-      const elapsedTime = Date.now() - this._fishingProgressTimer
-      const progressBarMaxHeight = this._fishingUI
-        .getChildByName('ProgressBar')
-        .getChildByName('Background')
-        .getComponent(UITransform).height
-      this._fishingUI.getChildByName('ProgressBar').getChildByName('Progress').getComponent(UITransform).height =
-        Math.floor(progressBarMaxHeight * (elapsedTime / 3000))
+    if (this._pullingFishingRod) {
+      if (this._catchingFishProgressTimer < 3) {
+        this._catchingFishProgressTimer += deltaTime
+        console.log(this._catchingFishProgressTimer)
+        const progressBarMaxHeight = this._fishingUI
+          .getChildByName('ProgressBar')
+          .getChildByName('Background')
+          .getComponent(UITransform).height
+        this._fishingUI.getChildByName('ProgressBar').getChildByName('Progress').getComponent(UITransform).height =
+          Math.floor(progressBarMaxHeight * (this._catchingFishProgressTimer / 3))
+      } else {
+        this._pullingFishingRod = false
+        this._catchingFishProgressTimer = 0
+        this._fishingUI.getChildByName('ProgressBar').getChildByName('Progress').getComponent(UITransform).height = 0
+        this._fishingUI.active = false
+        this._player.controllerEnabled = true
+      }
     }
   }
 
@@ -110,8 +121,8 @@ export class MainSceneManager extends Component {
       } else if (b.node.name === 'ShopDoorTrigger') {
         this.shopDoor.getComponent(Animation).play('ShopDoorOpen')
       } else if (b.node.name === 'FishingTrigger') {
-        this._startFishingTimer = Date.now()
-        this._startFishingTimerActive = true
+        this._fountainFishingTimerActive = true
+        this._fountainFishingTimer = Date.now()
       }
     }
   }
@@ -129,29 +140,31 @@ export class MainSceneManager extends Component {
       } else if (b.node.name === 'ShopDoorTrigger') {
         this.shopDoor.getComponent(Animation).play('ShopDoorClose')
       } else if (b.node.name === 'FishingTrigger') {
-        this._startFishingTimerActive = false
-        this._startFishingTimer = 0
+        this._fountainFishingTimerActive = false
+        this._fountainFishingTimer = 0
       }
     }
   }
 
-  private _startFishingYes() {
-    this._player.controllerEnabled = true
-    this._startFishingUI.active = false
+  private _fountainFishingYes() {
+    this._fountainFishingUI.active = false
+    this._fishingUI.active = true
   }
 
-  private _startFishingNo() {
+  private _fountainFishingNo() {
+    this._fountainFishingUI.active = false
     this._player.controllerEnabled = true
-    this._startFishingUI.active = false
   }
 
   private _onTouchScreenStart() {
-    this._fishingProgressTimer = Date.now()
-    this._touchScreenStart = true
+    if (this._fishingUI.active === true) {
+      this._pullingFishingRod = true
+    }
   }
 
   private _onTouchScreenEnd() {
-    this._fishingProgressTimer = 0
-    this._touchScreenStart = false
+    if (this._fishingUI.active === true) {
+      this._pullingFishingRod = false
+    }
   }
 }

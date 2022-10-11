@@ -5074,7 +5074,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "StartFishingUI",
+    "_name": "FountainFishingUI",
     "_objFlags": 0,
     "_parent": {
       "__id__": 125
@@ -5271,7 +5271,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "StartFishingLabel",
+    "_name": "FountainFishingLabel",
     "_objFlags": 0,
     "_parent": {
       "__id__": 128
@@ -5377,7 +5377,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "StartFishingYesButton",
+    "_name": "FountainFishingYesButton",
     "_objFlags": 0,
     "_parent": {
       "__id__": 128
@@ -5659,7 +5659,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "StartFishingNoButton",
+    "_name": "FountainFishingNoButton",
     "_objFlags": 0,
     "_parent": {
       "__id__": 128
@@ -6004,7 +6004,7 @@
         "__id__": 157
       }
     ],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 168
