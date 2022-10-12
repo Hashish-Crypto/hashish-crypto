@@ -6849,7 +6849,7 @@
     "_enabled": true,
     "__prefab": null,
     "enabledContactListener": true,
-    "bullet": false,
+    "bullet": true,
     "awakeOnLoad": true,
     "_group": 32,
     "_type": 2,

@@ -14,6 +14,8 @@ import {
   director,
   Director,
   Label,
+  RigidBody2D,
+  Vec2,
 } from 'cc'
 import { PlayerManager } from './PlayerManager'
 import playerMovement from '../lib/playerMovement'
@@ -49,8 +51,9 @@ export class MainSceneManager extends Component {
   private _fountainFishingTimer: number = 0
   private _fishingUI: Node | null = null
   private _finishFishingUI: Node | null = null
-  private _pullingFishingRod: boolean = false
-  private _catchingFishProgressTimer: number = 2
+  private _catchingFishInitialTime: number = 3
+  private _catchingFishEndTime: number = 7
+  private _catchingFishProgressTimer: number = this._catchingFishInitialTime
   private _catchOverlapFish: boolean = false
 
   onLoad() {
@@ -73,7 +76,6 @@ export class MainSceneManager extends Component {
       .on(Button.EventType.CLICK, this._fountainFishingNo, this)
     this._finishFishingUI.getChildByName('CloseButton').on(Button.EventType.CLICK, this._closeFinishFishingUI, this)
     this.gameUI.on(Node.EventType.TOUCH_START, this._onTouchScreenStart, this)
-    this.gameUI.on(Node.EventType.TOUCH_END, this._onTouchScreenEnd, this)
 
     this._player.controllerEnabled = true
   }
@@ -95,9 +97,9 @@ export class MainSceneManager extends Component {
 
       if (this._catchingFishProgressTimer <= 0) {
         this._catchOverlapFish = false
-        this._catchingFishProgressTimer = 2.5
+        this._catchingFishProgressTimer = this._catchingFishInitialTime
         this._fishingUI.getChildByName('ProgressBar').getChildByName('Progress').getComponent(UITransform).height =
-          Math.floor(progressBarMaxHeight * (this._catchingFishProgressTimer / 5))
+          Math.floor(progressBarMaxHeight * (this._catchingFishProgressTimer / this._catchingFishEndTime))
         director.once(Director.EVENT_AFTER_PHYSICS, () => {
           this._fishingUI.getChildByName('CatchBar').getChildByName('Catch').setPosition(0, 180)
         })
@@ -105,16 +107,16 @@ export class MainSceneManager extends Component {
         this._finishFishingUI.getChildByName('ResultLabel').getComponent(Label).string = 'You failed to catch the fish.'
         this._finishFishingUI.active = true
       } else if (this._catchOverlapFish) {
-        if (this._catchingFishProgressTimer < 5) {
+        if (this._catchingFishProgressTimer < this._catchingFishEndTime) {
           this._catchingFishProgressTimer += deltaTime
 
           this._fishingUI.getChildByName('ProgressBar').getChildByName('Progress').getComponent(UITransform).height =
-            Math.floor(progressBarMaxHeight * (this._catchingFishProgressTimer / 5))
+            Math.floor(progressBarMaxHeight * (this._catchingFishProgressTimer / this._catchingFishEndTime))
         } else {
           this._catchOverlapFish = false
-          this._catchingFishProgressTimer = 2.5
+          this._catchingFishProgressTimer = this._catchingFishInitialTime
           this._fishingUI.getChildByName('ProgressBar').getChildByName('Progress').getComponent(UITransform).height =
-            Math.floor(progressBarMaxHeight * (this._catchingFishProgressTimer / 5))
+            Math.floor(progressBarMaxHeight * (this._catchingFishProgressTimer / this._catchingFishEndTime))
           director.once(Director.EVENT_AFTER_PHYSICS, () => {
             this._fishingUI.getChildByName('CatchBar').getChildByName('Catch').setPosition(0, 180)
           })
@@ -126,7 +128,7 @@ export class MainSceneManager extends Component {
       } else {
         this._catchingFishProgressTimer -= deltaTime
         this._fishingUI.getChildByName('ProgressBar').getChildByName('Progress').getComponent(UITransform).height =
-          Math.floor(progressBarMaxHeight * (this._catchingFishProgressTimer / 5))
+          Math.floor(progressBarMaxHeight * (this._catchingFishProgressTimer / this._catchingFishEndTime))
       }
     }
   }
@@ -199,13 +201,11 @@ export class MainSceneManager extends Component {
 
   private _onTouchScreenStart() {
     if (this._fishingUI.active === true) {
-      this._pullingFishingRod = true
-    }
-  }
-
-  private _onTouchScreenEnd() {
-    if (this._fishingUI.active === true) {
-      this._pullingFishingRod = false
+      this._fishingUI
+        .getChildByName('CatchBar')
+        .getChildByName('Catch')
+        .getComponent(RigidBody2D)
+        .applyLinearImpulseToCenter(new Vec2(0, 15), true)
     }
   }
 
