@@ -16,6 +16,7 @@ import {
   Label,
   RigidBody2D,
   Vec2,
+  randomRangeInt,
 } from 'cc'
 import { PlayerManager } from './PlayerManager'
 import playerMovement from '../lib/playerMovement'
@@ -55,6 +56,7 @@ export class MainSceneManager extends Component {
   private _catchingFishEndTime: number = 7
   private _catchingFishProgressTimer: number = this._catchingFishInitialTime
   private _catchOverlapFish: boolean = false
+  private _fishMovementTimer: number = 0
 
   onLoad() {
     this._player = this.playerNode.getComponent(PlayerManager)
@@ -95,15 +97,30 @@ export class MainSceneManager extends Component {
         .getChildByName('Background')
         .getComponent(UITransform).height
 
+      if (this._fishingUI.getChildByName('CatchBar').getChildByName('Fish').position.y >= 260) {
+        this._fishMovementTimer = 0
+        this._fishingUI.getChildByName('CatchBar').getChildByName('Fish').getComponent(RigidBody2D).linearVelocity =
+          new Vec2(0, -4)
+      } else if (this._fishingUI.getChildByName('CatchBar').getChildByName('Fish').position.y <= -260) {
+        this._fishMovementTimer = 0
+        this._fishingUI.getChildByName('CatchBar').getChildByName('Fish').getComponent(RigidBody2D).linearVelocity =
+          new Vec2(0, 4)
+      }
+
+      this._fishMovementTimer += deltaTime
+      if (this._fishMovementTimer >= 1) {
+        this._fishMovementTimer = 0
+        if (randomRangeInt(0, 2) === 0) {
+          this._fishingUI.getChildByName('CatchBar').getChildByName('Fish').getComponent(RigidBody2D).linearVelocity =
+            new Vec2(0, 4)
+        } else {
+          this._fishingUI.getChildByName('CatchBar').getChildByName('Fish').getComponent(RigidBody2D).linearVelocity =
+            new Vec2(0, -4)
+        }
+      }
+
       if (this._catchingFishProgressTimer <= 0) {
-        this._catchOverlapFish = false
-        this._catchingFishProgressTimer = this._catchingFishInitialTime
-        this._fishingUI.getChildByName('ProgressBar').getChildByName('Progress').getComponent(UITransform).height =
-          Math.floor(progressBarMaxHeight * (this._catchingFishProgressTimer / this._catchingFishEndTime))
-        director.once(Director.EVENT_AFTER_PHYSICS, () => {
-          this._fishingUI.getChildByName('CatchBar').getChildByName('Catch').setPosition(0, 180)
-        })
-        this._fishingUI.active = false
+        this._resetFishing()
         this._finishFishingUI.getChildByName('ResultLabel').getComponent(Label).string = 'You failed to catch the fish.'
         this._finishFishingUI.active = true
       } else if (this._catchOverlapFish) {
@@ -113,14 +130,7 @@ export class MainSceneManager extends Component {
           this._fishingUI.getChildByName('ProgressBar').getChildByName('Progress').getComponent(UITransform).height =
             Math.floor(progressBarMaxHeight * (this._catchingFishProgressTimer / this._catchingFishEndTime))
         } else {
-          this._catchOverlapFish = false
-          this._catchingFishProgressTimer = this._catchingFishInitialTime
-          this._fishingUI.getChildByName('ProgressBar').getChildByName('Progress').getComponent(UITransform).height =
-            Math.floor(progressBarMaxHeight * (this._catchingFishProgressTimer / this._catchingFishEndTime))
-          director.once(Director.EVENT_AFTER_PHYSICS, () => {
-            this._fishingUI.getChildByName('CatchBar').getChildByName('Catch').setPosition(0, 180)
-          })
-          this._fishingUI.active = false
+          this._resetFishing()
           this._finishFishingUI.getChildByName('ResultLabel').getComponent(Label).string =
             'You managed to catch the fish!'
           this._finishFishingUI.active = true
@@ -161,7 +171,6 @@ export class MainSceneManager extends Component {
 
     if (a.node.name === 'Catch' && b.node.name === 'Fish') {
       this._catchOverlapFish = true
-      console.log('Catch In')
     }
   }
 
@@ -185,7 +194,6 @@ export class MainSceneManager extends Component {
 
     if (a.node.name === 'Catch' && b.node.name === 'Fish') {
       this._catchOverlapFish = false
-      console.log('Catch Out')
     }
   }
 
@@ -212,5 +220,23 @@ export class MainSceneManager extends Component {
   private _closeFinishFishingUI() {
     this._finishFishingUI.active = false
     this._player.controllerEnabled = true
+  }
+
+  private _resetFishing() {
+    const progressBarMaxHeight = this._fishingUI
+      .getChildByName('ProgressBar')
+      .getChildByName('Background')
+      .getComponent(UITransform).height
+
+    this._catchOverlapFish = false
+    this._catchingFishProgressTimer = this._catchingFishInitialTime
+    this._fishMovementTimer = 0
+    this._fishingUI.getChildByName('ProgressBar').getChildByName('Progress').getComponent(UITransform).height =
+      Math.floor(progressBarMaxHeight * (this._catchingFishProgressTimer / this._catchingFishEndTime))
+    director.once(Director.EVENT_AFTER_PHYSICS, () => {
+      this._fishingUI.getChildByName('CatchBar').getChildByName('Catch').setPosition(0, 180)
+      this._fishingUI.getChildByName('CatchBar').getChildByName('Fish').setPosition(0, 0)
+    })
+    this._fishingUI.active = false
   }
 }
