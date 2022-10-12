@@ -6791,7 +6791,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 36,
-      "height": 60
+      "height": 80
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -6889,7 +6889,7 @@
     "_size": {
       "__type__": "cc.Size",
       "width": 36,
-      "height": 60
+      "height": 80
     },
     "_id": "43pEeCv4pGrq+qZ/WT+PM2"
   },
@@ -7015,7 +7015,7 @@
     "_enabled": true,
     "__prefab": null,
     "enabledContactListener": true,
-    "bullet": false,
+    "bullet": true,
     "awakeOnLoad": true,
     "_group": 64,
     "_type": 1,

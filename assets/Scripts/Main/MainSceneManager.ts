@@ -234,6 +234,8 @@ export class MainSceneManager extends Component {
     this._fishingUI.getChildByName('ProgressBar').getChildByName('Progress').getComponent(UITransform).height =
       Math.floor(progressBarMaxHeight * (this._catchingFishProgressTimer / this._catchingFishEndTime))
     director.once(Director.EVENT_AFTER_PHYSICS, () => {
+      this._fishingUI.getChildByName('CatchBar').getChildByName('Catch').getComponent(RigidBody2D).linearVelocity =
+        new Vec2(0, 0)
       this._fishingUI.getChildByName('CatchBar').getChildByName('Catch').setPosition(0, 180)
       this._fishingUI.getChildByName('CatchBar').getChildByName('Fish').setPosition(0, 0)
     })
