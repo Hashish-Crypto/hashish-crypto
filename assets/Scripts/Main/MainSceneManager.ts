@@ -11,9 +11,9 @@ import {
   Animation,
   Button,
   UITransform,
-  Vec3,
   director,
   Director,
+  Label,
 } from 'cc'
 import { PlayerManager } from './PlayerManager'
 import playerMovement from '../lib/playerMovement'
@@ -48,6 +48,7 @@ export class MainSceneManager extends Component {
   private _fountainFishingTimerActive: boolean = false
   private _fountainFishingTimer: number = 0
   private _fishingUI: Node | null = null
+  private _finishFishingUI: Node | null = null
   private _pullingFishingRod: boolean = false
   private _catchingFishProgressTimer: number = 2
   private _catchOverlapFish: boolean = false
@@ -56,6 +57,7 @@ export class MainSceneManager extends Component {
     this._player = this.playerNode.getComponent(PlayerManager)
     this._fountainFishingUI = this.gameUI.getChildByName('FountainFishingUI')
     this._fishingUI = this.gameUI.getChildByName('FishingUI')
+    this._finishFishingUI = this.gameUI.getChildByName('FinishFishingUI')
 
     input.on(Input.EventType.KEY_DOWN, this._onKeyDown, this)
     input.on(Input.EventType.KEY_UP, this._onKeyUp, this)
@@ -69,6 +71,7 @@ export class MainSceneManager extends Component {
     this._fountainFishingUI
       .getChildByName('FountainFishingNoButton')
       .on(Button.EventType.CLICK, this._fountainFishingNo, this)
+    this._finishFishingUI.getChildByName('CloseButton').on(Button.EventType.CLICK, this._closeFinishFishingUI, this)
     this.gameUI.on(Node.EventType.TOUCH_START, this._onTouchScreenStart, this)
     this.gameUI.on(Node.EventType.TOUCH_END, this._onTouchScreenEnd, this)
 
@@ -99,7 +102,8 @@ export class MainSceneManager extends Component {
           this._fishingUI.getChildByName('CatchBar').getChildByName('Catch').setPosition(0, 180)
         })
         this._fishingUI.active = false
-        this._player.controllerEnabled = true
+        this._finishFishingUI.getChildByName('ResultLabel').getComponent(Label).string = 'You failed to catch the fish.'
+        this._finishFishingUI.active = true
       } else if (this._catchOverlapFish) {
         if (this._catchingFishProgressTimer < 5) {
           this._catchingFishProgressTimer += deltaTime
@@ -115,7 +119,9 @@ export class MainSceneManager extends Component {
             this._fishingUI.getChildByName('CatchBar').getChildByName('Catch').setPosition(0, 180)
           })
           this._fishingUI.active = false
-          this._player.controllerEnabled = true
+          this._finishFishingUI.getChildByName('ResultLabel').getComponent(Label).string =
+            'You managed to catch the fish!'
+          this._finishFishingUI.active = true
         }
       } else {
         this._catchingFishProgressTimer -= deltaTime
@@ -201,5 +207,10 @@ export class MainSceneManager extends Component {
     if (this._fishingUI.active === true) {
       this._pullingFishingRod = false
     }
+  }
+
+  private _closeFinishFishingUI() {
+    this._finishFishingUI.active = false
+    this._player.controllerEnabled = true
   }
 }
