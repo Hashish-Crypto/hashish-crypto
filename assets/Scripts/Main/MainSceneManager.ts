@@ -11,6 +11,9 @@ import {
   Animation,
   Button,
   UITransform,
+  Vec3,
+  director,
+  Director,
 } from 'cc'
 import { PlayerManager } from './PlayerManager'
 import playerMovement from '../lib/playerMovement'
@@ -46,7 +49,8 @@ export class MainSceneManager extends Component {
   private _fountainFishingTimer: number = 0
   private _fishingUI: Node | null = null
   private _pullingFishingRod: boolean = false
-  private _catchingFishProgressTimer: number = 0
+  private _catchingFishProgressTimer: number = 2
+  private _catchOverlapFish: boolean = false
 
   onLoad() {
     this._player = this.playerNode.getComponent(PlayerManager)
@@ -80,22 +84,43 @@ export class MainSceneManager extends Component {
       this._fountainFishingUI.active = true
     }
 
-    if (this._pullingFishingRod) {
-      if (this._catchingFishProgressTimer < 3) {
-        this._catchingFishProgressTimer += deltaTime
-        console.log(this._catchingFishProgressTimer)
-        const progressBarMaxHeight = this._fishingUI
-          .getChildByName('ProgressBar')
-          .getChildByName('Background')
-          .getComponent(UITransform).height
+    if (this._fishingUI.active) {
+      const progressBarMaxHeight = this._fishingUI
+        .getChildByName('ProgressBar')
+        .getChildByName('Background')
+        .getComponent(UITransform).height
+
+      if (this._catchingFishProgressTimer <= 0) {
+        this._catchOverlapFish = false
+        this._catchingFishProgressTimer = 2.5
         this._fishingUI.getChildByName('ProgressBar').getChildByName('Progress').getComponent(UITransform).height =
-          Math.floor(progressBarMaxHeight * (this._catchingFishProgressTimer / 3))
-      } else {
-        this._pullingFishingRod = false
-        this._catchingFishProgressTimer = 0
-        this._fishingUI.getChildByName('ProgressBar').getChildByName('Progress').getComponent(UITransform).height = 0
+          Math.floor(progressBarMaxHeight * (this._catchingFishProgressTimer / 5))
+        director.once(Director.EVENT_AFTER_PHYSICS, () => {
+          this._fishingUI.getChildByName('CatchBar').getChildByName('Catch').setPosition(0, 180)
+        })
         this._fishingUI.active = false
         this._player.controllerEnabled = true
+      } else if (this._catchOverlapFish) {
+        if (this._catchingFishProgressTimer < 5) {
+          this._catchingFishProgressTimer += deltaTime
+
+          this._fishingUI.getChildByName('ProgressBar').getChildByName('Progress').getComponent(UITransform).height =
+            Math.floor(progressBarMaxHeight * (this._catchingFishProgressTimer / 5))
+        } else {
+          this._catchOverlapFish = false
+          this._catchingFishProgressTimer = 2.5
+          this._fishingUI.getChildByName('ProgressBar').getChildByName('Progress').getComponent(UITransform).height =
+            Math.floor(progressBarMaxHeight * (this._catchingFishProgressTimer / 5))
+          director.once(Director.EVENT_AFTER_PHYSICS, () => {
+            this._fishingUI.getChildByName('CatchBar').getChildByName('Catch').setPosition(0, 180)
+          })
+          this._fishingUI.active = false
+          this._player.controllerEnabled = true
+        }
+      } else {
+        this._catchingFishProgressTimer -= deltaTime
+        this._fishingUI.getChildByName('ProgressBar').getChildByName('Progress').getComponent(UITransform).height =
+          Math.floor(progressBarMaxHeight * (this._catchingFishProgressTimer / 5))
       }
     }
   }
@@ -125,6 +150,11 @@ export class MainSceneManager extends Component {
         this._fountainFishingTimer = Date.now()
       }
     }
+
+    if (a.node.name === 'Catch' && b.node.name === 'Fish') {
+      this._catchOverlapFish = true
+      console.log('Catch In')
+    }
   }
 
   private _onEndContact(a: Collider2D, b: Collider2D) {
@@ -143,6 +173,11 @@ export class MainSceneManager extends Component {
         this._fountainFishingTimerActive = false
         this._fountainFishingTimer = 0
       }
+    }
+
+    if (a.node.name === 'Catch' && b.node.name === 'Fish') {
+      this._catchOverlapFish = false
+      console.log('Catch Out')
     }
   }
 
