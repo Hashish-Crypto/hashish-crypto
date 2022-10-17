@@ -9,17 +9,12 @@ import {
   Contact2DType,
   Collider2D,
   Animation,
-  Button,
-  UITransform,
-  director,
-  Director,
-  Label,
   RigidBody2D,
   Vec2,
-  randomRangeInt,
 } from 'cc'
 import { PlayerManager } from './PlayerManager'
 import playerMovement from '../lib/playerMovement'
+import { FishingManager } from '../Fishing/FishingManager'
 
 const { ccclass, property } = _decorator
 
@@ -46,102 +41,27 @@ export class MainSceneManager extends Component {
   @property({ type: Node })
   private gameUI: Node | null = null
 
+  @property({ type: Node })
+  private fishingManagerNode: Node | null = null
+
   private _player: PlayerManager | null = null
-  private _fountainFishingUI: Node | null = null
-  private _fountainFishingTimerActive: boolean = false
-  private _fountainFishingTimer: number = 0
-  private _fishingUI: Node | null = null
-  private _finishFishingUI: Node | null = null
-  private _catchingFishInitialTime: number = 3
-  private _catchingFishEndTime: number = 7
-  private _catchingFishProgressTimer: number = this._catchingFishInitialTime
-  private _catchOverlapFish: boolean = false
-  private _fishMovementTimer: number = 0
+  private _fishing: FishingManager | null = null
 
   onLoad() {
     this._player = this.playerNode.getComponent(PlayerManager)
-    this._fountainFishingUI = this.gameUI.getChildByName('FountainFishingUI')
-    this._fishingUI = this.gameUI.getChildByName('FishingUI')
-    this._finishFishingUI = this.gameUI.getChildByName('FinishFishingUI')
+    this._fishing = this.fishingManagerNode.getComponent(FishingManager)
 
     input.on(Input.EventType.KEY_DOWN, this._onKeyDown, this)
     input.on(Input.EventType.KEY_UP, this._onKeyUp, this)
 
     PhysicsSystem2D.instance.on(Contact2DType.BEGIN_CONTACT, this._onBeginContact, this)
     PhysicsSystem2D.instance.on(Contact2DType.END_CONTACT, this._onEndContact, this)
-
-    this._fountainFishingUI
-      .getChildByName('FountainFishingYesButton')
-      .on(Button.EventType.CLICK, this._fountainFishingYes, this)
-    this._fountainFishingUI
-      .getChildByName('FountainFishingNoButton')
-      .on(Button.EventType.CLICK, this._fountainFishingNo, this)
-    this._finishFishingUI.getChildByName('CloseButton').on(Button.EventType.CLICK, this._closeFinishFishingUI, this)
     this.gameUI.on(Node.EventType.TOUCH_START, this._onTouchScreenStart, this)
 
     this._player.controllerEnabled = true
   }
 
-  update(deltaTime: number) {
-    if (this._fountainFishingTimerActive && Date.now() - this._fountainFishingTimer >= 1500) {
-      this._player.controllerEnabled = false
-      this._player.resetMovement()
-      this._fountainFishingTimerActive = false
-      this._fountainFishingTimer = 0
-      this._fountainFishingUI.active = true
-    }
-
-    if (this._fishingUI.active) {
-      const progressBarMaxHeight = this._fishingUI
-        .getChildByName('ProgressBar')
-        .getChildByName('Background')
-        .getComponent(UITransform).height
-
-      if (this._fishingUI.getChildByName('CatchBar').getChildByName('Fish').position.y >= 260) {
-        this._fishMovementTimer = 0
-        this._fishingUI.getChildByName('CatchBar').getChildByName('Fish').getComponent(RigidBody2D).linearVelocity =
-          new Vec2(0, -4)
-      } else if (this._fishingUI.getChildByName('CatchBar').getChildByName('Fish').position.y <= -260) {
-        this._fishMovementTimer = 0
-        this._fishingUI.getChildByName('CatchBar').getChildByName('Fish').getComponent(RigidBody2D).linearVelocity =
-          new Vec2(0, 4)
-      }
-
-      this._fishMovementTimer += deltaTime
-      if (this._fishMovementTimer >= 1) {
-        this._fishMovementTimer = 0
-        if (randomRangeInt(0, 2) === 0) {
-          this._fishingUI.getChildByName('CatchBar').getChildByName('Fish').getComponent(RigidBody2D).linearVelocity =
-            new Vec2(0, 4)
-        } else {
-          this._fishingUI.getChildByName('CatchBar').getChildByName('Fish').getComponent(RigidBody2D).linearVelocity =
-            new Vec2(0, -4)
-        }
-      }
-
-      if (this._catchingFishProgressTimer <= 0) {
-        this._resetFishing()
-        this._finishFishingUI.getChildByName('ResultLabel').getComponent(Label).string = 'You failed to catch the fish.'
-        this._finishFishingUI.active = true
-      } else if (this._catchOverlapFish) {
-        if (this._catchingFishProgressTimer < this._catchingFishEndTime) {
-          this._catchingFishProgressTimer += deltaTime
-
-          this._fishingUI.getChildByName('ProgressBar').getChildByName('Progress').getComponent(UITransform).height =
-            Math.floor(progressBarMaxHeight * (this._catchingFishProgressTimer / this._catchingFishEndTime))
-        } else {
-          this._resetFishing()
-          this._finishFishingUI.getChildByName('ResultLabel').getComponent(Label).string =
-            'You managed to catch the fish!'
-          this._finishFishingUI.active = true
-        }
-      } else {
-        this._catchingFishProgressTimer -= deltaTime
-        this._fishingUI.getChildByName('ProgressBar').getChildByName('Progress').getComponent(UITransform).height =
-          Math.floor(progressBarMaxHeight * (this._catchingFishProgressTimer / this._catchingFishEndTime))
-      }
-    }
-  }
+  // update(deltaTime: number) {}
 
   private _onKeyDown(event: EventKeyboard) {
     playerMovement.onKeyDown(this._player, event)
@@ -164,13 +84,13 @@ export class MainSceneManager extends Component {
       } else if (b.node.name === 'ShopDoorTrigger') {
         this.shopDoor.getComponent(Animation).play('ShopDoorOpen')
       } else if (b.node.name === 'FishingTrigger') {
-        this._fountainFishingTimerActive = true
-        this._fountainFishingTimer = Date.now()
+        this._fishing.fountainFishingTimerActive = true
+        this._fishing.fountainFishingTimer = Date.now()
       }
     }
 
     if (a.node.name === 'Catch' && b.node.name === 'Fish') {
-      this._catchOverlapFish = true
+      this._fishing.catchOverlapFish = true
     }
   }
 
@@ -187,58 +107,23 @@ export class MainSceneManager extends Component {
       } else if (b.node.name === 'ShopDoorTrigger') {
         this.shopDoor.getComponent(Animation).play('ShopDoorClose')
       } else if (b.node.name === 'FishingTrigger') {
-        this._fountainFishingTimerActive = false
-        this._fountainFishingTimer = 0
+        this._fishing.fountainFishingTimerActive = false
+        this._fishing.fountainFishingTimer = 0
       }
     }
 
     if (a.node.name === 'Catch' && b.node.name === 'Fish') {
-      this._catchOverlapFish = false
+      this._fishing.catchOverlapFish = false
     }
   }
 
-  private _fountainFishingYes() {
-    this._fountainFishingUI.active = false
-    this._fishingUI.active = true
-  }
-
-  private _fountainFishingNo() {
-    this._fountainFishingUI.active = false
-    this._player.controllerEnabled = true
-  }
-
   private _onTouchScreenStart() {
-    if (this._fishingUI.active === true) {
-      this._fishingUI
+    if (this._fishing.fishingUI.active === true) {
+      this._fishing.fishingUI
         .getChildByName('CatchBar')
         .getChildByName('Catch')
         .getComponent(RigidBody2D)
         .applyLinearImpulseToCenter(new Vec2(0, 15), true)
     }
-  }
-
-  private _closeFinishFishingUI() {
-    this._finishFishingUI.active = false
-    this._player.controllerEnabled = true
-  }
-
-  private _resetFishing() {
-    const progressBarMaxHeight = this._fishingUI
-      .getChildByName('ProgressBar')
-      .getChildByName('Background')
-      .getComponent(UITransform).height
-
-    this._catchOverlapFish = false
-    this._catchingFishProgressTimer = this._catchingFishInitialTime
-    this._fishMovementTimer = 0
-    this._fishingUI.getChildByName('ProgressBar').getChildByName('Progress').getComponent(UITransform).height =
-      Math.floor(progressBarMaxHeight * (this._catchingFishProgressTimer / this._catchingFishEndTime))
-    director.once(Director.EVENT_AFTER_PHYSICS, () => {
-      this._fishingUI.getChildByName('CatchBar').getChildByName('Catch').getComponent(RigidBody2D).linearVelocity =
-        new Vec2(0, 0)
-      this._fishingUI.getChildByName('CatchBar').getChildByName('Catch').setPosition(0, 180)
-      this._fishingUI.getChildByName('CatchBar').getChildByName('Fish').setPosition(0, 0)
-    })
-    this._fishingUI.active = false
   }
 }
