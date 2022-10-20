@@ -8,9 +8,13 @@ enum Direction {
   LEFT,
   LEFT_UP,
   IDLE_UP,
+  IDLE_UP_RIGHT,
   IDLE_RIGHT,
+  IDLE_RIGHT_DOWN,
   IDLE_DOWN,
+  IDLE_DOWN_LEFT,
   IDLE_LEFT,
+  IDLE_LEFT_UP,
   NULL,
 }
 

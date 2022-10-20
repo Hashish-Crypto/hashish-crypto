@@ -11,6 +11,8 @@ export class JoystickManager extends Component {
   private _piDividedBy4 = Math.PI / 4
   private _piDividedBy8 = Math.PI / 8
   public movement: Direction = Direction.IDLE_DOWN
+  public lastMovement: Direction = Direction.NULL
+  public movementChanged: boolean = false
 
   onLoad() {
     this._ring = this.node.getChildByName('Ring')
@@ -30,6 +32,7 @@ export class JoystickManager extends Component {
   }
 
   private _touchStart(event: EventTouch) {
+    this.movementChanged = true
     const touchLocation = event.getUILocation()
     const touchPosition = new Vec3(touchLocation.x, touchLocation.y)
     const movementVector = touchPosition.subtract(this._ring.getWorldPosition())
@@ -45,6 +48,7 @@ export class JoystickManager extends Component {
   }
 
   private _touchMove(event: EventTouch) {
+    this.movementChanged = true
     const touchLocation = event.getTouches()[0].getUILocation()
     const touchPosition = new Vec3(touchLocation.x, touchLocation.y)
     const movementVector = touchPosition.subtract(this._ring.getWorldPosition())
@@ -60,19 +64,64 @@ export class JoystickManager extends Component {
   }
 
   private _touchEnd(event: EventTouch) {
+    this.movementChanged = true
     const touchLocation = event.getUILocation()
     const touchPosition = new Vec3(touchLocation.x, touchLocation.y)
-    const movementVector = touchPosition.subtract(this._ring.getPosition())
+    const movementVector = touchPosition.subtract(this._ring.getWorldPosition())
 
     const vector = movementVector.normalize()
-    if (vector.x < this._piDividedBy4 && vector.x > -this._piDividedBy4 && vector.y >= this._piDividedBy4) {
+    if (
+      vector.x <= Math.cos(this._piDividedBy8 * 3) &&
+      vector.x >= Math.cos(this._piDividedBy8 * 5) &&
+      vector.y >= Math.sin(this._piDividedBy8 * 3)
+    ) {
       this.movement = Direction.IDLE_UP
-    } else if (vector.x >= this._piDividedBy4 && vector.y < this._piDividedBy4 && vector.y > -this._piDividedBy4) {
+    } else if (
+      vector.x < Math.cos(this._piDividedBy8) &&
+      vector.x > Math.cos(this._piDividedBy8 * 3) &&
+      vector.y > Math.sin(this._piDividedBy8) &&
+      vector.y < Math.sin(this._piDividedBy8 * 3)
+    ) {
+      this.movement = Direction.IDLE_UP_RIGHT
+    } else if (
+      vector.x >= Math.cos(this._piDividedBy8) &&
+      vector.y <= Math.sin(this._piDividedBy8) &&
+      vector.y >= Math.sin(this._piDividedBy8 * 15)
+    ) {
       this.movement = Direction.IDLE_RIGHT
-    } else if (vector.x < this._piDividedBy4 && vector.x > -this._piDividedBy4 && vector.y <= -this._piDividedBy4) {
+    } else if (
+      vector.x < Math.cos(this._piDividedBy8 * 15) &&
+      vector.x > Math.cos(this._piDividedBy8 * 13) &&
+      vector.y < Math.sin(this._piDividedBy8 * 15) &&
+      vector.y > Math.sin(this._piDividedBy8 * 13)
+    ) {
+      this.movement = Direction.IDLE_RIGHT_DOWN
+    } else if (
+      vector.x <= Math.cos(this._piDividedBy8 * 13) &&
+      vector.x >= Math.cos(this._piDividedBy8 * 11) &&
+      vector.y <= Math.sin(this._piDividedBy8 * 13)
+    ) {
       this.movement = Direction.IDLE_DOWN
-    } else if (vector.x <= -this._piDividedBy4 && vector.y < this._piDividedBy4 && vector.y > -this._piDividedBy4) {
+    } else if (
+      vector.x < Math.cos(this._piDividedBy8 * 11) &&
+      vector.x > Math.cos(this._piDividedBy8 * 9) &&
+      vector.y > Math.sin(this._piDividedBy8 * 11) &&
+      vector.y < Math.sin(this._piDividedBy8 * 9)
+    ) {
+      this.movement = Direction.IDLE_DOWN_LEFT
+    } else if (
+      vector.x <= Math.cos(this._piDividedBy8 * 9) &&
+      vector.y >= Math.sin(this._piDividedBy8 * 9) &&
+      vector.y <= Math.sin(this._piDividedBy8 * 7)
+    ) {
       this.movement = Direction.IDLE_LEFT
+    } else if (
+      vector.x > Math.cos(this._piDividedBy8 * 7) &&
+      vector.x < Math.cos(this._piDividedBy8 * 5) &&
+      vector.y > Math.sin(this._piDividedBy8 * 7) &&
+      vector.y < Math.sin(this._piDividedBy8 * 5)
+    ) {
+      this.movement = Direction.IDLE_LEFT_UP
     }
 
     this._ball.setPosition(new Vec3())

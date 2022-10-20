@@ -4888,7 +4888,15 @@
         "__expectedType__": "cc.AnimationClip"
       },
       {
+        "__uuid__": "75a6692e-2a7d-44b5-a34c-f19f651bb720",
+        "__expectedType__": "cc.AnimationClip"
+      },
+      {
         "__uuid__": "87dae895-0d16-43fd-add1-132ab5d18f08",
+        "__expectedType__": "cc.AnimationClip"
+      },
+      {
+        "__uuid__": "5d926d06-4582-469f-ac85-842e87381cf9",
         "__expectedType__": "cc.AnimationClip"
       },
       {
@@ -4896,7 +4904,15 @@
         "__expectedType__": "cc.AnimationClip"
       },
       {
+        "__uuid__": "598eb2a9-4e1a-45d3-a863-04fc24ac7a46",
+        "__expectedType__": "cc.AnimationClip"
+      },
+      {
         "__uuid__": "63c2e6a4-953c-4934-bf9a-ad60a54ba2d4",
+        "__expectedType__": "cc.AnimationClip"
+      },
+      {
+        "__uuid__": "4de94f3b-d2fa-4cc2-9e3a-2a5a14c55579",
         "__expectedType__": "cc.AnimationClip"
       },
       {
@@ -4904,19 +4920,11 @@
         "__expectedType__": "cc.AnimationClip"
       },
       {
-        "__uuid__": "98691a40-dda3-4b83-b9ee-f82a2470f270",
-        "__expectedType__": "cc.AnimationClip"
-      },
-      {
-        "__uuid__": "c54f6d11-aae9-4bc1-9472-7ca355cd26aa",
-        "__expectedType__": "cc.AnimationClip"
-      },
-      {
-        "__uuid__": "2651f084-fdb8-41cb-8b16-aba636682317",
-        "__expectedType__": "cc.AnimationClip"
-      },
-      {
         "__uuid__": "20fa9979-0e95-43f8-80c7-3f07b74bbaeb",
+        "__expectedType__": "cc.AnimationClip"
+      },
+      {
+        "__uuid__": "98691a40-dda3-4b83-b9ee-f82a2470f270",
         "__expectedType__": "cc.AnimationClip"
       },
       {
@@ -4924,7 +4932,15 @@
         "__expectedType__": "cc.AnimationClip"
       },
       {
+        "__uuid__": "c54f6d11-aae9-4bc1-9472-7ca355cd26aa",
+        "__expectedType__": "cc.AnimationClip"
+      },
+      {
         "__uuid__": "37ec6878-57fe-4c2f-82a5-b0008ad73f32",
+        "__expectedType__": "cc.AnimationClip"
+      },
+      {
+        "__uuid__": "2651f084-fdb8-41cb-8b16-aba636682317",
         "__expectedType__": "cc.AnimationClip"
       },
       {
