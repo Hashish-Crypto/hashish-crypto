@@ -8670,10 +8670,10 @@
     "__prefab": null,
     "_alignFlags": 18,
     "_target": null,
-    "_left": 0,
+    "_left": 50,
     "_right": 0,
     "_top": 0,
-    "_bottom": 0,
+    "_bottom": 50,
     "_horizontalCenter": 0,
     "_verticalCenter": 0,
     "_isAbsLeft": true,
@@ -8685,7 +8685,7 @@
     "_originalWidth": 0,
     "_originalHeight": 0,
     "_alignMode": 2,
-    "_lockFlags": 18,
+    "_lockFlags": 30,
     "_id": "9fxWn3EQVNDp5cPNOq78nh"
   },
   {
