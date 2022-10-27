@@ -1,14 +1,30 @@
 import exactMath from 'exact-math'
-import { _decorator, Component, Node, randomRangeInt } from 'cc'
+import { _decorator, Component, Node, randomRangeInt, Animation } from 'cc'
 
 const { ccclass, property } = _decorator
 
 @ccclass('HeadsTailsSceneManager')
 export class HeadsTailsSceneManager extends Component {
+  @property({ type: Node })
+  private coin1: Node | null = null
+
+  @property({ type: Node })
+  private coin2: Node | null = null
+
+  @property({ type: Node })
+  private coin3: Node | null = null
+
+  @property({ type: Node })
+  private coin4: Node | null = null
+
+  @property({ type: Node })
+  private coin5: Node | null = null
+
   private _wallet: number = 0
   private _bet: number = 2
   private _victories: number = 0
   private _defeats: number = 0
+  private _coinFlips: number = 0
 
   onLoad() {
     for (let j = 1; j <= 100000; j++) {
@@ -74,9 +90,63 @@ export class HeadsTailsSceneManager extends Component {
     }
 
     console.log(this._wallet, this._victories, this._defeats)
-    console.log(exactMath.floor(10 * (32 / 5) * 0.99, -1))
-    console.log(10 * (32 / 5) * 0.99)
   }
 
-  // update(deltaTime: number) {}
+  start() {
+    // this.coin1.getComponent(Animation).play('coinFlip')
+    // this._coinFlips += 1
+    // setTimeout(() => {
+    //   this.coin1.getComponent(Animation).play('coinFlip')
+    // }, this.coin1.getComponent(Animation).clips[0].duration * 1000)
+  }
+
+  update(deltaTime: number) {
+    if (!this.coin1.getComponent(Animation).getState('coinFlip').isPlaying && this._coinFlips < 2) {
+      this.coin1.getComponent(Animation).play('coinFlip')
+      this._coinFlips += 1
+    } else if (!this.coin1.getComponent(Animation).getState('coinFlip').isPlaying && this._coinFlips < 3) {
+      this.coin1.getComponent(Animation).play('head')
+      this._coinFlips += 1
+    } else if (
+      !this.coin2.getComponent(Animation).getState('coinFlip').isPlaying &&
+      this._coinFlips >= 3 &&
+      this._coinFlips < 5
+    ) {
+      this.coin2.getComponent(Animation).play('coinFlip')
+      this._coinFlips += 1
+    } else if (!this.coin2.getComponent(Animation).getState('coinFlip').isPlaying && this._coinFlips === 5) {
+      this.coin2.getComponent(Animation).play('tail')
+      this._coinFlips += 1
+    } else if (
+      !this.coin3.getComponent(Animation).getState('coinFlip').isPlaying &&
+      this._coinFlips >= 6 &&
+      this._coinFlips < 8
+    ) {
+      this.coin3.getComponent(Animation).play('coinFlip')
+      this._coinFlips += 1
+    } else if (!this.coin3.getComponent(Animation).getState('coinFlip').isPlaying && this._coinFlips === 8) {
+      this.coin3.getComponent(Animation).play('tail')
+      this._coinFlips += 1
+    } else if (
+      !this.coin4.getComponent(Animation).getState('coinFlip').isPlaying &&
+      this._coinFlips >= 9 &&
+      this._coinFlips < 11
+    ) {
+      this.coin4.getComponent(Animation).play('coinFlip')
+      this._coinFlips += 1
+    } else if (!this.coin4.getComponent(Animation).getState('coinFlip').isPlaying && this._coinFlips === 11) {
+      this.coin4.getComponent(Animation).play('head')
+      this._coinFlips += 1
+    } else if (
+      !this.coin5.getComponent(Animation).getState('coinFlip').isPlaying &&
+      this._coinFlips >= 12 &&
+      this._coinFlips < 14
+    ) {
+      this.coin5.getComponent(Animation).play('coinFlip')
+      this._coinFlips += 1
+    } else if (!this.coin5.getComponent(Animation).getState('coinFlip').isPlaying && this._coinFlips === 14) {
+      this.coin5.getComponent(Animation).play('head')
+      this._coinFlips += 1
+    }
+  }
 }
