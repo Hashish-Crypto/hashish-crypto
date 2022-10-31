@@ -82,26 +82,28 @@
     },
     "_enabled": true,
     "__prefab": null,
-    "coin1": {
-      "__id__": 4
-    },
-    "coin2": {
-      "__id__": 12
-    },
-    "coin3": {
-      "__id__": 16
-    },
-    "coin4": {
-      "__id__": 20
-    },
-    "coin5": {
-      "__id__": 24
-    },
+    "coins": [
+      {
+        "__id__": 4
+      },
+      {
+        "__id__": 12
+      },
+      {
+        "__id__": 16
+      },
+      {
+        "__id__": 20
+      },
+      {
+        "__id__": 24
+      }
+    ],
     "_id": "33joqWaiRHzaQLva0I7WkD"
   },
   {
     "__type__": "cc.Node",
-    "_name": "Coin1",
+    "_name": "Coin0",
     "_objFlags": 0,
     "_parent": {
       "__id__": 5
@@ -234,7 +236,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 480,
-      "y": 320.00000000000006,
+      "y": 320,
       "z": 0
     },
     "_lrot": {
@@ -392,8 +394,8 @@
     "_target": null,
     "_left": 0,
     "_right": 0,
-    "_top": 5.684341886080802e-14,
-    "_bottom": 5.684341886080802e-14,
+    "_top": 0,
+    "_bottom": 0,
     "_horizontalCenter": 0,
     "_verticalCenter": 0,
     "_isAbsLeft": true,
@@ -410,7 +412,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "Coin2",
+    "_name": "Coin1",
     "_objFlags": 0,
     "_parent": {
       "__id__": 5
@@ -546,7 +548,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "Coin3",
+    "_name": "Coin2",
     "_objFlags": 0,
     "_parent": {
       "__id__": 5
@@ -682,7 +684,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "Coin4",
+    "_name": "Coin3",
     "_objFlags": 0,
     "_parent": {
       "__id__": 5
@@ -818,7 +820,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "Coin5",
+    "_name": "Coin4",
     "_objFlags": 0,
     "_parent": {
       "__id__": 5
