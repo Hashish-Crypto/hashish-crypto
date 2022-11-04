@@ -11,12 +11,12 @@ import {
   Animation,
   RigidBody2D,
   Vec2,
+  find,
 } from 'cc'
 import { PlayerManager } from './PlayerManager'
 import playerMovement from '../lib/playerMovement'
 import { FishingManager } from '../Fishing/FishingManager'
-import { JoystickManager } from '../UI/Joystick/JoystickManager'
-import Direction from '../enums/Direction'
+import { PersistentNode } from '../Menu/PersistentNode'
 
 const { ccclass, property } = _decorator
 
@@ -48,9 +48,10 @@ export class MainSceneManager extends Component {
 
   private _player: PlayerManager | null = null
   private _fishing: FishingManager | null = null
-  private _joystick: JoystickManager | null = null
+  private _persistentNode: PersistentNode | null = null
 
   onLoad() {
+    this._persistentNode = find('PersistentNode').getComponent(PersistentNode)
     this._player = this.playerNode.getComponent(PlayerManager)
     this._fishing = this.fishingManagerNode.getComponent(FishingManager)
 
@@ -61,92 +62,10 @@ export class MainSceneManager extends Component {
     PhysicsSystem2D.instance.on(Contact2DType.END_CONTACT, this._onEndContact, this)
     this.gameUI.on(Node.EventType.TOUCH_START, this._onTouchScreenStart, this)
 
-    this._joystick = this.gameUI.getComponentInChildren(JoystickManager)
-
     this._player.controllerEnabled = true
   }
 
-  update(deltaTime: number) {
-    if (this._player.controllerEnabled && this._joystick.movementChanged) {
-      if (this._joystick.movement === Direction.IDLE_UP && this._joystick.lastMovement !== Direction.IDLE_UP) {
-        this._joystick.lastMovement = Direction.IDLE_UP
-        this._player.idleUp()
-      } else if (
-        this._joystick.movement === Direction.IDLE_UP_RIGHT &&
-        this._joystick.lastMovement !== Direction.IDLE_UP_RIGHT
-      ) {
-        this._joystick.lastMovement = Direction.IDLE_UP_RIGHT
-        this._player.idleUpRight()
-      } else if (
-        this._joystick.movement === Direction.IDLE_RIGHT &&
-        this._joystick.lastMovement !== Direction.IDLE_RIGHT
-      ) {
-        this._joystick.lastMovement = Direction.IDLE_RIGHT
-        this._player.idleRight()
-      } else if (
-        this._joystick.movement === Direction.IDLE_RIGHT_DOWN &&
-        this._joystick.lastMovement !== Direction.IDLE_RIGHT_DOWN
-      ) {
-        this._joystick.lastMovement = Direction.IDLE_RIGHT_DOWN
-        this._player.idleRightDown()
-      } else if (
-        this._joystick.movement === Direction.IDLE_DOWN &&
-        this._joystick.lastMovement !== Direction.IDLE_DOWN
-      ) {
-        this._joystick.lastMovement = Direction.IDLE_DOWN
-        this._player.idleDown()
-      } else if (
-        this._joystick.movement === Direction.IDLE_DOWN_LEFT &&
-        this._joystick.lastMovement !== Direction.IDLE_DOWN_LEFT
-      ) {
-        this._joystick.lastMovement = Direction.IDLE_DOWN_LEFT
-        this._player.idleDownLeft()
-      } else if (
-        this._joystick.movement === Direction.IDLE_LEFT &&
-        this._joystick.lastMovement !== Direction.IDLE_LEFT
-      ) {
-        this._joystick.lastMovement = Direction.IDLE_LEFT
-        this._player.idleLeft()
-      } else if (
-        this._joystick.movement === Direction.IDLE_LEFT_UP &&
-        this._joystick.lastMovement !== Direction.IDLE_LEFT_UP
-      ) {
-        this._joystick.lastMovement = Direction.IDLE_LEFT_UP
-        this._player.idleLeftUp()
-      } else if (this._joystick.movement === Direction.UP && this._joystick.lastMovement !== Direction.UP) {
-        this._joystick.lastMovement = Direction.UP
-        this._player.walkUp()
-      } else if (this._joystick.movement === Direction.UP_RIGHT && this._joystick.lastMovement !== Direction.UP_RIGHT) {
-        this._joystick.lastMovement = Direction.UP_RIGHT
-        this._player.walkUpRight()
-      } else if (this._joystick.movement === Direction.RIGHT && this._joystick.lastMovement !== Direction.RIGHT) {
-        this._joystick.lastMovement = Direction.RIGHT
-        this._player.walkRight()
-      } else if (
-        this._joystick.movement === Direction.RIGHT_DOWN &&
-        this._joystick.lastMovement !== Direction.RIGHT_DOWN
-      ) {
-        this._joystick.lastMovement = Direction.RIGHT_DOWN
-        this._player.walkRightDown()
-      } else if (this._joystick.movement === Direction.DOWN && this._joystick.lastMovement !== Direction.DOWN) {
-        this._joystick.lastMovement = Direction.DOWN
-        this._player.walkDown()
-      } else if (
-        this._joystick.movement === Direction.DOWN_LEFT &&
-        this._joystick.lastMovement !== Direction.DOWN_LEFT
-      ) {
-        this._joystick.lastMovement = Direction.DOWN_LEFT
-        this._player.walkDownLeft()
-      } else if (this._joystick.movement === Direction.LEFT && this._joystick.lastMovement !== Direction.LEFT) {
-        this._joystick.lastMovement = Direction.LEFT
-        this._player.walkLeft()
-      } else if (this._joystick.movement === Direction.LEFT_UP && this._joystick.lastMovement !== Direction.LEFT_UP) {
-        this._joystick.lastMovement = Direction.LEFT_UP
-        this._player.walkLeftUp()
-      }
-      this._joystick.movementChanged = false
-    }
-  }
+  update(deltaTime: number) {}
 
   private _onKeyDown(event: EventKeyboard) {
     playerMovement.onKeyDown(this._player, event)

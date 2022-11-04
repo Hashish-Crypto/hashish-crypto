@@ -1,5 +1,6 @@
-import { _decorator, Component, RigidBody2D, Animation, Vec2, CCFloat } from 'cc'
+import { _decorator, Component, RigidBody2D, Animation, Vec2, CCFloat, Node } from 'cc'
 import Direction from '../enums/Direction'
+import { JoystickManager } from '../UI/Joystick/JoystickManager'
 
 const { ccclass, property } = _decorator
 
@@ -8,6 +9,9 @@ export class PlayerManager extends Component {
   @property({ type: CCFloat })
   private velocity: number = 4
 
+  @property({ type: Node })
+  private joystickNode: Node | null = null
+
   public controllerEnabled: boolean = false
   public movementCommands: Direction[] = []
   public lastMovementCommand: Direction = Direction.NULL
@@ -15,13 +19,95 @@ export class PlayerManager extends Component {
   private _animation: Animation | null = null
   private _cos = Math.cos(Math.PI / 4) + 8 - 8
   private _sin = Math.sin(Math.PI / 4) + 8 - 8
+  private _joystick: JoystickManager | null = null
 
   onLoad() {
     this._body = this.node.getComponent(RigidBody2D)
     this._animation = this.node.getComponent(Animation)
+    this._joystick = this.joystickNode.getComponent(JoystickManager)
   }
 
-  // update(deltaTime: number) {}
+  update(deltaTime: number) {
+    if (this.controllerEnabled && this._joystick.movementChanged) {
+      if (this._joystick.movement === Direction.IDLE_UP && this._joystick.lastMovement !== Direction.IDLE_UP) {
+        this._joystick.lastMovement = Direction.IDLE_UP
+        this.idleUp()
+      } else if (
+        this._joystick.movement === Direction.IDLE_UP_RIGHT &&
+        this._joystick.lastMovement !== Direction.IDLE_UP_RIGHT
+      ) {
+        this._joystick.lastMovement = Direction.IDLE_UP_RIGHT
+        this.idleUpRight()
+      } else if (
+        this._joystick.movement === Direction.IDLE_RIGHT &&
+        this._joystick.lastMovement !== Direction.IDLE_RIGHT
+      ) {
+        this._joystick.lastMovement = Direction.IDLE_RIGHT
+        this.idleRight()
+      } else if (
+        this._joystick.movement === Direction.IDLE_RIGHT_DOWN &&
+        this._joystick.lastMovement !== Direction.IDLE_RIGHT_DOWN
+      ) {
+        this._joystick.lastMovement = Direction.IDLE_RIGHT_DOWN
+        this.idleRightDown()
+      } else if (
+        this._joystick.movement === Direction.IDLE_DOWN &&
+        this._joystick.lastMovement !== Direction.IDLE_DOWN
+      ) {
+        this._joystick.lastMovement = Direction.IDLE_DOWN
+        this.idleDown()
+      } else if (
+        this._joystick.movement === Direction.IDLE_DOWN_LEFT &&
+        this._joystick.lastMovement !== Direction.IDLE_DOWN_LEFT
+      ) {
+        this._joystick.lastMovement = Direction.IDLE_DOWN_LEFT
+        this.idleDownLeft()
+      } else if (
+        this._joystick.movement === Direction.IDLE_LEFT &&
+        this._joystick.lastMovement !== Direction.IDLE_LEFT
+      ) {
+        this._joystick.lastMovement = Direction.IDLE_LEFT
+        this.idleLeft()
+      } else if (
+        this._joystick.movement === Direction.IDLE_LEFT_UP &&
+        this._joystick.lastMovement !== Direction.IDLE_LEFT_UP
+      ) {
+        this._joystick.lastMovement = Direction.IDLE_LEFT_UP
+        this.idleLeftUp()
+      } else if (this._joystick.movement === Direction.UP && this._joystick.lastMovement !== Direction.UP) {
+        this._joystick.lastMovement = Direction.UP
+        this.walkUp()
+      } else if (this._joystick.movement === Direction.UP_RIGHT && this._joystick.lastMovement !== Direction.UP_RIGHT) {
+        this._joystick.lastMovement = Direction.UP_RIGHT
+        this.walkUpRight()
+      } else if (this._joystick.movement === Direction.RIGHT && this._joystick.lastMovement !== Direction.RIGHT) {
+        this._joystick.lastMovement = Direction.RIGHT
+        this.walkRight()
+      } else if (
+        this._joystick.movement === Direction.RIGHT_DOWN &&
+        this._joystick.lastMovement !== Direction.RIGHT_DOWN
+      ) {
+        this._joystick.lastMovement = Direction.RIGHT_DOWN
+        this.walkRightDown()
+      } else if (this._joystick.movement === Direction.DOWN && this._joystick.lastMovement !== Direction.DOWN) {
+        this._joystick.lastMovement = Direction.DOWN
+        this.walkDown()
+      } else if (
+        this._joystick.movement === Direction.DOWN_LEFT &&
+        this._joystick.lastMovement !== Direction.DOWN_LEFT
+      ) {
+        this._joystick.lastMovement = Direction.DOWN_LEFT
+        this.walkDownLeft()
+      } else if (this._joystick.movement === Direction.LEFT && this._joystick.lastMovement !== Direction.LEFT) {
+        this._joystick.lastMovement = Direction.LEFT
+        this.walkLeft()
+      } else if (this._joystick.movement === Direction.LEFT_UP && this._joystick.lastMovement !== Direction.LEFT_UP) {
+        this._joystick.lastMovement = Direction.LEFT_UP
+        this.walkLeftUp()
+      }
+      this._joystick.movementChanged = false
+    }
+  }
 
   resetMovement() {
     this.idleDown()
