@@ -52,6 +52,7 @@ export class MainSceneManager extends Component {
 
   onLoad() {
     this._persistentNode = find('PersistentNode').getComponent(PersistentNode)
+
     this._player = this.playerNode.getComponent(PlayerManager)
     this._fishing = this.fishingManagerNode.getComponent(FishingManager)
 
@@ -88,8 +89,7 @@ export class MainSceneManager extends Component {
       } else if (b.node.name === 'ShopDoorTrigger') {
         this.shopDoor.getComponent(Animation).play('ShopDoorOpen')
       } else if (b.node.name === 'FishingTrigger') {
-        this._fishing.fountainFishingTimerActive = true
-        this._fishing.fountainFishingTimer = Date.now()
+        this._fishing.activateFountainFishingButton()
       }
     }
 
@@ -111,8 +111,7 @@ export class MainSceneManager extends Component {
       } else if (b.node.name === 'ShopDoorTrigger') {
         this.shopDoor.getComponent(Animation).play('ShopDoorClose')
       } else if (b.node.name === 'FishingTrigger') {
-        this._fishing.fountainFishingTimerActive = false
-        this._fishing.fountainFishingTimer = 0
+        this._fishing.deactivateFountainFishingButton()
       }
     }
 

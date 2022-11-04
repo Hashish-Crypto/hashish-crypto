@@ -12,6 +12,7 @@ import {
   Director,
 } from 'cc'
 import { PlayerManager } from '../Main/PlayerManager'
+import { ButtonsManager } from '../UI/Buttons/ButtonsManager'
 
 const { ccclass, property } = _decorator
 
@@ -20,12 +21,14 @@ export class FishingManager extends Component {
   @property({ type: Node })
   private playerNode: Node | null = null
 
-  public fountainFishingTimerActive: boolean = false
-  public fountainFishingTimer: number = 0
+  @property({ type: Node })
+  private gameUI: Node | null = null
+
   public catchOverlapFish: boolean = false
   public fishingUI: Node | null = null
 
   private _player: PlayerManager | null = null
+  private _buttonsManager: ButtonsManager | null = null
   private _fountainFishingUI: Node | null = null
   private _finishFishingUI: Node | null = null
   private _catchingFishInitialTime: number = 3
@@ -35,26 +38,27 @@ export class FishingManager extends Component {
 
   onLoad() {
     this._player = this.playerNode.getComponent(PlayerManager)
+    this._buttonsManager = this.gameUI.getComponentInChildren(ButtonsManager)
     this._fountainFishingUI = this.node.getParent().getChildByName('GameUI').getChildByName('FountainFishingUI')
     this._fountainFishingUI
-      .getChildByName('FountainFishingYesButton')
-      .on(Button.EventType.CLICK, this._fountainFishingYes, this)
+      .getChildByName('FountainFishingStartButton')
+      .on(Button.EventType.CLICK, this._fountainFishingStart, this)
     this._fountainFishingUI
-      .getChildByName('FountainFishingNoButton')
-      .on(Button.EventType.CLICK, this._fountainFishingNo, this)
+      .getChildByName('FountainFishingCloseButton')
+      .on(Button.EventType.CLICK, this._fountainFishingClose, this)
     this.fishingUI = this.node.getParent().getChildByName('GameUI').getChildByName('FishingUI')
     this._finishFishingUI = this.node.getParent().getChildByName('GameUI').getChildByName('FinishFishingUI')
-    this._finishFishingUI.getChildByName('CloseButton').on(Button.EventType.CLICK, this._closeFinishFishingUI, this)
+    this._finishFishingUI.getChildByName('CloseButton').on(Button.EventType.CLICK, this._fountainFishingClose, this)
   }
 
   update(deltaTime: number) {
-    if (this.fountainFishingTimerActive && Date.now() - this.fountainFishingTimer >= 1500) {
-      this._player.controllerEnabled = false
-      this._player.resetMovement()
-      this.fountainFishingTimerActive = false
-      this.fountainFishingTimer = 0
-      this._fountainFishingUI.active = true
-    }
+    // if (this.fountainFishingTimerActive && Date.now() - this.fountainFishingTimer >= 1500) {
+    //   this._player.controllerEnabled = false
+    //   this._player.resetMovement()
+    //   this.fountainFishingTimerActive = false
+    //   this.fountainFishingTimer = 0
+    //   this._fountainFishingUI.active = true
+    // }
 
     if (this.fishingUI.active) {
       const progressBarMaxHeight = this.fishingUI
@@ -108,18 +112,35 @@ export class FishingManager extends Component {
     }
   }
 
-  private _fountainFishingYes() {
+  public activateFountainFishingButton() {
+    this._buttonsManager.button0.active = false
+    this._buttonsManager.fishingButton.active = true
+    this._buttonsManager.fishingButton.getComponent(Button).interactable = true
+    this._buttonsManager.fishingButton.on(Button.EventType.CLICK, this._activateFountainFishingUI, this)
+  }
+
+  public deactivateFountainFishingButton() {
+    this._buttonsManager.button0.active = true
+    this._buttonsManager.fishingButton.active = false
+    this._buttonsManager.fishingButton.off(Button.EventType.CLICK, this._activateFountainFishingUI, this)
+  }
+
+  private _activateFountainFishingUI() {
+    this._buttonsManager.fishingButton.getComponent(Button).interactable = false
+    this._player.controllerEnabled = false
+    this._player.resetMovement()
+    this._fountainFishingUI.active = true
+  }
+
+  private _fountainFishingStart() {
     this._fountainFishingUI.active = false
     this.fishingUI.active = true
   }
 
-  private _fountainFishingNo() {
+  private _fountainFishingClose() {
     this._fountainFishingUI.active = false
-    this._player.controllerEnabled = true
-  }
-
-  private _closeFinishFishingUI() {
     this._finishFishingUI.active = false
+    this.activateFountainFishingButton()
     this._player.controllerEnabled = true
   }
 
