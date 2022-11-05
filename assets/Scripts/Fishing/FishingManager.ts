@@ -52,14 +52,6 @@ export class FishingManager extends Component {
   }
 
   update(deltaTime: number) {
-    // if (this.fountainFishingTimerActive && Date.now() - this.fountainFishingTimer >= 1500) {
-    //   this._player.controllerEnabled = false
-    //   this._player.resetMovement()
-    //   this.fountainFishingTimerActive = false
-    //   this.fountainFishingTimer = 0
-    //   this._fountainFishingUI.active = true
-    // }
-
     if (this.fishingUI.active) {
       const progressBarMaxHeight = this.fishingUI
         .getChildByName('ProgressBar')

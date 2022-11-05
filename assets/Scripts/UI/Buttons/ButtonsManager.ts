@@ -1,6 +1,6 @@
 import { _decorator, Component, Node } from 'cc'
 
-const { ccclass, property } = _decorator
+const { ccclass } = _decorator
 
 @ccclass('ButtonsManager')
 export class ButtonsManager extends Component {
