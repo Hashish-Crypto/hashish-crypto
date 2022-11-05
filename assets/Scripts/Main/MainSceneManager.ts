@@ -9,14 +9,10 @@ import {
   Contact2DType,
   Collider2D,
   Animation,
-  RigidBody2D,
-  Vec2,
-  find,
 } from 'cc'
 import { PlayerManager } from './PlayerManager'
 import playerMovement from '../lib/playerMovement'
 import { FishingManager } from '../Fishing/FishingManager'
-import { PersistentNode } from '../Menu/PersistentNode'
 
 const { ccclass, property } = _decorator
 
@@ -48,11 +44,8 @@ export class MainSceneManager extends Component {
 
   private _player: PlayerManager | null = null
   private _fishing: FishingManager | null = null
-  private _persistentNode: PersistentNode | null = null
 
   onLoad() {
-    this._persistentNode = find('PersistentNode').getComponent(PersistentNode)
-
     this._player = this.playerNode.getComponent(PlayerManager)
     this._fishing = this.fishingManagerNode.getComponent(FishingManager)
 
@@ -66,7 +59,7 @@ export class MainSceneManager extends Component {
     this._player.controllerEnabled = true
   }
 
-  update(deltaTime: number) {}
+  // update(deltaTime: number) {}
 
   private _onKeyDown(event: EventKeyboard) {
     playerMovement.onKeyDown(this._player, event)
@@ -122,11 +115,7 @@ export class MainSceneManager extends Component {
 
   private _onTouchScreenStart() {
     if (this._fishing.fishingUI.active === true) {
-      this._fishing.fishingUI
-        .getChildByName('CatchBar')
-        .getChildByName('Catch')
-        .getComponent(RigidBody2D)
-        .applyLinearImpulseToCenter(new Vec2(0, 15), true)
+      this._fishing.moveCatchBar()
     }
   }
 }
