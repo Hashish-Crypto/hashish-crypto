@@ -1,4 +1,4 @@
-import { _decorator, Component, RigidBody2D, Animation, Vec2, CCFloat, Node } from 'cc'
+import { _decorator, Component, RigidBody2D, Animation, Vec2, CCFloat } from 'cc'
 import Direction from '../enums/Direction'
 import { JoystickManager } from '../UI/Joystick/JoystickManager'
 
@@ -8,9 +8,6 @@ const { ccclass, property } = _decorator
 export class PlayerManager extends Component {
   @property({ type: CCFloat })
   private velocity: number = 4
-
-  @property({ type: Node })
-  private joystickNode: Node | null = null
 
   public controllerEnabled: boolean = false
   public movementCommands: Direction[] = []
@@ -24,7 +21,13 @@ export class PlayerManager extends Component {
   onLoad() {
     this._body = this.node.getComponent(RigidBody2D)
     this._animation = this.node.getComponent(Animation)
-    this._joystick = this.joystickNode.getComponent(JoystickManager)
+    this._joystick = this.node
+      .getParent()
+      .getParent()
+      .getParent()
+      .getChildByName('GameUI')
+      .getChildByName('Joystick')
+      .getComponent(JoystickManager)
   }
 
   update(deltaTime: number) {

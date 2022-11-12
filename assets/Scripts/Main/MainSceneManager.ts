@@ -9,6 +9,8 @@ import {
   Contact2DType,
   Collider2D,
   Animation,
+  Prefab,
+  instantiate,
 } from 'cc'
 import { PlayerManager } from './PlayerManager'
 import playerMovement from '../lib/playerMovement'
@@ -19,7 +21,10 @@ const { ccclass, property } = _decorator
 @ccclass('MainSceneManager')
 export class MainSceneManager extends Component {
   @property({ type: Node })
-  private playerNode: Node | null = null
+  private playersRef: Node | null = null
+
+  @property({ type: Prefab })
+  private playerPrefab: Prefab | null = null
 
   @property({ type: Node })
   private bankDoor: Node | null = null
@@ -46,7 +51,8 @@ export class MainSceneManager extends Component {
   private _fishing: FishingManager | null = null
 
   onLoad() {
-    this._player = this.playerNode.getComponent(PlayerManager)
+    this._player = instantiate(this.playerPrefab).getComponent(PlayerManager)
+    this.playersRef.addChild(this._player.node)
     this._fishing = this.fishingManagerNode.getComponent(FishingManager)
 
     input.on(Input.EventType.KEY_DOWN, this._onKeyDown, this)

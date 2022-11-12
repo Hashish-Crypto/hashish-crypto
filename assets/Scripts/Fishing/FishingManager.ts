@@ -24,9 +24,6 @@ const { ccclass, property } = _decorator
 @ccclass('FishingManager')
 export class FishingManager extends Component {
   @property({ type: Node })
-  private playerNode: Node | null = null
-
-  @property({ type: Node })
   private gameUI: Node | null = null
 
   @property(EditBoxComponent)
@@ -55,7 +52,12 @@ export class FishingManager extends Component {
   onLoad() {
     this._persistentNode = find('PersistentNode').getComponent(PersistentNode)
 
-    this._player = this.playerNode.getComponent(PlayerManager)
+    this._player = this.node
+      .getParent()
+      .getChildByName('Canvas')
+      .getChildByName('PlayersRef')
+      .getChildByName('Player')
+      .getComponent(PlayerManager)
     this._buttonsManager = this.gameUI.getComponentInChildren(ButtonsManager)
     this._fountainFishingUI = this.node.getParent().getChildByName('GameUI').getChildByName('FountainFishingUI')
     this.fishingUI = this.node.getParent().getChildByName('GameUI').getChildByName('FishingUI')
