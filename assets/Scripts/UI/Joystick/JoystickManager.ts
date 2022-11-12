@@ -8,7 +8,6 @@ export class JoystickManager extends Component {
   private _ring: Node | null = null
   private _ball: Node | null = null
   private _maxRadius: number = 100
-  private _piDividedBy4 = Math.PI / 4
   private _piDividedBy8 = Math.PI / 8
   public movement: Direction = Direction.IDLE_DOWN
   public lastMovement: Direction = Direction.NULL

@@ -21,7 +21,13 @@ const { ccclass, property } = _decorator
 @ccclass('MainSceneManager')
 export class MainSceneManager extends Component {
   @property({ type: Node })
+  private gameUI: Node | null = null
+
+  @property({ type: Node })
   private playersRef: Node | null = null
+
+  @property({ type: Prefab })
+  private joystickPrefab: Prefab | null = null
 
   @property({ type: Prefab })
   private playerPrefab: Prefab | null = null
@@ -42,17 +48,19 @@ export class MainSceneManager extends Component {
   private shopDoor: Node | null = null
 
   @property({ type: Node })
-  private gameUI: Node | null = null
-
-  @property({ type: Node })
   private fishingManagerNode: Node | null = null
 
+  private _joystick: Node | null = null
   private _player: PlayerManager | null = null
   private _fishing: FishingManager | null = null
 
   onLoad() {
+    this._joystick = instantiate(this.joystickPrefab)
+    this.gameUI.addChild(this._joystick)
+    this._joystick.setSiblingIndex(0)
     this._player = instantiate(this.playerPrefab).getComponent(PlayerManager)
     this.playersRef.addChild(this._player.node)
+
     this._fishing = this.fishingManagerNode.getComponent(FishingManager)
 
     input.on(Input.EventType.KEY_DOWN, this._onKeyDown, this)
