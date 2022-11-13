@@ -58,6 +58,7 @@ export class FishingManager extends Component {
       .getChildByName('PlayersRef')
       .getChildByName('Player')
       .getComponent(PlayerManager)
+
     this._buttonsManager = this.gameUI.getComponentInChildren(ButtonsManager)
     this._fountainFishingUI = this.node.getParent().getChildByName('GameUI').getChildByName('FountainFishingUI')
     this.fishingUI = this.node.getParent().getChildByName('GameUI').getChildByName('FishingUI')
