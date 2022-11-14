@@ -1,4 +1,4 @@
-import { _decorator, Node, Collider2D, Animation } from 'cc'
+import { _decorator, Node, Collider2D, Animation, director } from 'cc'
 import { FishingManager } from '../Fishing/FishingManager'
 import { TopDownSceneManager } from '../lib/TopDownSceneManager'
 
@@ -34,15 +34,17 @@ export class MainSceneManager extends TopDownSceneManager {
 
   protected _onBeginContact(a: Collider2D, b: Collider2D) {
     if (a.node.name === 'Player') {
-      if (b.node.name === 'BankDoorTrigger') {
+      if (b.node.name === 'BankDoorTrigger0') {
         this.bankDoor.getComponent(Animation).play('BankDoorOpen')
-      } else if (b.node.name === 'BarDoorTrigger') {
+      } else if (b.node.name === 'BankDoorTrigger1') {
+        director.loadScene('Bank')
+      } else if (b.node.name === 'BarDoorTrigger0') {
         this.barDoor.getComponent(Animation).play('BarDoorOpen')
-      } else if (b.node.name === 'HouseDoorTrigger') {
+      } else if (b.node.name === 'HouseDoorTrigger0') {
         this.houseDoor.getComponent(Animation).play('HouseDoorOpen')
-      } else if (b.node.name === 'PoliceStationDoorTrigger') {
+      } else if (b.node.name === 'PoliceStationDoorTrigger0') {
         this.policeStationDoor.getComponent(Animation).play('PoliceStationDoorOpen')
-      } else if (b.node.name === 'ShopDoorTrigger') {
+      } else if (b.node.name === 'ShopDoorTrigger0') {
         this.shopDoor.getComponent(Animation).play('ShopDoorOpen')
       } else if (b.node.name === 'FishingTrigger') {
         this._fishing.activateFountainFishingButton()
@@ -56,15 +58,15 @@ export class MainSceneManager extends TopDownSceneManager {
 
   protected _onEndContact(a: Collider2D, b: Collider2D) {
     if (a.node.name === 'Player') {
-      if (b.node.name === 'BankDoorTrigger') {
+      if (b.node.name === 'BankDoorTrigger0') {
         this.bankDoor.getComponent(Animation).play('BankDoorClose')
-      } else if (b.node.name === 'BarDoorTrigger') {
+      } else if (b.node.name === 'BarDoorTrigger0') {
         this.barDoor.getComponent(Animation).play('BarDoorClose')
-      } else if (b.node.name === 'HouseDoorTrigger') {
+      } else if (b.node.name === 'HouseDoorTrigger0') {
         this.houseDoor.getComponent(Animation).play('HouseDoorClose')
-      } else if (b.node.name === 'PoliceStationDoorTrigger') {
+      } else if (b.node.name === 'PoliceStationDoorTrigger0') {
         this.policeStationDoor.getComponent(Animation).play('PoliceStationDoorClose')
-      } else if (b.node.name === 'ShopDoorTrigger') {
+      } else if (b.node.name === 'ShopDoorTrigger0') {
         this.shopDoor.getComponent(Animation).play('ShopDoorClose')
       } else if (b.node.name === 'FishingTrigger') {
         this._fishing.deactivateFountainFishingButton()

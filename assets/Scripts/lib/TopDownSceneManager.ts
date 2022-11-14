@@ -53,6 +53,8 @@ export class TopDownSceneManager extends Component {
     this._onLoadExtension()
   }
 
+  protected _onLoadExtension() {}
+
   // update(deltaTime: number) {}
 
   private _onKeyDown(event: EventKeyboard) {
@@ -68,6 +70,4 @@ export class TopDownSceneManager extends Component {
   protected _onEndContact(a: Collider2D, b: Collider2D) {}
 
   protected _onTouchScreenStart() {}
-
-  protected _onLoadExtension() {}
 }

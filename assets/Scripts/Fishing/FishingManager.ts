@@ -17,7 +17,7 @@ import {
 } from 'cc'
 import { PlayerManager } from '../Main/PlayerManager'
 import { PersistentNode } from '../Menu/PersistentNode'
-import { ButtonsManager } from '../UI/Buttons/ButtonsManager'
+import { MainButtonsManager } from '../UI/Buttons/MainButtonsManager'
 
 const { ccclass, property } = _decorator
 
@@ -37,7 +37,7 @@ export class FishingManager extends Component {
 
   private _persistentNode: PersistentNode | null = null
   private _player: PlayerManager | null = null
-  private _buttonsManager: ButtonsManager | null = null
+  private _buttonsManager: MainButtonsManager | null = null
   private _fountainFishingUI: Node | null = null
   private _finishFishingUI: Node | null = null
   private _catchingFishInitialTime: number = 4
@@ -59,7 +59,7 @@ export class FishingManager extends Component {
       .getChildByName('Player')
       .getComponent(PlayerManager)
 
-    this._buttonsManager = this.gameUI.getComponentInChildren(ButtonsManager)
+    this._buttonsManager = this.gameUI.getComponentInChildren(MainButtonsManager)
     this._fountainFishingUI = this.node.getParent().getChildByName('GameUI').getChildByName('FountainFishingUI')
     this.fishingUI = this.node.getParent().getChildByName('GameUI').getChildByName('FishingUI')
     this._finishFishingUI = this.node.getParent().getChildByName('GameUI').getChildByName('FinishFishingUI')
