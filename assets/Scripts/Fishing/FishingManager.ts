@@ -47,7 +47,7 @@ export class FishingManager extends Component {
   private _fishInitialMovementSpeed: number = 255
   private _fishMovementSpeed: number = this._fishInitialMovementSpeed
   private _betMultiplier: number = 1.5
-  private _bet: number = 1
+  private _bet: number = 0
 
   onLoad() {
     this._persistentNode = find('PersistentNode').getComponent(PersistentNode)
@@ -156,40 +156,6 @@ export class FishingManager extends Component {
     }
   }
 
-  private _didNotCaughtTheFish() {
-    this._resetFishing()
-    this._finishFishingUI.getChildByName('ResultLabel').getComponent(Label).string = 'You failed to catch the fish.'
-    this._finishFishingUI.getChildByName('PrizeLabel').getComponent(Label).string = 'You loose HC$' + this._bet
-    this._persistentNode.wallet = Number(
-      exactMath.floor(exactMath.sub(this._persistentNode.wallet, this._bet), -2, {
-        returnString: true,
-      })
-    )
-    this._setWallet()
-    this._finishFishingUI.active = true
-  }
-
-  private _caughtTheFish() {
-    this._resetFishing()
-
-    const prize = Number(
-      exactMath.floor(exactMath.mul(this._bet, this._betMultiplier), -2, {
-        returnString: true,
-      })
-    )
-
-    this._persistentNode.wallet = Number(
-      exactMath.ceil(exactMath.add(this._persistentNode.wallet, prize), -2, {
-        returnString: true,
-      })
-    )
-
-    this._finishFishingUI.getChildByName('ResultLabel').getComponent(Label).string = 'You managed to catch the fish!'
-    this._finishFishingUI.getChildByName('PrizeLabel').getComponent(Label).string = 'You win HC$' + prize
-    this._setWallet()
-    this._finishFishingUI.active = true
-  }
-
   private _setWallet() {
     this._fountainFishingUI
       .getChildByName('BalanceLayout')
@@ -202,6 +168,10 @@ export class FishingManager extends Component {
       .getChildByName('BalanceLabel')
       .getChildByName('Label')
       .getComponent(Label).string = 'HC$' + this._persistentNode.wallet.toFixed(2)
+  }
+
+  private _handleBetChange(editBox: EditBoxComponent) {
+    this._bet = Number(editBox.string)
   }
 
   private _setBetTarget(betToggle: ToggleComponent) {
@@ -230,10 +200,6 @@ export class FishingManager extends Component {
       toggle.isChecked = false
       toggle.interactable = true
     })
-  }
-
-  private _handleBetChange(editBox: EditBoxComponent) {
-    this._bet = Number(editBox.string)
   }
 
   public activateFountainFishingButton() {
@@ -304,5 +270,39 @@ export class FishingManager extends Component {
       this.fishingUI.getChildByName('CatchBar').getChildByName('Fish').setPosition(0, 0)
     })
     this.fishingUI.active = false
+  }
+
+  private _didNotCaughtTheFish() {
+    this._resetFishing()
+    this._finishFishingUI.getChildByName('ResultLabel').getComponent(Label).string = 'You failed to catch the fish.'
+    this._finishFishingUI.getChildByName('PrizeLabel').getComponent(Label).string = 'You loose HC$' + this._bet
+    this._persistentNode.wallet = Number(
+      exactMath.floor(exactMath.sub(this._persistentNode.wallet, this._bet), -2, {
+        returnString: true,
+      })
+    )
+    this._setWallet()
+    this._finishFishingUI.active = true
+  }
+
+  private _caughtTheFish() {
+    this._resetFishing()
+
+    const prize = Number(
+      exactMath.floor(exactMath.mul(this._bet, this._betMultiplier), -2, {
+        returnString: true,
+      })
+    )
+
+    this._persistentNode.wallet = Number(
+      exactMath.ceil(exactMath.add(this._persistentNode.wallet, prize), -2, {
+        returnString: true,
+      })
+    )
+
+    this._finishFishingUI.getChildByName('ResultLabel').getComponent(Label).string = 'You managed to catch the fish!'
+    this._finishFishingUI.getChildByName('PrizeLabel').getComponent(Label).string = 'You win HC$' + prize
+    this._setWallet()
+    this._finishFishingUI.active = true
   }
 }
