@@ -31,7 +31,7 @@ export class TopDownSceneManager extends Component {
   private playerPrefab: Prefab | null = null
 
   private _joystick: Node | null = null
-  private _player: PlayerManager | null = null
+  protected _player: PlayerManager | null = null
 
   onLoad() {
     this._joystick = instantiate(this.joystickPrefab)

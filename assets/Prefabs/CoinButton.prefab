@@ -13,7 +13,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "FishingButton",
+    "_name": "CoinButton",
     "_objFlags": 0,
     "__editorExtras__": {},
     "_parent": null,
@@ -114,7 +114,7 @@
       "a": 255
     },
     "_spriteFrame": {
-      "__uuid__": "0d35c6e7-1de0-4c9d-bb1c-4a42d135a331@f9941",
+      "__uuid__": "6036341b-4354-4f7c-8bce-993b49530a4d@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
     "_type": 1,
@@ -179,19 +179,19 @@
       "a": 255
     },
     "_normalSprite": {
-      "__uuid__": "0d35c6e7-1de0-4c9d-bb1c-4a42d135a331@f9941",
+      "__uuid__": "6036341b-4354-4f7c-8bce-993b49530a4d@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
     "_hoverSprite": {
-      "__uuid__": "0d35c6e7-1de0-4c9d-bb1c-4a42d135a331@f9941",
+      "__uuid__": "6036341b-4354-4f7c-8bce-993b49530a4d@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
     "_pressedSprite": {
-      "__uuid__": "0d35c6e7-1de0-4c9d-bb1c-4a42d135a331@f9941",
+      "__uuid__": "6036341b-4354-4f7c-8bce-993b49530a4d@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
     "_disabledSprite": {
-      "__uuid__": "0d35c6e7-1de0-4c9d-bb1c-4a42d135a331@f9941",
+      "__uuid__": "6036341b-4354-4f7c-8bce-993b49530a4d@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
     "_duration": 0.1,
