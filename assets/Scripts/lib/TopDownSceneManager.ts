@@ -10,8 +10,10 @@ import {
   Contact2DType,
   EventKeyboard,
   Collider2D,
+  find,
 } from 'cc'
 import { PlayerManager } from '../Main/PlayerManager'
+import { PersistentNode } from '../Menu/PersistentNode'
 import playerMovement from './playerMovement'
 
 const { ccclass, property } = _decorator
@@ -30,14 +32,17 @@ export class TopDownSceneManager extends Component {
   @property({ type: Prefab })
   private playerPrefab: Prefab | null = null
 
+  protected _persistentNode: PersistentNode | null = null
   private _joystick: Node | null = null
   protected _player: PlayerManager | null = null
 
   onLoad() {
+    this._persistentNode = find('PersistentNode').getComponent(PersistentNode)
     this._joystick = instantiate(this.joystickPrefab)
     this.gameUI.addChild(this._joystick)
     this._joystick.setSiblingIndex(0)
     this._player = instantiate(this.playerPrefab).getComponent(PlayerManager)
+    this._player.node.position = this._persistentNode.spawnPosition
     this.playersRef.addChild(this._player.node)
 
     input.on(Input.EventType.KEY_DOWN, this._onKeyDown, this)

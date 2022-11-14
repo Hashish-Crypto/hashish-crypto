@@ -30,8 +30,6 @@ interface ILightBulb {
 
 @ccclass('VaultSceneManager')
 export class VaultSceneManager extends Component {
-  private _persistentNode: PersistentNode | null = null
-
   @property(EditBoxComponent)
   private betEditBox: EditBoxComponent | null = null
 
@@ -47,6 +45,7 @@ export class VaultSceneManager extends Component {
   @property({ type: Prefab })
   private lightBulbPrefab: Prefab | null = null
 
+  private _persistentNode: PersistentNode | null = null
   private _menuUI: Node | null = null
   private _loseUI: Node | null = null
   private _winUI: Node | null = null

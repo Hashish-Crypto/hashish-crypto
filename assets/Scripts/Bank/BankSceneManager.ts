@@ -1,4 +1,5 @@
 import { _decorator, Camera, Color, Collider2D, director } from 'cc'
+import spawnPositions from '../lib/spawnPosition'
 import { TopDownSceneManager } from '../lib/TopDownSceneManager'
 
 const { ccclass } = _decorator
@@ -15,12 +16,14 @@ export class BankSceneManager extends TopDownSceneManager {
     console.log('begin', a, b)
     if (a.node.name === 'Player') {
       if (b.node.name === 'MainTrigger') {
+        this._persistentNode.spawnPosition = spawnPositions.mainBank
         director.loadScene('Main')
       } else if (b.node.name === 'VaultTrigger') {
         console.log('VaultTrigger Begin')
       }
     } else if (b.node.name === 'Player') {
       if (a.node.name === 'MainTrigger') {
+        this._persistentNode.spawnPosition = spawnPositions.mainBank
         director.loadScene('Main')
       } else if (a.node.name === 'VaultTrigger') {
         console.log('VaultTrigger Begin')

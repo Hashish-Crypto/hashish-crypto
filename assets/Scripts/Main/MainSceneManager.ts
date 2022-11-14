@@ -1,5 +1,6 @@
 import { _decorator, Node, Collider2D, Animation, director } from 'cc'
 import { FishingManager } from '../Fishing/FishingManager'
+import spawnPositions from '../lib/spawnPosition'
 import { TopDownSceneManager } from '../lib/TopDownSceneManager'
 
 const { ccclass, property } = _decorator
@@ -37,6 +38,7 @@ export class MainSceneManager extends TopDownSceneManager {
       if (b.node.name === 'BankDoorTrigger0') {
         this.bankDoor.getComponent(Animation).play('BankDoorOpen')
       } else if (b.node.name === 'BankDoorTrigger1') {
+        this._persistentNode.spawnPosition = spawnPositions.bankEntrance
         director.loadScene('Bank')
       } else if (b.node.name === 'BarDoorTrigger0') {
         this.barDoor.getComponent(Animation).play('BarDoorOpen')
@@ -53,6 +55,7 @@ export class MainSceneManager extends TopDownSceneManager {
       if (a.node.name === 'BankDoorTrigger0') {
         this.bankDoor.getComponent(Animation).play('BankDoorOpen')
       } else if (a.node.name === 'BankDoorTrigger1') {
+        this._persistentNode.spawnPosition = spawnPositions.bankEntrance
         director.loadScene('Bank')
       } else if (a.node.name === 'BarDoorTrigger0') {
         this.barDoor.getComponent(Animation).play('BarDoorOpen')
