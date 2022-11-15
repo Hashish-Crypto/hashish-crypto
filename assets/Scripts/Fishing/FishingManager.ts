@@ -205,7 +205,6 @@ export class FishingManager extends Component {
   public activateFountainFishingButton() {
     this._buttonsManager.button0.active = false
     this._buttonsManager.fishingButton.active = true
-    this._buttonsManager.fishingButton.getComponent(Button).interactable = true
     this._buttonsManager.fishingButton.on(Button.EventType.CLICK, this._activateFountainFishingUI, this)
   }
 
@@ -224,7 +223,7 @@ export class FishingManager extends Component {
 
   private _fountainFishingStart() {
     if (
-      this._bet <= 0 ||
+      this._bet <= 1 ||
       Number(
         exactMath.floor(exactMath.sub(this._persistentNode.wallet, this._bet), -2, {
           returnString: true,

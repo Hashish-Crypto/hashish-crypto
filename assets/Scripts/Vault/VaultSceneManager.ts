@@ -12,8 +12,10 @@ import {
   randomRangeInt,
   instantiate,
   Prefab,
+  Color,
 } from 'cc'
 import { PersistentNode } from '../Menu/PersistentNode'
+import spawnPositions from '../lib/spawnPosition'
 
 const { ccclass, property } = _decorator
 
@@ -56,15 +58,15 @@ export class VaultSceneManager extends Component {
 
   private _lightBulbQuantity: number = 60
   private _innerLightBulbCircle: ILightBulb[] = []
-  private _innerLightBulbCircleRadius: number = 185
+  private _innerLightBulbCircleRadius: number = 220
   private _outerLightBulbCircle: ILightBulb[] = []
-  private _outerLightBulbCircleRadius: number = 205
+  private _outerLightBulbCircleRadius: number = 240
   private _cycleTimer: number = 0
   private _lastActiveLightBulb: number = 0
   private _activeLightBulb: number = 0
   private _isClockwise: boolean = true
   private _round: number = 5
-  private _gameOver: boolean = false
+  private _gamePaused: boolean = true
 
   onLoad() {
     this._persistentNode = find('PersistentNode').getComponent(PersistentNode)
@@ -72,33 +74,6 @@ export class VaultSceneManager extends Component {
     this._loseUI = this.node.getParent().getChildByName('GameUI').getChildByName('LoseUI')
     this._winUI = this.node.getParent().getChildByName('GameUI').getChildByName('WinUI')
     this._vaultUI = this.node.getParent().getChildByName('GameUI').getChildByName('VaultUI')
-
-    this.betToggles.forEach((betToggle, index) => {
-      if (betToggle.isChecked) {
-        betToggle.interactable = false
-
-        switch (index) {
-          case 0:
-            this._speed = 1
-            this._betMultiplier = 1.5
-            break
-          case 1:
-            this._speed = 1.3
-            this._betMultiplier = 2
-            break
-          case 2:
-            this._speed = 1.6
-            this._betMultiplier = 2.5
-            break
-          case 3:
-            this._speed = 2
-            this._betMultiplier = 3
-            break
-        }
-      }
-    })
-
-    this._setWallet()
 
     this.betEditBox.node.on(EditBoxComponent.EventType.TEXT_CHANGED, this._handleBetChange, this)
     this.betToggles.forEach((betToggle) => {
@@ -121,14 +96,16 @@ export class VaultSceneManager extends Component {
       .getChildByName('ButtonsLayout')
       .getChildByName('ReturnButton')
       .on(Button.EventType.CLICK, this._handleReturnButton, this)
-    this._winUI
+    this._winUI.getChildByName('GetPrizeButton').on(Button.EventType.CLICK, this._handleGetPrizeButton, this)
+    this._winUI.getChildByName('OpenVaultButton').on(Button.EventType.CLICK, this._handleOpenVaultButton, this)
+    this._vaultUI
       .getChildByName('ButtonsLayout')
-      .getChildByName('GetPrizeButton')
-      .on(Button.EventType.CLICK, this._handleGetPrizeButton, this)
-    this._winUI
+      .getChildByName('PlayAgainButton')
+      .on(Button.EventType.CLICK, this._handlePlayAgainButton, this)
+    this._vaultUI
       .getChildByName('ButtonsLayout')
-      .getChildByName('OpenVaultButton')
-      .on(Button.EventType.CLICK, this._handleOpenVaultButton, this)
+      .getChildByName('ReturnButton')
+      .on(Button.EventType.CLICK, this._handleReturnButton, this)
 
     for (let i = 0; i < this._lightBulbQuantity; i += 1) {
       this._innerLightBulbCircle[i] = {
@@ -150,13 +127,11 @@ export class VaultSceneManager extends Component {
       this.lightBulbRef.addChild(this._outerLightBulbCircle[i].node)
     }
 
-    this._setGameRound()
-    this._round -= 1
-    this.node.getParent().getChildByName('Canvas').on(Node.EventType.TOUCH_START, this._onTouchScreen, this)
+    this._handlePlayAgainButton()
   }
 
   update(deltaTime: number) {
-    if (!this._gameOver) {
+    if (!this._gamePaused) {
       this._cycleTimer += deltaTime
       if (this._cycleTimer >= 0.035 / this._speed) {
         this._cycleTimer = 0
@@ -272,15 +247,71 @@ export class VaultSceneManager extends Component {
   }
 
   private _handleStartButton() {
+    if (
+      this._bet < 1 ||
+      Number(
+        exactMath.floor(exactMath.sub(this._persistentNode.wallet, this._bet), -2, {
+          returnString: true,
+        })
+      ) < 0
+    )
+      return
+
     this._menuUI.active = false
+    this._setGameRound()
+    this._round -= 1
+    this.node.getParent().getChildByName('Canvas').on(Node.EventType.TOUCH_START, this._onTouchScreen, this)
+    this._gamePaused = false
   }
 
   private _handleReturnButton() {
+    this._persistentNode.spawnPosition = spawnPositions.bankVault
     director.loadScene('Bank')
   }
 
   private _handlePlayAgainButton() {
+    this._cycleTimer = 0
+    this._lastActiveLightBulb = 0
+    this._activeLightBulb = 0
+    this._isClockwise = true
+    this._round = 5
+    this._gamePaused = true
+
+    this.betToggles.forEach((betToggle, index) => {
+      if (betToggle.isChecked) {
+        betToggle.interactable = false
+
+        switch (index) {
+          case 0:
+            this._speed = 1
+            this._betMultiplier = 1.5
+            break
+          case 1:
+            this._speed = 1.3
+            this._betMultiplier = 2
+            break
+          case 2:
+            this._speed = 1.6
+            this._betMultiplier = 2.5
+            break
+          case 3:
+            this._speed = 2
+            this._betMultiplier = 3
+            break
+        }
+      }
+    })
+
+    this.numbersNode.forEach((numberNode) => {
+      numberNode.getComponent(Label).string = '0'
+      numberNode.getComponent(Label).color = new Color(54, 55, 64, 255)
+    })
+
+    this._setWallet()
+
     this._loseUI.active = false
+    this._vaultUI.active = false
+    this._winUI.active = false
     this._menuUI.active = true
   }
 
@@ -297,10 +328,7 @@ export class VaultSceneManager extends Component {
       })
     )
 
-    this._winUI.getChildByName('PrizeLabel').getComponent(Label).string = 'Prize: HC$' + prize
-
-    this._winUI.active = false
-    this._menuUI.active = true
+    this._handlePlayAgainButton()
   }
 
   private _handleOpenVaultButton() {
@@ -372,26 +400,44 @@ export class VaultSceneManager extends Component {
       lightBulb.node.getChildByName('GreenOn').active = false
       lightBulb.node.getChildByName('RedOff').active = false
       lightBulb.node.getChildByName('RedOn').active = false
+      lightBulb.color = LightBulbColor.GREEN
     } else if (color === LightBulbColor.RED) {
       lightBulb.node.getChildByName('GreenOff').active = false
       lightBulb.node.getChildByName('GreenOn').active = false
       lightBulb.node.getChildByName('RedOff').active = true
       lightBulb.node.getChildByName('RedOn').active = false
+      lightBulb.color = LightBulbColor.RED
     } else if (color === LightBulbColor.BLUE) {
-      lightBulb.node.getChildByName('GreenOff').active = false
-      lightBulb.node.getChildByName('GreenOn').active = true
-      lightBulb.node.getChildByName('RedOff').active = false
-      lightBulb.node.getChildByName('RedOn').active = false
+      if (lightBulb.node.getChildByName('GreenOff').active === true) {
+        lightBulb.node.getChildByName('GreenOff').active = false
+        lightBulb.node.getChildByName('GreenOn').active = true
+        lightBulb.node.getChildByName('RedOff').active = false
+        lightBulb.node.getChildByName('RedOn').active = false
+      } else if (lightBulb.node.getChildByName('RedOff').active === true) {
+        lightBulb.node.getChildByName('GreenOff').active = false
+        lightBulb.node.getChildByName('GreenOn').active = false
+        lightBulb.node.getChildByName('RedOff').active = false
+        lightBulb.node.getChildByName('RedOn').active = true
+      }
     }
   }
 
   private _unlockNumber() {
     this.numbersNode[this._round].getComponent(Label).string = String(randomRangeInt(0, 10))
+    this.numbersNode[this._round].getComponent(Label).color = new Color(255, 255, 255, 255)
 
     this._round -= 1
     if (this._round === -1) {
-      this._stopGame()
-      this._winUI.active = true
+      this._pauseGame()
+      const prize = Number(
+        exactMath.floor(exactMath.mul(this._bet, this._betMultiplier), -2, {
+          returnString: true,
+        })
+      )
+      this._winUI.getChildByName('PrizeLabel').getComponent(Label).string = 'Prize: HC$' + prize
+      setTimeout(() => {
+        this._winUI.active = true
+      }, 1000)
       return
     }
 
@@ -399,30 +445,33 @@ export class VaultSceneManager extends Component {
   }
 
   private _onTouchScreen() {
-    this._stopGame()
+    this._pauseGame()
     if (this._innerLightBulbCircle[this._lastActiveLightBulb].color === LightBulbColor.RED) {
       this._setGameRound()
       this._unlockNumber()
     } else if (this._innerLightBulbCircle[this._lastActiveLightBulb].color === LightBulbColor.GREEN) {
-      this._stopGame()
+      this._pauseGame()
       this._persistentNode.wallet = Number(
         exactMath.floor(exactMath.sub(this._persistentNode.wallet, this._bet), -2, {
           returnString: true,
         })
       )
-      this._loseUI.active = true
+      this._setWallet()
+      setTimeout(() => {
+        this._loseUI.active = true
+      }, 1000)
     }
 
     this._isClockwise = !this._isClockwise
   }
 
-  private _stopGame() {
-    this._gameOver = true
+  private _pauseGame() {
+    this._gamePaused = true
     this.node.getParent().getChildByName('Canvas').off(Node.EventType.TOUCH_START, this._onTouchScreen, this)
   }
 
   private _resumeGame() {
-    this._gameOver = false
+    this._gamePaused = false
     this.node.getParent().getChildByName('Canvas').on(Node.EventType.TOUCH_START, this._onTouchScreen, this)
   }
 }

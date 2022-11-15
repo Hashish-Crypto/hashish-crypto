@@ -21,7 +21,7 @@ const { ccclass, property } = _decorator
 @ccclass('TopDownSceneManager')
 export class TopDownSceneManager extends Component {
   @property({ type: Node })
-  private gameUI: Node | null = null
+  protected gameUI: Node | null = null
 
   @property({ type: Node })
   private playersRef: Node | null = null
