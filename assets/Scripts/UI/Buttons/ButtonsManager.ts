@@ -1,18 +1,21 @@
-import { _decorator, Component, Node } from 'cc'
+import { _decorator, Component, Node, Prefab, instantiate } from 'cc'
 
-const { ccclass } = _decorator
+const { ccclass, property } = _decorator
 
 @ccclass('ButtonsManager')
 export class ButtonsManager extends Component {
+  @property({ type: Prefab })
+  private button0Prefab: Prefab | null = null
+
   public button0: Node | null = null
-  public fishingButton: Node | null = null
 
   onLoad() {
-    this.button0 = this.node.getChildByName('Button0')
-    this.fishingButton = this.node.getChildByName('FishingButton')
-
-    // this.button0.on(Button.EventType.CLICK, this._button0Click, this)
+    this.button0 = instantiate(this.button0Prefab)
+    this.node.addChild(this.button0)
+    this._onLoadExtension()
   }
 
-  update(deltaTime: number) {}
+  protected _onLoadExtension() {}
+
+  // update(deltaTime: number) {}
 }
