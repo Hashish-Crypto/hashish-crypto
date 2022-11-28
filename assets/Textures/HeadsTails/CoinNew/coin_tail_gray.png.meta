@@ -2,7 +2,7 @@
   "ver": "1.0.23",
   "importer": "image",
   "imported": true,
-  "uuid": "9c5ff0ec-31ab-4484-8e5e-60928ba4142e",
+  "uuid": "7da26865-9342-4a2d-8b29-20e68816b624",
   "files": [
     ".json",
     ".png"
@@ -10,14 +10,14 @@
   "subMetas": {
     "6c48a": {
       "importer": "texture",
-      "uuid": "9c5ff0ec-31ab-4484-8e5e-60928ba4142e@6c48a",
-      "displayName": "coin11",
+      "uuid": "7da26865-9342-4a2d-8b29-20e68816b624@6c48a",
+      "displayName": "coin_tail_gray",
       "id": "6c48a",
       "name": "texture",
       "userData": {
         "wrapModeS": "clamp-to-edge",
         "wrapModeT": "clamp-to-edge",
-        "imageUuidOrDatabaseUri": "9c5ff0ec-31ab-4484-8e5e-60928ba4142e",
+        "imageUuidOrDatabaseUri": "7da26865-9342-4a2d-8b29-20e68816b624",
         "isUuid": true,
         "minfilter": "linear",
         "magfilter": "linear",
@@ -33,8 +33,8 @@
     },
     "f9941": {
       "importer": "sprite-frame",
-      "uuid": "9c5ff0ec-31ab-4484-8e5e-60928ba4142e@f9941",
-      "displayName": "coin11",
+      "uuid": "7da26865-9342-4a2d-8b29-20e68816b624@f9941",
+      "displayName": "coin_tail_gray",
       "id": "f9941",
       "name": "spriteFrame",
       "userData": {
@@ -44,9 +44,9 @@
         "offsetX": 0,
         "offsetY": 0,
         "trimX": 0,
-        "trimY": 3,
+        "trimY": 0,
         "width": 33,
-        "height": 27,
+        "height": 33,
         "rawWidth": 33,
         "rawHeight": 33,
         "borderTop": 0,
@@ -55,7 +55,7 @@
         "borderRight": 0,
         "packable": true,
         "isUuid": true,
-        "imageUuidOrDatabaseUri": "9c5ff0ec-31ab-4484-8e5e-60928ba4142e@6c48a",
+        "imageUuidOrDatabaseUri": "7da26865-9342-4a2d-8b29-20e68816b624@6c48a",
         "atlasUuid": ""
       },
       "ver": "1.0.9",
@@ -70,6 +70,6 @@
     "type": "sprite-frame",
     "fixAlphaTransparencyArtifacts": true,
     "hasAlpha": true,
-    "redirect": "9c5ff0ec-31ab-4484-8e5e-60928ba4142e@f9941"
+    "redirect": "7da26865-9342-4a2d-8b29-20e68816b624@f9941"
   }
 }

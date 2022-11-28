@@ -2,7 +2,7 @@
   "ver": "1.0.23",
   "importer": "image",
   "imported": true,
-  "uuid": "9c5ff0ec-31ab-4484-8e5e-60928ba4142e",
+  "uuid": "5a377216-3031-456d-9dfb-b8e207df9084",
   "files": [
     ".json",
     ".png"
@@ -10,17 +10,17 @@
   "subMetas": {
     "6c48a": {
       "importer": "texture",
-      "uuid": "9c5ff0ec-31ab-4484-8e5e-60928ba4142e@6c48a",
-      "displayName": "coin11",
+      "uuid": "5a377216-3031-456d-9dfb-b8e207df9084@6c48a",
+      "displayName": "museum_door_4",
       "id": "6c48a",
       "name": "texture",
       "userData": {
         "wrapModeS": "clamp-to-edge",
         "wrapModeT": "clamp-to-edge",
-        "imageUuidOrDatabaseUri": "9c5ff0ec-31ab-4484-8e5e-60928ba4142e",
+        "imageUuidOrDatabaseUri": "5a377216-3031-456d-9dfb-b8e207df9084",
         "isUuid": true,
-        "minfilter": "linear",
-        "magfilter": "linear",
+        "minfilter": "nearest",
+        "magfilter": "nearest",
         "mipfilter": "none",
         "anisotropy": 0
       },
@@ -33,29 +33,29 @@
     },
     "f9941": {
       "importer": "sprite-frame",
-      "uuid": "9c5ff0ec-31ab-4484-8e5e-60928ba4142e@f9941",
-      "displayName": "coin11",
+      "uuid": "5a377216-3031-456d-9dfb-b8e207df9084@f9941",
+      "displayName": "museum_door_4",
       "id": "f9941",
       "name": "spriteFrame",
       "userData": {
-        "trimType": "auto",
+        "trimType": "none",
         "trimThreshold": 1,
         "rotated": false,
         "offsetX": 0,
         "offsetY": 0,
         "trimX": 0,
-        "trimY": 3,
-        "width": 33,
-        "height": 27,
-        "rawWidth": 33,
-        "rawHeight": 33,
+        "trimY": 0,
+        "width": 50,
+        "height": 69,
+        "rawWidth": 50,
+        "rawHeight": 69,
         "borderTop": 0,
         "borderBottom": 0,
         "borderLeft": 0,
         "borderRight": 0,
         "packable": true,
         "isUuid": true,
-        "imageUuidOrDatabaseUri": "9c5ff0ec-31ab-4484-8e5e-60928ba4142e@6c48a",
+        "imageUuidOrDatabaseUri": "5a377216-3031-456d-9dfb-b8e207df9084@6c48a",
         "atlasUuid": ""
       },
       "ver": "1.0.9",
@@ -70,6 +70,6 @@
     "type": "sprite-frame",
     "fixAlphaTransparencyArtifacts": true,
     "hasAlpha": true,
-    "redirect": "9c5ff0ec-31ab-4484-8e5e-60928ba4142e@f9941"
+    "redirect": "5a377216-3031-456d-9dfb-b8e207df9084@f9941"
   }
 }
