@@ -119,6 +119,9 @@
     "shopDoor": {
       "__id__": 315
     },
+    "museumDoor": {
+      "__id__": 291
+    },
     "fishingManagerNode": {
       "__id__": 366
     },
@@ -163,7 +166,7 @@
     "_prefab": null,
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 480,
+      "x": 480.00000000000006,
       "y": 320,
       "z": 0
     },
@@ -296,7 +299,7 @@
     "_prefab": null,
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 430,
+      "x": 429.9999999999999,
       "y": -270,
       "z": 0
     },
@@ -7725,8 +7728,8 @@
     "__prefab": null,
     "_alignFlags": 45,
     "_target": null,
-    "_left": 0,
-    "_right": 0,
+    "_left": 5.684341886080802e-14,
+    "_right": -1.7053025658242404e-13,
     "_top": 0,
     "_bottom": 0,
     "_horizontalCenter": 0,

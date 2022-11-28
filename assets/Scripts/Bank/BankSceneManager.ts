@@ -1,5 +1,5 @@
 import { _decorator, Camera, Color, Collider2D, director, Button } from 'cc'
-import spawnPositions from '../lib/spawnPosition'
+import spawnPositions from '../lib/spawnPositions'
 import { TopDownSceneManager } from '../lib/TopDownSceneManager'
 import { BankButtonsManager } from '../UI/Buttons/BankButtonsManager'
 

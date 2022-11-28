@@ -15,7 +15,7 @@ import {
   Color,
 } from 'cc'
 import { PersistentNode } from '../Menu/PersistentNode'
-import spawnPositions from '../lib/spawnPosition'
+import spawnPositions from '../lib/spawnPositions'
 
 const { ccclass, property } = _decorator
 

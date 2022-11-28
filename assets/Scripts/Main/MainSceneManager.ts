@@ -1,6 +1,6 @@
 import { _decorator, Node, Collider2D, Animation, director } from 'cc'
 import { FishingManager } from '../Fishing/FishingManager'
-import spawnPositions from '../lib/spawnPosition'
+import spawnPositions from '../lib/spawnPositions'
 import { TopDownSceneManager } from '../lib/TopDownSceneManager'
 
 const { ccclass, property } = _decorator
@@ -21,6 +21,9 @@ export class MainSceneManager extends TopDownSceneManager {
 
   @property({ type: Node })
   private shopDoor: Node | null = null
+
+  @property({ type: Node })
+  private museumDoor: Node | null = null
 
   @property({ type: Node })
   private fishingManagerNode: Node | null = null
@@ -48,6 +51,8 @@ export class MainSceneManager extends TopDownSceneManager {
         this.policeStationDoor.getComponent(Animation).play('PoliceStationDoorOpen')
       } else if (b.node.name === 'ShopDoorTrigger0') {
         this.shopDoor.getComponent(Animation).play('ShopDoorOpen')
+      } else if (b.node.name === 'MuseumDoorTrigger0') {
+        this.museumDoor.getComponent(Animation).play('MuseumDoorOpen')
       } else if (b.node.name === 'FishingTrigger') {
         this._fishing.activateFountainFishingButton()
       }
@@ -65,6 +70,8 @@ export class MainSceneManager extends TopDownSceneManager {
         this.policeStationDoor.getComponent(Animation).play('PoliceStationDoorOpen')
       } else if (a.node.name === 'ShopDoorTrigger0') {
         this.shopDoor.getComponent(Animation).play('ShopDoorOpen')
+      } else if (a.node.name === 'MuseumDoorTrigger0') {
+        this.museumDoor.getComponent(Animation).play('MuseumDoorOpen')
       } else if (a.node.name === 'FishingTrigger') {
         this._fishing.activateFountainFishingButton()
       }
@@ -89,6 +96,8 @@ export class MainSceneManager extends TopDownSceneManager {
         this.policeStationDoor.getComponent(Animation).play('PoliceStationDoorClose')
       } else if (b.node.name === 'ShopDoorTrigger0') {
         this.shopDoor.getComponent(Animation).play('ShopDoorClose')
+      } else if (b.node.name === 'MuseumDoorTrigger0') {
+        this.museumDoor.getComponent(Animation).play('MuseumDoorClose')
       } else if (b.node.name === 'FishingTrigger') {
         this._fishing.deactivateFountainFishingButton()
       }
@@ -103,6 +112,8 @@ export class MainSceneManager extends TopDownSceneManager {
         this.policeStationDoor.getComponent(Animation).play('PoliceStationDoorClose')
       } else if (a.node.name === 'ShopDoorTrigger0') {
         this.shopDoor.getComponent(Animation).play('ShopDoorClose')
+      } else if (a.node.name === 'MuseumDoorTrigger0') {
+        this.museumDoor.getComponent(Animation).play('MuseumDoorClose')
       } else if (a.node.name === 'FishingTrigger') {
         this._fishing.deactivateFountainFishingButton()
       }
