@@ -17,30 +17,19 @@ export class BankSceneManager extends TopDownSceneManager {
   // update(deltaTime: number) {}
 
   protected _onBeginContact(a: Collider2D, b: Collider2D) {
-    if (a.node.name === 'Player') {
-      if (b.node.name === 'MainTrigger') {
+    if (a.node.name === 'Player' || b.node.name === 'Player') {
+      if (b.node.name === 'MainTrigger' || a.node.name === 'MainTrigger') {
         this._persistentNode.spawnPosition = spawnPositions.mainBank
         director.loadScene('Main')
-      } else if (b.node.name === 'VaultTrigger') {
-        this._activateVaultButton()
-      }
-    } else if (b.node.name === 'Player') {
-      if (a.node.name === 'MainTrigger') {
-        this._persistentNode.spawnPosition = spawnPositions.mainBank
-        director.loadScene('Main')
-      } else if (a.node.name === 'VaultTrigger') {
+      } else if (b.node.name === 'VaultTrigger' || a.node.name === 'VaultTrigger') {
         this._activateVaultButton()
       }
     }
   }
 
   protected _onEndContact(a: Collider2D, b: Collider2D) {
-    if (a.node.name === 'Player') {
-      if (b.node.name === 'VaultTrigger') {
-        this._deactivateVaultButton()
-      }
-    } else if (b.node.name === 'Player') {
-      if (a.node.name === 'VaultTrigger') {
+    if (a.node.name === 'Player' || b.node.name === 'Player') {
+      if (b.node.name === 'VaultTrigger' || a.node.name === 'VaultTrigger') {
         this._deactivateVaultButton()
       }
     }

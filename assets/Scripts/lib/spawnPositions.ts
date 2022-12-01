@@ -8,6 +8,8 @@ const spawnPositions = {
   mainMuseum: new Vec3(-388, -490, 0),
   mainHouse: new Vec3(48, -559, 0),
   mainShop: new Vec3(416, -401, 0),
+  barEntrance: new Vec3(0, -230, 0),
+  barPachinko: new Vec3(-320, 0, 0),
   bankEntrance: new Vec3(0, -360, 0),
   bankVault: new Vec3(-160, 80, 0),
 }
