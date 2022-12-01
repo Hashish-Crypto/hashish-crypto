@@ -2,7 +2,7 @@
   "ver": "1.0.23",
   "importer": "image",
   "imported": true,
-  "uuid": "5bd4b453-518d-41bb-a564-7ddb9c7e56c2",
+  "uuid": "945bddc5-80c4-4503-a95f-46564a532827",
   "files": [
     ".json",
     ".png"
@@ -10,17 +10,17 @@
   "subMetas": {
     "6c48a": {
       "importer": "texture",
-      "uuid": "5bd4b453-518d-41bb-a564-7ddb9c7e56c2@6c48a",
-      "displayName": "fishing-rod",
+      "uuid": "945bddc5-80c4-4503-a95f-46564a532827@6c48a",
+      "displayName": "hook",
       "id": "6c48a",
       "name": "texture",
       "userData": {
         "wrapModeS": "clamp-to-edge",
         "wrapModeT": "clamp-to-edge",
-        "imageUuidOrDatabaseUri": "5bd4b453-518d-41bb-a564-7ddb9c7e56c2",
+        "imageUuidOrDatabaseUri": "945bddc5-80c4-4503-a95f-46564a532827",
         "isUuid": true,
-        "minfilter": "linear",
-        "magfilter": "linear",
+        "minfilter": "nearest",
+        "magfilter": "nearest",
         "mipfilter": "none",
         "anisotropy": 0
       },
@@ -33,8 +33,8 @@
     },
     "f9941": {
       "importer": "sprite-frame",
-      "uuid": "5bd4b453-518d-41bb-a564-7ddb9c7e56c2@f9941",
-      "displayName": "fishing-rod",
+      "uuid": "945bddc5-80c4-4503-a95f-46564a532827@f9941",
+      "displayName": "hook",
       "id": "f9941",
       "name": "spriteFrame",
       "userData": {
@@ -45,17 +45,17 @@
         "offsetY": 0,
         "trimX": 0,
         "trimY": 0,
-        "width": 82,
-        "height": 640,
-        "rawWidth": 82,
-        "rawHeight": 640,
+        "width": 10,
+        "height": 15,
+        "rawWidth": 10,
+        "rawHeight": 15,
         "borderTop": 0,
         "borderBottom": 0,
         "borderLeft": 0,
         "borderRight": 0,
         "packable": true,
         "isUuid": true,
-        "imageUuidOrDatabaseUri": "5bd4b453-518d-41bb-a564-7ddb9c7e56c2@6c48a",
+        "imageUuidOrDatabaseUri": "945bddc5-80c4-4503-a95f-46564a532827@6c48a",
         "atlasUuid": ""
       },
       "ver": "1.0.9",
@@ -70,6 +70,6 @@
     "type": "sprite-frame",
     "fixAlphaTransparencyArtifacts": true,
     "hasAlpha": true,
-    "redirect": "5bd4b453-518d-41bb-a564-7ddb9c7e56c2@f9941"
+    "redirect": "945bddc5-80c4-4503-a95f-46564a532827@f9941"
   }
 }
