@@ -18,7 +18,7 @@
         "__id__": 2
       },
       {
-        "__id__": 366
+        "__id__": 356
       },
       {
         "__id__": 216
@@ -30,11 +30,11 @@
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 368
+      "__id__": 358
     },
     "autoReleaseAssets": false,
     "_globals": {
-      "__id__": 369
+      "__id__": 359
     },
     "_id": "5dd95b4b-db1f-468c-b48b-d7f9ed5c9f2e"
   },
@@ -105,25 +105,25 @@
       "__expectedType__": "cc.Prefab"
     },
     "bankDoor": {
-      "__id__": 279
+      "__id__": 277
     },
     "barDoor": {
       "__id__": 267
     },
     "houseDoor": {
-      "__id__": 303
+      "__id__": 297
     },
     "policeStationDoor": {
       "__id__": 255
     },
     "shopDoor": {
-      "__id__": 315
+      "__id__": 307
     },
     "museumDoor": {
-      "__id__": 291
+      "__id__": 287
     },
     "fishingManagerNode": {
-      "__id__": 366
+      "__id__": 356
     },
     "_id": "24aC87dxVNzKGz6cKgapMG"
   },
@@ -166,7 +166,7 @@
     "_prefab": null,
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 480.00000000000017,
+      "x": 480.00000000000006,
       "y": 320,
       "z": 0
     },
@@ -299,7 +299,7 @@
     "_prefab": null,
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 430.0000000000001,
+      "x": 429.9999999999999,
       "y": -270,
       "z": 0
     },
@@ -7728,8 +7728,8 @@
     "__prefab": null,
     "_alignFlags": 45,
     "_target": null,
-    "_left": 1.7053025658242404e-13,
-    "_right": -5.684341886080802e-14,
+    "_left": 5.684341886080802e-14,
+    "_right": -1.7053025658242404e-13,
     "_top": 0,
     "_bottom": 0,
     "_horizontalCenter": 0,
@@ -7809,61 +7809,61 @@
         "__id__": 267
       },
       {
-        "__id__": 279
+        "__id__": 277
       },
       {
-        "__id__": 291
+        "__id__": 287
       },
       {
-        "__id__": 303
+        "__id__": 297
       },
       {
-        "__id__": 315
+        "__id__": 307
       },
       {
-        "__id__": 327
+        "__id__": 317
       },
       {
-        "__id__": 330
+        "__id__": 320
       },
       {
-        "__id__": 333
+        "__id__": 323
       },
       {
-        "__id__": 336
+        "__id__": 326
       },
       {
-        "__id__": 339
+        "__id__": 329
       },
       {
-        "__id__": 342
+        "__id__": 332
       },
       {
-        "__id__": 345
+        "__id__": 335
       },
       {
-        "__id__": 348
+        "__id__": 338
       },
       {
-        "__id__": 351
+        "__id__": 341
       },
       {
-        "__id__": 354
+        "__id__": 344
       },
       {
-        "__id__": 357
+        "__id__": 347
       }
     ],
     "_active": true,
     "_components": [
       {
-        "__id__": 363
+        "__id__": 353
       },
       {
-        "__id__": 364
+        "__id__": 354
       },
       {
-        "__id__": 365
+        "__id__": 355
       }
     ],
     "_prefab": null,
@@ -9449,19 +9449,19 @@
         "__id__": 268
       },
       {
-        "__id__": 272
+        "__id__": 271
       }
     ],
     "_active": true,
     "_components": [
       {
+        "__id__": 274
+      },
+      {
+        "__id__": 275
+      },
+      {
         "__id__": 276
-      },
-      {
-        "__id__": 277
-      },
-      {
-        "__id__": 278
       }
     ],
     "_prefab": null,
@@ -9508,9 +9508,6 @@
       },
       {
         "__id__": 270
-      },
-      {
-        "__id__": 271
       }
     ],
     "_prefab": null,
@@ -9541,27 +9538,6 @@
       "z": 0
     },
     "_id": "b2feG1AzlPjod7q469y8s6"
-  },
-  {
-    "__type__": "cc.UITransform",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 268
-    },
-    "_enabled": true,
-    "__prefab": null,
-    "_contentSize": {
-      "__type__": "cc.Size",
-      "width": 110,
-      "height": 110
-    },
-    "_anchorPoint": {
-      "__type__": "cc.Vec2",
-      "x": 0.5,
-      "y": 0.5
-    },
-    "_id": "dbVQAgwKVKKZPRfzNQD1eO"
   },
   {
     "__type__": "cc.RigidBody2D",
@@ -9628,13 +9604,10 @@
     "_active": true,
     "_components": [
       {
+        "__id__": 272
+      },
+      {
         "__id__": 273
-      },
-      {
-        "__id__": 274
-      },
-      {
-        "__id__": 275
       }
     ],
     "_prefab": null,
@@ -9667,32 +9640,11 @@
     "_id": "9bgEMdfS5G66IcPF+RQl8U"
   },
   {
-    "__type__": "cc.UITransform",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 272
-    },
-    "_enabled": true,
-    "__prefab": null,
-    "_contentSize": {
-      "__type__": "cc.Size",
-      "width": 35,
-      "height": 35
-    },
-    "_anchorPoint": {
-      "__type__": "cc.Vec2",
-      "x": 0.5,
-      "y": 0.5
-    },
-    "_id": "bfNv8DdxVC5rOWFifIzMCq"
-  },
-  {
     "__type__": "cc.RigidBody2D",
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 272
+      "__id__": 271
     },
     "_enabled": true,
     "__prefab": null,
@@ -9719,7 +9671,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 272
+      "__id__": 271
     },
     "_enabled": true,
     "__prefab": null,
@@ -9833,22 +9785,22 @@
     },
     "_children": [
       {
-        "__id__": 280
+        "__id__": 278
       },
       {
-        "__id__": 284
+        "__id__": 281
       }
     ],
     "_active": true,
     "_components": [
       {
-        "__id__": 288
+        "__id__": 284
       },
       {
-        "__id__": 289
+        "__id__": 285
       },
       {
-        "__id__": 290
+        "__id__": 286
       }
     ],
     "_prefab": null,
@@ -9885,14 +9837,111 @@
     "_name": "BankDoorTrigger0",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 279
+      "__id__": 277
     },
     "_children": [],
     "_active": true,
     "_components": [
       {
-        "__id__": 281
+        "__id__": 279
       },
+      {
+        "__id__": 280
+      }
+    ],
+    "_prefab": null,
+    "_lpos": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_lrot": {
+      "__type__": "cc.Quat",
+      "x": 0,
+      "y": 0,
+      "z": 0,
+      "w": 1
+    },
+    "_lscale": {
+      "__type__": "cc.Vec3",
+      "x": 1,
+      "y": 1,
+      "z": 1
+    },
+    "_layer": 1073741824,
+    "_euler": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_id": "48+zheG1lDF5FSYpVh47VU"
+  },
+  {
+    "__type__": "cc.RigidBody2D",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 278
+    },
+    "_enabled": true,
+    "__prefab": null,
+    "enabledContactListener": true,
+    "bullet": false,
+    "awakeOnLoad": true,
+    "_group": 8,
+    "_type": 0,
+    "_allowSleep": true,
+    "_gravityScale": 1,
+    "_linearDamping": 0,
+    "_angularDamping": 0,
+    "_linearVelocity": {
+      "__type__": "cc.Vec2",
+      "x": 0,
+      "y": 0
+    },
+    "_angularVelocity": 0,
+    "_fixedRotation": true,
+    "_id": "c2/rwp7MBAFINP3UPxzUVP"
+  },
+  {
+    "__type__": "cc.BoxCollider2D",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 278
+    },
+    "_enabled": true,
+    "__prefab": null,
+    "tag": 0,
+    "_group": 8,
+    "_density": 1,
+    "_sensor": true,
+    "_friction": 0.2,
+    "_restitution": 0,
+    "_offset": {
+      "__type__": "cc.Vec2",
+      "x": 0,
+      "y": 0
+    },
+    "_size": {
+      "__type__": "cc.Size",
+      "width": 110,
+      "height": 110
+    },
+    "_id": "a1ME+sg49N7YlH3LR9HWiC"
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "BankDoorTrigger1",
+    "_objFlags": 0,
+    "_parent": {
+      "__id__": 277
+    },
+    "_children": [],
+    "_active": true,
+    "_components": [
       {
         "__id__": 282
       },
@@ -9927,159 +9976,14 @@
       "y": 0,
       "z": 0
     },
-    "_id": "48+zheG1lDF5FSYpVh47VU"
-  },
-  {
-    "__type__": "cc.UITransform",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 280
-    },
-    "_enabled": true,
-    "__prefab": null,
-    "_contentSize": {
-      "__type__": "cc.Size",
-      "width": 110,
-      "height": 110
-    },
-    "_anchorPoint": {
-      "__type__": "cc.Vec2",
-      "x": 0.5,
-      "y": 0.5
-    },
-    "_id": "46+dgsSLJMZ4oPEWqDdz37"
-  },
-  {
-    "__type__": "cc.RigidBody2D",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 280
-    },
-    "_enabled": true,
-    "__prefab": null,
-    "enabledContactListener": true,
-    "bullet": false,
-    "awakeOnLoad": true,
-    "_group": 8,
-    "_type": 0,
-    "_allowSleep": true,
-    "_gravityScale": 1,
-    "_linearDamping": 0,
-    "_angularDamping": 0,
-    "_linearVelocity": {
-      "__type__": "cc.Vec2",
-      "x": 0,
-      "y": 0
-    },
-    "_angularVelocity": 0,
-    "_fixedRotation": true,
-    "_id": "c2/rwp7MBAFINP3UPxzUVP"
-  },
-  {
-    "__type__": "cc.BoxCollider2D",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 280
-    },
-    "_enabled": true,
-    "__prefab": null,
-    "tag": 0,
-    "_group": 8,
-    "_density": 1,
-    "_sensor": true,
-    "_friction": 0.2,
-    "_restitution": 0,
-    "_offset": {
-      "__type__": "cc.Vec2",
-      "x": 0,
-      "y": 0
-    },
-    "_size": {
-      "__type__": "cc.Size",
-      "width": 110,
-      "height": 110
-    },
-    "_id": "a1ME+sg49N7YlH3LR9HWiC"
-  },
-  {
-    "__type__": "cc.Node",
-    "_name": "BankDoorTrigger1",
-    "_objFlags": 0,
-    "_parent": {
-      "__id__": 279
-    },
-    "_children": [],
-    "_active": true,
-    "_components": [
-      {
-        "__id__": 285
-      },
-      {
-        "__id__": 286
-      },
-      {
-        "__id__": 287
-      }
-    ],
-    "_prefab": null,
-    "_lpos": {
-      "__type__": "cc.Vec3",
-      "x": 0,
-      "y": 0,
-      "z": 0
-    },
-    "_lrot": {
-      "__type__": "cc.Quat",
-      "x": 0,
-      "y": 0,
-      "z": 0,
-      "w": 1
-    },
-    "_lscale": {
-      "__type__": "cc.Vec3",
-      "x": 1,
-      "y": 1,
-      "z": 1
-    },
-    "_layer": 1073741824,
-    "_euler": {
-      "__type__": "cc.Vec3",
-      "x": 0,
-      "y": 0,
-      "z": 0
-    },
     "_id": "68vZxzogRMYpTI95IAY4Eq"
   },
   {
-    "__type__": "cc.UITransform",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 284
-    },
-    "_enabled": true,
-    "__prefab": null,
-    "_contentSize": {
-      "__type__": "cc.Size",
-      "width": 35,
-      "height": 35
-    },
-    "_anchorPoint": {
-      "__type__": "cc.Vec2",
-      "x": 0.5,
-      "y": 0.5
-    },
-    "_id": "e65C1zarhAiY7a8PEaFFCK"
-  },
-  {
     "__type__": "cc.RigidBody2D",
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 284
+      "__id__": 281
     },
     "_enabled": true,
     "__prefab": null,
@@ -10106,7 +10010,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 284
+      "__id__": 281
     },
     "_enabled": true,
     "__prefab": null,
@@ -10133,7 +10037,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 279
+      "__id__": 277
     },
     "_enabled": true,
     "__prefab": null,
@@ -10154,7 +10058,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 279
+      "__id__": 277
     },
     "_enabled": true,
     "__prefab": null,
@@ -10193,7 +10097,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 279
+      "__id__": 277
     },
     "_enabled": true,
     "__prefab": null,
@@ -10220,22 +10124,22 @@
     },
     "_children": [
       {
-        "__id__": 292
+        "__id__": 288
       },
       {
-        "__id__": 296
+        "__id__": 291
       }
     ],
     "_active": true,
     "_components": [
       {
-        "__id__": 300
+        "__id__": 294
       },
       {
-        "__id__": 301
+        "__id__": 295
       },
       {
-        "__id__": 302
+        "__id__": 296
       }
     ],
     "_prefab": null,
@@ -10272,19 +10176,16 @@
     "_name": "MuseumDoorTrigger0",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 291
+      "__id__": 287
     },
     "_children": [],
     "_active": true,
     "_components": [
       {
-        "__id__": 293
+        "__id__": 289
       },
       {
-        "__id__": 294
-      },
-      {
-        "__id__": 295
+        "__id__": 290
       }
     ],
     "_prefab": null,
@@ -10317,32 +10218,11 @@
     "_id": "5acfM4cX1DeLSVmqcHHtCM"
   },
   {
-    "__type__": "cc.UITransform",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 292
-    },
-    "_enabled": true,
-    "__prefab": null,
-    "_contentSize": {
-      "__type__": "cc.Size",
-      "width": 110,
-      "height": 110
-    },
-    "_anchorPoint": {
-      "__type__": "cc.Vec2",
-      "x": 0.5,
-      "y": 0.5
-    },
-    "_id": "a0/2ZasFlF+rlse0OD4Ecg"
-  },
-  {
     "__type__": "cc.RigidBody2D",
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 292
+      "__id__": 288
     },
     "_enabled": true,
     "__prefab": null,
@@ -10369,7 +10249,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 292
+      "__id__": 288
     },
     "_enabled": true,
     "__prefab": null,
@@ -10396,19 +10276,16 @@
     "_name": "MuseumDoorTrigger1",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 291
+      "__id__": 287
     },
     "_children": [],
     "_active": true,
     "_components": [
       {
-        "__id__": 297
+        "__id__": 292
       },
       {
-        "__id__": 298
-      },
-      {
-        "__id__": 299
+        "__id__": 293
       }
     ],
     "_prefab": null,
@@ -10441,32 +10318,11 @@
     "_id": "01zhRu5A1ML6MsqufBJNR7"
   },
   {
-    "__type__": "cc.UITransform",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 296
-    },
-    "_enabled": true,
-    "__prefab": null,
-    "_contentSize": {
-      "__type__": "cc.Size",
-      "width": 35,
-      "height": 35
-    },
-    "_anchorPoint": {
-      "__type__": "cc.Vec2",
-      "x": 0.5,
-      "y": 0.5
-    },
-    "_id": "35w9xhhhlGcoykCmitcdYi"
-  },
-  {
     "__type__": "cc.RigidBody2D",
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 296
+      "__id__": 291
     },
     "_enabled": true,
     "__prefab": null,
@@ -10493,7 +10349,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 296
+      "__id__": 291
     },
     "_enabled": true,
     "__prefab": null,
@@ -10520,7 +10376,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 291
+      "__id__": 287
     },
     "_enabled": true,
     "__prefab": null,
@@ -10541,7 +10397,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 291
+      "__id__": 287
     },
     "_enabled": true,
     "__prefab": null,
@@ -10580,7 +10436,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 291
+      "__id__": 287
     },
     "_enabled": true,
     "__prefab": null,
@@ -10607,22 +10463,22 @@
     },
     "_children": [
       {
-        "__id__": 304
+        "__id__": 298
       },
       {
-        "__id__": 308
+        "__id__": 301
       }
     ],
     "_active": true,
     "_components": [
       {
-        "__id__": 312
+        "__id__": 304
       },
       {
-        "__id__": 313
+        "__id__": 305
       },
       {
-        "__id__": 314
+        "__id__": 306
       }
     ],
     "_prefab": null,
@@ -10659,19 +10515,16 @@
     "_name": "HouseDoorTrigger0",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 303
+      "__id__": 297
     },
     "_children": [],
     "_active": true,
     "_components": [
       {
-        "__id__": 305
+        "__id__": 299
       },
       {
-        "__id__": 306
-      },
-      {
-        "__id__": 307
+        "__id__": 300
       }
     ],
     "_prefab": null,
@@ -10704,32 +10557,11 @@
     "_id": "641oMWHb5IYIU9u2TZ9Ida"
   },
   {
-    "__type__": "cc.UITransform",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 304
-    },
-    "_enabled": true,
-    "__prefab": null,
-    "_contentSize": {
-      "__type__": "cc.Size",
-      "width": 110,
-      "height": 110
-    },
-    "_anchorPoint": {
-      "__type__": "cc.Vec2",
-      "x": 0.5,
-      "y": 0.5
-    },
-    "_id": "3cFFZbAgZLV7y2m2UaG2gl"
-  },
-  {
     "__type__": "cc.RigidBody2D",
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 304
+      "__id__": 298
     },
     "_enabled": true,
     "__prefab": null,
@@ -10756,7 +10588,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 304
+      "__id__": 298
     },
     "_enabled": true,
     "__prefab": null,
@@ -10783,19 +10615,16 @@
     "_name": "HouseDoorTrigger1",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 303
+      "__id__": 297
     },
     "_children": [],
     "_active": true,
     "_components": [
       {
-        "__id__": 309
+        "__id__": 302
       },
       {
-        "__id__": 310
-      },
-      {
-        "__id__": 311
+        "__id__": 303
       }
     ],
     "_prefab": null,
@@ -10828,32 +10657,11 @@
     "_id": "4f8djuoZlMc6NZ7LZZO3dS"
   },
   {
-    "__type__": "cc.UITransform",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 308
-    },
-    "_enabled": true,
-    "__prefab": null,
-    "_contentSize": {
-      "__type__": "cc.Size",
-      "width": 35,
-      "height": 35
-    },
-    "_anchorPoint": {
-      "__type__": "cc.Vec2",
-      "x": 0.5,
-      "y": 0.5
-    },
-    "_id": "bfp8qf+b9HJI76AmpUSocG"
-  },
-  {
     "__type__": "cc.RigidBody2D",
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 308
+      "__id__": 301
     },
     "_enabled": true,
     "__prefab": null,
@@ -10880,7 +10688,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 308
+      "__id__": 301
     },
     "_enabled": true,
     "__prefab": null,
@@ -10907,7 +10715,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 303
+      "__id__": 297
     },
     "_enabled": true,
     "__prefab": null,
@@ -10928,7 +10736,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 303
+      "__id__": 297
     },
     "_enabled": true,
     "__prefab": null,
@@ -10967,7 +10775,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 303
+      "__id__": 297
     },
     "_enabled": true,
     "__prefab": null,
@@ -10994,22 +10802,22 @@
     },
     "_children": [
       {
-        "__id__": 316
+        "__id__": 308
       },
       {
-        "__id__": 320
+        "__id__": 311
       }
     ],
     "_active": true,
     "_components": [
       {
-        "__id__": 324
+        "__id__": 314
       },
       {
-        "__id__": 325
+        "__id__": 315
       },
       {
-        "__id__": 326
+        "__id__": 316
       }
     ],
     "_prefab": null,
@@ -11046,19 +10854,16 @@
     "_name": "ShopDoorTrigger0",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 315
+      "__id__": 307
     },
     "_children": [],
     "_active": true,
     "_components": [
       {
-        "__id__": 317
+        "__id__": 309
       },
       {
-        "__id__": 318
-      },
-      {
-        "__id__": 319
+        "__id__": 310
       }
     ],
     "_prefab": null,
@@ -11091,32 +10896,11 @@
     "_id": "6fX/JuqGVLC53gvCZlASsB"
   },
   {
-    "__type__": "cc.UITransform",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 316
-    },
-    "_enabled": true,
-    "__prefab": null,
-    "_contentSize": {
-      "__type__": "cc.Size",
-      "width": 110,
-      "height": 110
-    },
-    "_anchorPoint": {
-      "__type__": "cc.Vec2",
-      "x": 0.5,
-      "y": 0.5
-    },
-    "_id": "808Kt9BP1INKCQ5/ySY4hq"
-  },
-  {
     "__type__": "cc.RigidBody2D",
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 316
+      "__id__": 308
     },
     "_enabled": true,
     "__prefab": null,
@@ -11143,7 +10927,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 316
+      "__id__": 308
     },
     "_enabled": true,
     "__prefab": null,
@@ -11170,19 +10954,16 @@
     "_name": "ShopDoorTrigger1",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 315
+      "__id__": 307
     },
     "_children": [],
     "_active": true,
     "_components": [
       {
-        "__id__": 321
+        "__id__": 312
       },
       {
-        "__id__": 322
-      },
-      {
-        "__id__": 323
+        "__id__": 313
       }
     ],
     "_prefab": null,
@@ -11215,32 +10996,11 @@
     "_id": "10Entw3TZM3odx31Rlo32D"
   },
   {
-    "__type__": "cc.UITransform",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 320
-    },
-    "_enabled": true,
-    "__prefab": null,
-    "_contentSize": {
-      "__type__": "cc.Size",
-      "width": 35,
-      "height": 35
-    },
-    "_anchorPoint": {
-      "__type__": "cc.Vec2",
-      "x": 0.5,
-      "y": 0.5
-    },
-    "_id": "c7aO7Tj91KYqOZOoUatc8A"
-  },
-  {
     "__type__": "cc.RigidBody2D",
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 320
+      "__id__": 311
     },
     "_enabled": true,
     "__prefab": null,
@@ -11267,7 +11027,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 320
+      "__id__": 311
     },
     "_enabled": true,
     "__prefab": null,
@@ -11294,7 +11054,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 315
+      "__id__": 307
     },
     "_enabled": true,
     "__prefab": null,
@@ -11315,7 +11075,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 315
+      "__id__": 307
     },
     "_enabled": true,
     "__prefab": null,
@@ -11354,7 +11114,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 315
+      "__id__": 307
     },
     "_enabled": true,
     "__prefab": null,
@@ -11383,10 +11143,10 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 328
+        "__id__": 318
       },
       {
-        "__id__": 329
+        "__id__": 319
       }
     ],
     "_prefab": null,
@@ -11423,7 +11183,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 327
+      "__id__": 317
     },
     "_enabled": true,
     "__prefab": null,
@@ -11450,7 +11210,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 327
+      "__id__": 317
     },
     "_enabled": true,
     "__prefab": null,
@@ -11483,10 +11243,10 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 331
+        "__id__": 321
       },
       {
-        "__id__": 332
+        "__id__": 322
       }
     ],
     "_prefab": null,
@@ -11523,7 +11283,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 330
+      "__id__": 320
     },
     "_enabled": true,
     "__prefab": null,
@@ -11550,7 +11310,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 330
+      "__id__": 320
     },
     "_enabled": true,
     "__prefab": null,
@@ -11583,10 +11343,10 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 334
+        "__id__": 324
       },
       {
-        "__id__": 335
+        "__id__": 325
       }
     ],
     "_prefab": null,
@@ -11623,7 +11383,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 333
+      "__id__": 323
     },
     "_enabled": true,
     "__prefab": null,
@@ -11650,7 +11410,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 333
+      "__id__": 323
     },
     "_enabled": true,
     "__prefab": null,
@@ -11683,10 +11443,10 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 337
+        "__id__": 327
       },
       {
-        "__id__": 338
+        "__id__": 328
       }
     ],
     "_prefab": null,
@@ -11723,7 +11483,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 336
+      "__id__": 326
     },
     "_enabled": true,
     "__prefab": null,
@@ -11750,7 +11510,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 336
+      "__id__": 326
     },
     "_enabled": true,
     "__prefab": null,
@@ -11783,10 +11543,10 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 340
+        "__id__": 330
       },
       {
-        "__id__": 341
+        "__id__": 331
       }
     ],
     "_prefab": null,
@@ -11823,7 +11583,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 339
+      "__id__": 329
     },
     "_enabled": true,
     "__prefab": null,
@@ -11850,7 +11610,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 339
+      "__id__": 329
     },
     "_enabled": true,
     "__prefab": null,
@@ -12020,10 +11780,10 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 343
+        "__id__": 333
       },
       {
-        "__id__": 344
+        "__id__": 334
       }
     ],
     "_prefab": null,
@@ -12060,7 +11820,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 342
+      "__id__": 332
     },
     "_enabled": true,
     "__prefab": null,
@@ -12087,7 +11847,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 342
+      "__id__": 332
     },
     "_enabled": true,
     "__prefab": null,
@@ -12377,10 +12137,10 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 346
+        "__id__": 336
       },
       {
-        "__id__": 347
+        "__id__": 337
       }
     ],
     "_prefab": null,
@@ -12417,7 +12177,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 345
+      "__id__": 335
     },
     "_enabled": true,
     "__prefab": null,
@@ -12444,7 +12204,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 345
+      "__id__": 335
     },
     "_enabled": true,
     "__prefab": null,
@@ -12614,10 +12374,10 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 349
+        "__id__": 339
       },
       {
-        "__id__": 350
+        "__id__": 340
       }
     ],
     "_prefab": null,
@@ -12654,7 +12414,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 348
+      "__id__": 338
     },
     "_enabled": true,
     "__prefab": null,
@@ -12681,7 +12441,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 348
+      "__id__": 338
     },
     "_enabled": true,
     "__prefab": null,
@@ -12861,10 +12621,10 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 352
+        "__id__": 342
       },
       {
-        "__id__": 353
+        "__id__": 343
       }
     ],
     "_prefab": null,
@@ -12901,7 +12661,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 351
+      "__id__": 341
     },
     "_enabled": true,
     "__prefab": null,
@@ -12928,7 +12688,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 351
+      "__id__": 341
     },
     "_enabled": true,
     "__prefab": null,
@@ -13078,10 +12838,10 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 355
+        "__id__": 345
       },
       {
-        "__id__": 356
+        "__id__": 346
       }
     ],
     "_prefab": null,
@@ -13118,7 +12878,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 354
+      "__id__": 344
     },
     "_enabled": true,
     "__prefab": null,
@@ -13145,7 +12905,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 354
+      "__id__": 344
     },
     "_enabled": true,
     "__prefab": null,
@@ -13363,16 +13123,16 @@
     },
     "_children": [
       {
-        "__id__": 358
+        "__id__": 348
       }
     ],
     "_active": true,
     "_components": [
       {
-        "__id__": 361
+        "__id__": 351
       },
       {
-        "__id__": 362
+        "__id__": 352
       }
     ],
     "_prefab": null,
@@ -13409,16 +13169,16 @@
     "_name": "FishingTrigger",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 357
+      "__id__": 347
     },
     "_children": [],
     "_active": true,
     "_components": [
       {
-        "__id__": 359
+        "__id__": 349
       },
       {
-        "__id__": 360
+        "__id__": 350
       }
     ],
     "_prefab": null,
@@ -13455,7 +13215,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 358
+      "__id__": 348
     },
     "_enabled": true,
     "__prefab": null,
@@ -13482,7 +13242,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 358
+      "__id__": 348
     },
     "_enabled": true,
     "__prefab": null,
@@ -13509,7 +13269,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 357
+      "__id__": 347
     },
     "_enabled": true,
     "__prefab": null,
@@ -13536,7 +13296,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 357
+      "__id__": 347
     },
     "_enabled": true,
     "__prefab": null,
@@ -13669,7 +13429,7 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 367
+        "__id__": 357
       }
     ],
     "_prefab": null,
@@ -13706,7 +13466,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 366
+      "__id__": 356
     },
     "_enabled": true,
     "__prefab": null,
@@ -13739,19 +13499,19 @@
   {
     "__type__": "cc.SceneGlobals",
     "ambient": {
-      "__id__": 370
+      "__id__": 360
     },
     "shadows": {
-      "__id__": 371
+      "__id__": 361
     },
     "_skybox": {
-      "__id__": 372
+      "__id__": 362
     },
     "fog": {
-      "__id__": 373
+      "__id__": 363
     },
     "octree": {
-      "__id__": 374
+      "__id__": 364
     }
   },
   {

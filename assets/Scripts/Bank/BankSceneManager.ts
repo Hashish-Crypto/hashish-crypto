@@ -12,6 +12,7 @@ export class BankSceneManager extends TopDownSceneManager {
   protected _onLoadExtension() {
     this._buttonsManager = this.gameUI.getComponentInChildren(BankButtonsManager)
     this._player.node.getChildByName('Camera').getComponent(Camera).clearColor = new Color('#000000')
+    this._player.node.getParent().setSiblingIndex(4)
   }
 
   // update(deltaTime: number) {}
