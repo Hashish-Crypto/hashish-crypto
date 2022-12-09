@@ -19,8 +19,8 @@
         "wrapModeT": "clamp-to-edge",
         "imageUuidOrDatabaseUri": "5bd4b453-518d-41bb-a564-7ddb9c7e56c2",
         "isUuid": true,
-        "minfilter": "nearest",
-        "magfilter": "nearest",
+        "minfilter": "linear",
+        "magfilter": "linear",
         "mipfilter": "none",
         "anisotropy": 0
       },

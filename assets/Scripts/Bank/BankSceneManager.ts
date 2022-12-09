@@ -1,5 +1,5 @@
 import { _decorator, Camera, Color, Collider2D, director, Button } from 'cc'
-import spawnPositions from '../lib/spawnPosition'
+import spawnPositions from '../lib/spawnPositions'
 import { TopDownSceneManager } from '../lib/TopDownSceneManager'
 import { BankButtonsManager } from '../UI/Buttons/BankButtonsManager'
 
@@ -12,35 +12,25 @@ export class BankSceneManager extends TopDownSceneManager {
   protected _onLoadExtension() {
     this._buttonsManager = this.gameUI.getComponentInChildren(BankButtonsManager)
     this._player.node.getChildByName('Camera').getComponent(Camera).clearColor = new Color('#000000')
+    this._player.node.getParent().setSiblingIndex(4)
   }
 
   // update(deltaTime: number) {}
 
   protected _onBeginContact(a: Collider2D, b: Collider2D) {
-    if (a.node.name === 'Player') {
-      if (b.node.name === 'MainTrigger') {
+    if (a.node.name === 'Player' || b.node.name === 'Player') {
+      if (b.node.name === 'MainTrigger' || a.node.name === 'MainTrigger') {
         this._persistentNode.spawnPosition = spawnPositions.mainBank
         director.loadScene('Main')
-      } else if (b.node.name === 'VaultTrigger') {
-        this._activateVaultButton()
-      }
-    } else if (b.node.name === 'Player') {
-      if (a.node.name === 'MainTrigger') {
-        this._persistentNode.spawnPosition = spawnPositions.mainBank
-        director.loadScene('Main')
-      } else if (a.node.name === 'VaultTrigger') {
+      } else if (b.node.name === 'VaultTrigger' || a.node.name === 'VaultTrigger') {
         this._activateVaultButton()
       }
     }
   }
 
   protected _onEndContact(a: Collider2D, b: Collider2D) {
-    if (a.node.name === 'Player') {
-      if (b.node.name === 'VaultTrigger') {
-        this._deactivateVaultButton()
-      }
-    } else if (b.node.name === 'Player') {
-      if (a.node.name === 'VaultTrigger') {
+    if (a.node.name === 'Player' || b.node.name === 'Player') {
+      if (b.node.name === 'VaultTrigger' || a.node.name === 'VaultTrigger') {
         this._deactivateVaultButton()
       }
     }

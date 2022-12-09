@@ -2,7 +2,7 @@
   "ver": "1.0.23",
   "importer": "image",
   "imported": true,
-  "uuid": "dc41c3fe-e42a-4740-8c38-d7e0b7e92f3a",
+  "uuid": "9521300a-1d0e-49ae-a03a-032f890ba108",
   "files": [
     ".json",
     ".png"
@@ -10,14 +10,14 @@
   "subMetas": {
     "6c48a": {
       "importer": "texture",
-      "uuid": "dc41c3fe-e42a-4740-8c38-d7e0b7e92f3a@6c48a",
+      "uuid": "9521300a-1d0e-49ae-a03a-032f890ba108@6c48a",
       "displayName": "cancel_button",
       "id": "6c48a",
       "name": "texture",
       "userData": {
         "wrapModeS": "clamp-to-edge",
         "wrapModeT": "clamp-to-edge",
-        "imageUuidOrDatabaseUri": "dc41c3fe-e42a-4740-8c38-d7e0b7e92f3a",
+        "imageUuidOrDatabaseUri": "9521300a-1d0e-49ae-a03a-032f890ba108",
         "isUuid": true,
         "minfilter": "linear",
         "magfilter": "linear",
@@ -33,7 +33,7 @@
     },
     "f9941": {
       "importer": "sprite-frame",
-      "uuid": "dc41c3fe-e42a-4740-8c38-d7e0b7e92f3a@f9941",
+      "uuid": "9521300a-1d0e-49ae-a03a-032f890ba108@f9941",
       "displayName": "cancel_button",
       "id": "f9941",
       "name": "spriteFrame",
@@ -55,7 +55,7 @@
         "borderRight": 0,
         "packable": true,
         "isUuid": true,
-        "imageUuidOrDatabaseUri": "dc41c3fe-e42a-4740-8c38-d7e0b7e92f3a@6c48a",
+        "imageUuidOrDatabaseUri": "9521300a-1d0e-49ae-a03a-032f890ba108@6c48a",
         "atlasUuid": ""
       },
       "ver": "1.0.9",
@@ -70,6 +70,6 @@
     "type": "sprite-frame",
     "fixAlphaTransparencyArtifacts": true,
     "hasAlpha": true,
-    "redirect": "dc41c3fe-e42a-4740-8c38-d7e0b7e92f3a@f9941"
+    "redirect": "9521300a-1d0e-49ae-a03a-032f890ba108@f9941"
   }
 }

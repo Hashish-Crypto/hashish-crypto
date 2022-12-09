@@ -2,7 +2,7 @@
   "ver": "1.0.23",
   "importer": "image",
   "imported": true,
-  "uuid": "26de6907-4eea-4c75-9660-21e59e79608e",
+  "uuid": "7da26865-9342-4a2d-8b29-20e68816b624",
   "files": [
     ".json",
     ".png"
@@ -10,14 +10,14 @@
   "subMetas": {
     "6c48a": {
       "importer": "texture",
-      "uuid": "26de6907-4eea-4c75-9660-21e59e79608e@6c48a",
+      "uuid": "7da26865-9342-4a2d-8b29-20e68816b624@6c48a",
       "displayName": "coin_tail_gray",
       "id": "6c48a",
       "name": "texture",
       "userData": {
         "wrapModeS": "clamp-to-edge",
         "wrapModeT": "clamp-to-edge",
-        "imageUuidOrDatabaseUri": "26de6907-4eea-4c75-9660-21e59e79608e",
+        "imageUuidOrDatabaseUri": "7da26865-9342-4a2d-8b29-20e68816b624",
         "isUuid": true,
         "minfilter": "linear",
         "magfilter": "linear",
@@ -33,7 +33,7 @@
     },
     "f9941": {
       "importer": "sprite-frame",
-      "uuid": "26de6907-4eea-4c75-9660-21e59e79608e@f9941",
+      "uuid": "7da26865-9342-4a2d-8b29-20e68816b624@f9941",
       "displayName": "coin_tail_gray",
       "id": "f9941",
       "name": "spriteFrame",
@@ -43,19 +43,19 @@
         "rotated": false,
         "offsetX": 0,
         "offsetY": 0,
-        "trimX": 1,
-        "trimY": 1,
+        "trimX": 0,
+        "trimY": 0,
         "width": 33,
         "height": 33,
-        "rawWidth": 35,
-        "rawHeight": 35,
+        "rawWidth": 33,
+        "rawHeight": 33,
         "borderTop": 0,
         "borderBottom": 0,
         "borderLeft": 0,
         "borderRight": 0,
         "packable": true,
         "isUuid": true,
-        "imageUuidOrDatabaseUri": "26de6907-4eea-4c75-9660-21e59e79608e@6c48a",
+        "imageUuidOrDatabaseUri": "7da26865-9342-4a2d-8b29-20e68816b624@6c48a",
         "atlasUuid": ""
       },
       "ver": "1.0.9",
@@ -70,6 +70,6 @@
     "type": "sprite-frame",
     "fixAlphaTransparencyArtifacts": true,
     "hasAlpha": true,
-    "redirect": "26de6907-4eea-4c75-9660-21e59e79608e@f9941"
+    "redirect": "7da26865-9342-4a2d-8b29-20e68816b624@f9941"
   }
 }

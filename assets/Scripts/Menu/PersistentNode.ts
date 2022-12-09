@@ -1,5 +1,5 @@
 import { _decorator, Component, game, Vec3 } from 'cc'
-import spawnPositions from '../lib/spawnPosition'
+import spawnPositions from '../lib/spawnPositions'
 
 const { ccclass } = _decorator
 

@@ -2,7 +2,7 @@
   "ver": "1.0.23",
   "importer": "image",
   "imported": true,
-  "uuid": "d0295456-2bf0-4641-8c05-8169b4962517",
+  "uuid": "36ac32d5-6eae-4743-9bf4-1bfb738d8fce",
   "files": [
     ".json",
     ".png"
@@ -10,14 +10,14 @@
   "subMetas": {
     "6c48a": {
       "importer": "texture",
-      "uuid": "d0295456-2bf0-4641-8c05-8169b4962517@6c48a",
-      "displayName": "teslacoil_B_3",
+      "uuid": "36ac32d5-6eae-4743-9bf4-1bfb738d8fce@6c48a",
+      "displayName": "tesla_coil_a_1",
       "id": "6c48a",
       "name": "texture",
       "userData": {
         "wrapModeS": "clamp-to-edge",
         "wrapModeT": "clamp-to-edge",
-        "imageUuidOrDatabaseUri": "d0295456-2bf0-4641-8c05-8169b4962517",
+        "imageUuidOrDatabaseUri": "36ac32d5-6eae-4743-9bf4-1bfb738d8fce",
         "isUuid": true,
         "minfilter": "linear",
         "magfilter": "linear",
@@ -33,8 +33,8 @@
     },
     "f9941": {
       "importer": "sprite-frame",
-      "uuid": "d0295456-2bf0-4641-8c05-8169b4962517@f9941",
-      "displayName": "teslacoil_B_3",
+      "uuid": "36ac32d5-6eae-4743-9bf4-1bfb738d8fce@f9941",
+      "displayName": "tesla_coil_a_1",
       "id": "f9941",
       "name": "spriteFrame",
       "userData": {
@@ -43,19 +43,19 @@
         "rotated": false,
         "offsetX": 0,
         "offsetY": -2.5,
-        "trimX": 6,
+        "trimX": 4,
         "trimY": 5,
-        "width": 36,
-        "height": 155,
+        "width": 40,
+        "height": 171,
         "rawWidth": 48,
-        "rawHeight": 160,
+        "rawHeight": 176,
         "borderTop": 0,
         "borderBottom": 0,
         "borderLeft": 0,
         "borderRight": 0,
         "packable": true,
         "isUuid": true,
-        "imageUuidOrDatabaseUri": "d0295456-2bf0-4641-8c05-8169b4962517@6c48a",
+        "imageUuidOrDatabaseUri": "36ac32d5-6eae-4743-9bf4-1bfb738d8fce@6c48a",
         "atlasUuid": ""
       },
       "ver": "1.0.9",
@@ -70,6 +70,6 @@
     "type": "sprite-frame",
     "fixAlphaTransparencyArtifacts": true,
     "hasAlpha": true,
-    "redirect": "d0295456-2bf0-4641-8c05-8169b4962517@f9941"
+    "redirect": "36ac32d5-6eae-4743-9bf4-1bfb738d8fce@f9941"
   }
 }

@@ -2,7 +2,7 @@
   "ver": "1.0.23",
   "importer": "image",
   "imported": true,
-  "uuid": "d052c5b6-fb95-4ae9-a88c-2108e0727c6a",
+  "uuid": "4e4793ae-a1af-4fb9-878d-89b15ea52a22",
   "files": [
     ".json",
     ".png"
@@ -10,17 +10,17 @@
   "subMetas": {
     "6c48a": {
       "importer": "texture",
-      "uuid": "d052c5b6-fb95-4ae9-a88c-2108e0727c6a@6c48a",
+      "uuid": "4e4793ae-a1af-4fb9-878d-89b15ea52a22@6c48a",
       "displayName": "fishing_rod",
       "id": "6c48a",
       "name": "texture",
       "userData": {
         "wrapModeS": "clamp-to-edge",
         "wrapModeT": "clamp-to-edge",
-        "imageUuidOrDatabaseUri": "d052c5b6-fb95-4ae9-a88c-2108e0727c6a",
+        "imageUuidOrDatabaseUri": "4e4793ae-a1af-4fb9-878d-89b15ea52a22",
         "isUuid": true,
-        "minfilter": "linear",
-        "magfilter": "linear",
+        "minfilter": "nearest",
+        "magfilter": "nearest",
         "mipfilter": "none",
         "anisotropy": 0
       },
@@ -33,12 +33,12 @@
     },
     "f9941": {
       "importer": "sprite-frame",
-      "uuid": "d052c5b6-fb95-4ae9-a88c-2108e0727c6a@f9941",
+      "uuid": "4e4793ae-a1af-4fb9-878d-89b15ea52a22@f9941",
       "displayName": "fishing_rod",
       "id": "f9941",
       "name": "spriteFrame",
       "userData": {
-        "trimType": "auto",
+        "trimType": "none",
         "trimThreshold": 1,
         "rotated": false,
         "offsetX": 0,
@@ -55,7 +55,7 @@
         "borderRight": 0,
         "packable": true,
         "isUuid": true,
-        "imageUuidOrDatabaseUri": "d052c5b6-fb95-4ae9-a88c-2108e0727c6a@6c48a",
+        "imageUuidOrDatabaseUri": "4e4793ae-a1af-4fb9-878d-89b15ea52a22@6c48a",
         "atlasUuid": ""
       },
       "ver": "1.0.9",
@@ -70,6 +70,6 @@
     "type": "sprite-frame",
     "fixAlphaTransparencyArtifacts": true,
     "hasAlpha": true,
-    "redirect": "d052c5b6-fb95-4ae9-a88c-2108e0727c6a@f9941"
+    "redirect": "4e4793ae-a1af-4fb9-878d-89b15ea52a22@f9941"
   }
 }
