@@ -2,7 +2,7 @@
   "ver": "1.0.23",
   "importer": "image",
   "imported": true,
-  "uuid": "6c7719f9-3367-49f5-af14-b965a00e28cd",
+  "uuid": "9b794ab1-1cb5-49fa-b4c3-f90406fe37a1",
   "files": [
     ".json",
     ".png"
@@ -10,17 +10,17 @@
   "subMetas": {
     "6c48a": {
       "importer": "texture",
-      "uuid": "6c7719f9-3367-49f5-af14-b965a00e28cd@6c48a",
-      "displayName": "coin_robot_gray",
+      "uuid": "9b794ab1-1cb5-49fa-b4c3-f90406fe37a1@6c48a",
+      "displayName": "coin_3",
       "id": "6c48a",
       "name": "texture",
       "userData": {
         "wrapModeS": "clamp-to-edge",
         "wrapModeT": "clamp-to-edge",
-        "imageUuidOrDatabaseUri": "6c7719f9-3367-49f5-af14-b965a00e28cd",
+        "imageUuidOrDatabaseUri": "9b794ab1-1cb5-49fa-b4c3-f90406fe37a1",
         "isUuid": true,
-        "minfilter": "linear",
-        "magfilter": "linear",
+        "minfilter": "nearest",
+        "magfilter": "nearest",
         "mipfilter": "none",
         "anisotropy": 0
       },
@@ -33,12 +33,12 @@
     },
     "f9941": {
       "importer": "sprite-frame",
-      "uuid": "6c7719f9-3367-49f5-af14-b965a00e28cd@f9941",
-      "displayName": "coin_robot_gray",
+      "uuid": "9b794ab1-1cb5-49fa-b4c3-f90406fe37a1@f9941",
+      "displayName": "coin_3",
       "id": "f9941",
       "name": "spriteFrame",
       "userData": {
-        "trimType": "auto",
+        "trimType": "none",
         "trimThreshold": 1,
         "rotated": false,
         "offsetX": 0,
@@ -55,7 +55,7 @@
         "borderRight": 0,
         "packable": true,
         "isUuid": true,
-        "imageUuidOrDatabaseUri": "6c7719f9-3367-49f5-af14-b965a00e28cd@6c48a",
+        "imageUuidOrDatabaseUri": "9b794ab1-1cb5-49fa-b4c3-f90406fe37a1@6c48a",
         "atlasUuid": ""
       },
       "ver": "1.0.9",
@@ -70,6 +70,6 @@
     "type": "sprite-frame",
     "fixAlphaTransparencyArtifacts": true,
     "hasAlpha": true,
-    "redirect": "6c7719f9-3367-49f5-af14-b965a00e28cd@f9941"
+    "redirect": "9b794ab1-1cb5-49fa-b4c3-f90406fe37a1@f9941"
   }
 }

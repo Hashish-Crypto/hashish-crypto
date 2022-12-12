@@ -2,7 +2,7 @@
   "ver": "1.0.23",
   "importer": "image",
   "imported": true,
-  "uuid": "dea36d80-6359-431f-b987-9173a32425be",
+  "uuid": "c3cd32dd-1e3c-48b6-b8c9-de8643f508ea",
   "files": [
     ".json",
     ".png"
@@ -10,17 +10,17 @@
   "subMetas": {
     "6c48a": {
       "importer": "texture",
-      "uuid": "dea36d80-6359-431f-b987-9173a32425be@6c48a",
-      "displayName": "coin04",
+      "uuid": "c3cd32dd-1e3c-48b6-b8c9-de8643f508ea@6c48a",
+      "displayName": "coin_5",
       "id": "6c48a",
       "name": "texture",
       "userData": {
         "wrapModeS": "clamp-to-edge",
         "wrapModeT": "clamp-to-edge",
-        "imageUuidOrDatabaseUri": "dea36d80-6359-431f-b987-9173a32425be",
+        "imageUuidOrDatabaseUri": "c3cd32dd-1e3c-48b6-b8c9-de8643f508ea",
         "isUuid": true,
-        "minfilter": "linear",
-        "magfilter": "linear",
+        "minfilter": "nearest",
+        "magfilter": "nearest",
         "mipfilter": "none",
         "anisotropy": 0
       },
@@ -33,20 +33,20 @@
     },
     "f9941": {
       "importer": "sprite-frame",
-      "uuid": "dea36d80-6359-431f-b987-9173a32425be@f9941",
-      "displayName": "coin04",
+      "uuid": "c3cd32dd-1e3c-48b6-b8c9-de8643f508ea@f9941",
+      "displayName": "coin_5",
       "id": "f9941",
       "name": "spriteFrame",
       "userData": {
-        "trimType": "auto",
+        "trimType": "none",
         "trimThreshold": 1,
         "rotated": false,
         "offsetX": 0,
-        "offsetY": -1,
+        "offsetY": 0,
         "trimX": 0,
-        "trimY": 15,
+        "trimY": 0,
         "width": 33,
-        "height": 5,
+        "height": 33,
         "rawWidth": 33,
         "rawHeight": 33,
         "borderTop": 0,
@@ -55,7 +55,7 @@
         "borderRight": 0,
         "packable": true,
         "isUuid": true,
-        "imageUuidOrDatabaseUri": "dea36d80-6359-431f-b987-9173a32425be@6c48a",
+        "imageUuidOrDatabaseUri": "c3cd32dd-1e3c-48b6-b8c9-de8643f508ea@6c48a",
         "atlasUuid": ""
       },
       "ver": "1.0.9",
@@ -70,6 +70,6 @@
     "type": "sprite-frame",
     "fixAlphaTransparencyArtifacts": true,
     "hasAlpha": true,
-    "redirect": "dea36d80-6359-431f-b987-9173a32425be@f9941"
+    "redirect": "c3cd32dd-1e3c-48b6-b8c9-de8643f508ea@f9941"
   }
 }
